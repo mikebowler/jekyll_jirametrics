@@ -1,0 +1,30 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+sitemap: false
+---
+
+@charset "utf-8";
+@import "so-simple";
+
+div.event {
+	display: grid;
+	grid-template-columns: 5em 1fr;
+	grid-gap: 0em 1em;
+	margin-bottom: 1em;
+	.label {
+		font-weight: bold;
+		text-align: right;
+	}
+	border: 1px solid green; 
+	background: #F1FDF1;
+}
+
+p.tip::before {
+	font-weight: bold;
+	content: "Tip: ";
+}
+p.tip {
+	border: 1px solid green; 
+	background: #EAFFF1;
+	padding: 0.2em 0.5em;
+}
