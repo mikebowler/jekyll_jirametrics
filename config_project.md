@@ -1,114 +1,7 @@
 ---
 layout: page
-permalink: /common_configuration/
+permalink: /config/project/
 ---
-This portion of the config is the same, whether you're dumping raw data or generating HTML
-
-# Create your project configuration
-
-Create the file config.rb file and put a configuration in it like the one below.
-
-```ruby
-Exporter.configure do
-  # target_path sets the directory that all generated files will end up in.
-  target_path 'target'
-
-  # jira_config sets the name of the configuration file with jira specific authentication
-  jira_config 'improvingflow.json'
-
-  # Specify the timezone that you want the report to use.
-  timezone_offset '-08:00'
-
-  project do
-    # the prefix that will be used for all generated files
-    file_prefix 'sample'
-
-    # All the jira specific configuration for this project is in this block. 
-    # It will apply to all file sections.
-    download do
-      rolling_date_count 90
-    end
-
-    board id: 1 do
-      cycletime do
-        start_at first_time_in_status_category('In Progress')
-        stop_at still_in_status_category('Done')
-      end
-    end
-
-
-    # All the configuration for one specific output file. There may be multiple file sections.
-    file do
-      file_suffix '.csv'
-
-      # This is where we massage the data before export. If we want to remove all epics
-      # and sub-tasks, do it here. If 
-      issues.reject! do |issue|
-        %w[Sub-task Epic].include? issue.type
-      end
-
-      columns do
-        write_headers true
-
-        date 'Done', currently_in_status_category('Done')
-        date 'Start', first_time_in_status_category('In Progress')
-        string 'Type', type
-        string 'Key', key
-        string 'Summary', summary
-      end
-    end
-end
-```
-
-## Top level config ##
-
-In the top level of the config file, you can have multiple projects and can set the locations of the target path and jira configuration file.
-
-Putting an x in front of project will cause that project to be ignored.
-
-```ruby
-Exporter.configure do
-  target_path 'target'
-  jira_config 'improvingflow.json'
-  timezone_offset '-08:00'
-
-  project do
-    # ... project 1 ...
-  end
-
-  project do
-    # ... project 2 ...
-  end
-
-  xproject do
-    # ... ignored project ...
-  end
-end
-```
-
-What if you need to have different target paths or jira config for different projects? Each project will find the preceeding settings and use those so you can redefine them at any time and the subsequent projects will use the new settings.
-
-```ruby
-Exporter.configure do
-  target_path 'target'
-  jira_config 'improvingflow.json'
-
-  project do
-    # ... project 1 ...
-  end
-
-  target_path 'target2'
-  jira_config 'other.json'
-
-  project do
-    # ... project 2 using different target and jira config ...
-  end
-end
-```
-
-> [!NOTE] 
-If you don't specify a `timezone_offset` then the report will all be generated in UTC, which is almost certainly not what you want. Why wouldn't we just default to the timezone of the machine that's running the report? We've found in practice that it's quite common for organizations to be spread across timezones and therefore it's common that the person running the report may be in a different timezone from the person reading it. Forcing it to a known timezone, removes that ambiguity.
-
 ## Project configuration ##
 
 ### Naming the project
@@ -139,27 +32,35 @@ project name: 'MyProject', id: 5 do
 end
 ```
 
-Note that it's rare that you'll need to specify an id so I'd ignore it until you get an error.
+{: .tip }
+It's rare that you'll need to specify an id so I'd ignore it until you get an error saying that it's needed.
 
 ### File prefix declaration
 
-The **file_prefix** will be used in the filenames of all files created during download or during the export.
+The **file_prefix** will be used in the filenames of all files created during download or during the export. This is purely for your use and does not need to match any name inside Jira.
+
+For example, if you specify a file prefix of `sample` then it will generate a bunch of files such as `sample_board_8185_configuration.json` and `sample_meta.json`.
 
 ### Download section
 
 The **download** section contains all the information specific to the project in Jira. There can only be one of these.
 
-The board ids that you specify will be used to determine what issues to download.
+`rolling_date_count` indicates how many days back we're looking for files. For example, if we say `rolling_date_count 90` then we're retrieving any items that have closed in the last 90 days. We always return items that are still open, regardless of date. If this field isn't specified then we retrieve all issues that have ever been in this project and that's usually undesirable. This value is optional.
 
-`rolling_date_count` indicates how many days back we're looking for files. For example, if we say `rolling_date_count 90` then we're retrieving any items that have closed in the last 90 days. We always return items that are still open, regardless of date. If this field isn't specified then we retrieve all issues that have ever been in this project and that's usually undesirable.
-
-`no_earlier_than` will put a boundary on the start date. If the team has changed how they work, they will often want to ignore any data before a specific date and this option allows for that. If I say `no_earlier_than '2024-10-01'` then we will only retrieve information that was after that. This option will be rarely used but when it is needed, it's very helpful.
+`no_earlier_than` will put a boundary on the start date. If the team has changed how they work, they will often want to ignore any data before a specific date and this option allows for that. If I say `no_earlier_than '2024-10-01'` then we will only retrieve information that was after that. This option will be rarely used but when it is needed, it's very helpful. This value is optional.
 
 ```ruby
 download do
   rolling_date_count 90
+  no_earlier_than '2024-10-01'
 end
+```
 
+
+The board ids that you specify will be used to determine what issues to download.
+
+
+```ruby
 board id: 1 do
   cycletime do
     start_at first_time_in_status_category('In Progress')
@@ -168,7 +69,6 @@ board id: 1 do
   expedited_priority_names 'Critical', 'Highest', 'Immediate Gating'
 end
 ```
-
 **Notes about board ids:**
 * To find the board id, navigate to the respective board in your web browser and then look at the URL. You'll see a parameter `rapidView` and that's your board id.
 * If you're using a team-managed project (formerly called NextGen), you won't have a board id as team-managed projects don't support that concept. The bad news is that today, we don't support those projects because the API support for them is sorely lacking, even 5 years after team-managed projects were introduced. We do plan to support them at some point so if this is important to you, then reach out and let us know that it's something you need. There have been no requests to support this yet and that's why it's still low priority.
