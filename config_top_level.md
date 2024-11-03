@@ -1,6 +1,7 @@
 ---
 layout: page
 permalink: /config/
+title: Top level configuration
 ---
 Create a configuration file called `config.rb` in the same directory where you plan to run JiraMetrics.
 
@@ -45,21 +46,25 @@ Exporter.configure do
 end
 ```
 
-### target_path
+## `target_path`
 
 The `target_path` specifies where all temporary files will be saved. We recommend that it not be the current directory as that tends to get very cluttered, very quickly. 
 
-### jira_config
+## `jira_config`
 
 This tells JiraMetrics where to find the file that contains your [Jira configuration]({% link connecting_to_jira.md %}).
 
-### timezone_offset
+## `timezone_offset`
+
+Timezones in the Jira data are frequently all over the place, so in order to make the report look coherent, we have to convert them all to one common timezone.
+
+ Why wouldn't we just default to the timezone of the machine that's running the report? We've found in practice that it's quite common for organizations to be spread across timezones and therefore it's common that the person running the report may be in a different timezone from the person reading it. Forcing it to a known timezone, removes that ambiguity.
 
 {: .tip }
-If you don't specify a `timezone_offset` then the report will all be generated in UTC, which is almost certainly not what you want. Why wouldn't we just default to the timezone of the machine that's running the report? We've found in practice that it's quite common for organizations to be spread across timezones and therefore it's common that the person running the report may be in a different timezone from the person reading it. Forcing it to a known timezone, removes that ambiguity.
+If you don't specify a `timezone_offset` then the report will all be generated in UTC, which is almost certainly not what you want.
 
 
-### Projects
+## `project`
 
 The `project` declaration tells us details about this project and what output we want to create. See the [project configuration]({% link config_project.md %}) documentation for details on that.
 
@@ -104,6 +109,8 @@ Exporter.configure do
   end
 end
 ```
+
+## `standard_project`
 
 If you choose to use `standard_project` then it can be inserted at the same place as the project declaration and you can even mix the two styles together if you want to use them both. Under the covers, `standard_project` just creates a full `project` declaration with a predefined configuration.
 

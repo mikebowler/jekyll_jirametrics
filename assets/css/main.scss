@@ -28,3 +28,10 @@ p.tip {
 	background: #EAFFF1;
 	padding: 0.2em 0.5em;
 }
+
+h1, h2 {
+	code::before {
+		color: black;
+		content: "⮕ "
+	}
+}

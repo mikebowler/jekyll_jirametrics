@@ -1,10 +1,46 @@
 ---
 layout: page
 permalink: /config/project/
+title: Configuring the Project
 ---
-## Project configuration ##
+# `project`
 
-### Naming the project
+The project declaration holds information about what is a project. This will often correspond to Jira's notion of a project but may not, as some companies will have many different teams working off a single Jira project. This project declaration is intended to wrap what one team will be doing and will usually (but isn't required to) have only one board.
+
+```ruby
+# Example project
+project name: "MyName" do
+  file_prefix 'sample'
+
+  download do
+    rolling_date_count 90
+    no_earlier_than '2024-10-01'
+  end
+
+  board id: 1 do
+    cycletime do
+      start_at first_time_in_status_category('In Progress')
+      stop_at still_in_status_category('Done')
+    end
+  end
+
+  file do
+    file_suffix '.csv'
+
+    columns do
+      write_headers true
+
+      date 'Done', currently_in_status_category('Done')
+      date 'Start', first_time_in_status_category('In Progress')
+      string 'Type', type
+      string 'Key', key
+      string 'Summary', summary
+    end
+  end
+end
+```
+
+## Naming the project
 
 A name can be passed into the project and if you have multiple projects defined, we recommend that you do.
 
@@ -14,7 +50,7 @@ project name: "MyName" do
 end
 ```
 
-### Setting the project id
+## Setting the project id
 
 There are certain situations having to do with team-managed projects where we need to know the id of the project. If this happens and we are unable to determine the project from the board itself (often we can) then you'll get an error about having to specify the project id and you do that like this.
 
@@ -35,13 +71,13 @@ end
 {: .tip }
 It's rare that you'll need to specify an id so I'd ignore it until you get an error saying that it's needed.
 
-### File prefix declaration
+## `file_prefix`
 
 The **file_prefix** will be used in the filenames of all files created during download or during the export. This is purely for your use and does not need to match any name inside Jira.
 
 For example, if you specify a file prefix of `sample` then it will generate a bunch of files such as `sample_board_8185_configuration.json` and `sample_meta.json`.
 
-### Download section
+## `download`
 
 The **download** section contains all the information specific to the project in Jira. There can only be one of these.
 
@@ -56,8 +92,9 @@ download do
 end
 ```
 
+## `board`
 
-The board ids that you specify will be used to determine what issues to download.
+The board section tells us what board we're pulling data for, and how we declare the cycle time for that board.
 
 
 ```ruby
@@ -66,14 +103,40 @@ board id: 1 do
     start_at first_time_in_status_category('In Progress')
     stop_at still_in_status_category('Done')
   end
-  expedited_priority_names 'Critical', 'Highest', 'Immediate Gating'
 end
 ```
-**Notes about board ids:**
-* To find the board id, navigate to the respective board in your web browser and then look at the URL. You'll see a parameter `rapidView` and that's your board id.
-* If you're using a team-managed project (formerly called NextGen), you won't have a board id as team-managed projects don't support that concept. The bad news is that today, we don't support those projects because the API support for them is sorely lacking, even 5 years after team-managed projects were introduced. We do plan to support them at some point so if this is important to you, then reach out and let us know that it's something you need. There have been no requests to support this yet and that's why it's still low priority.
 
-### File section
+To find the board id, navigate to the respective board in your web browser and then look at the URL. You'll see a parameter `rapidView` and that's your board ID.
+
+{: .tip }
+If there isn't a board ID in your URL then that means that this project isn't classified as a Software project in Jira and you won't have access to any of the Agile features. It's highly unlikely that you'll run into this but it is possible. JiraMetrics cannot do anything useful with projects like this.
+
+The `cycletime` has two components which define when we consider the work started and when we consider it stopped. For either of `start_at` or `stop_at`, we have a variety of ways to determine the exact time.
+
+For example, if we want to start the clock when the issue enters the 'In Progress' status then we could write `start_at first_time_in_status 'In Progress'`
+
+The full set of options that we can use for this are below.
+
+| method | description |
+|---+---|
+| `first_time_in_status` | Returns the first time the issue enters one of the specified statuses. |
+| `first_time_in_status_category` | Returns the first time we entered a status belonging to the specified status category. Categories are "To Do", "In Progress" and "Done". |
+| `first_time_not_in_status` | Takes a list of status names and returns the first time that the issue is NOT in one of these statuses. Commonly used if there are a couple of columns at the beginning of the board that we don't want to consider for the purposes of calculating cycletime. |
+| `currently_in_status` | Similar to `first_time_in_status` except that it only matches if the work is still in that status. If it has moved out of that status, it will no longer match. |
+| `currently_in_status_category` | Similar to `first_time_in_status_category` except that it only matches if the work is still in that category. |
+| `still_in_status` | If an issue has ever been in one of these statuses AND is still in one of these statuses then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named status. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status` |
+| `still_in_status_category` | If an issue has ever been in one of these category AND is still in one of these category then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named category. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status_category` |
+| `first_status_change_after_created` | Returns the timestamp of the first status change after the issue was created. |
+| `time_created` | Returns the creation timestamp of the issue |
+
+
+What if there aren't any built-in methods to extract the piece of data that you want? You can pass in an arbitrary bit of code that will get executed for each issue.
+
+```ruby
+start_at ->(issue) { issue.get_whatever_data_you_want }
+```
+
+## `file`
 
 The **file** section contains information specific to the output file we're going to create. There can be multiples of these, if we're generating multiple different files.
 
