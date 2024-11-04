@@ -38,24 +38,54 @@ At a high level, there are four steps, and we'll walk through each.
 
 ----
 
-You can export CSV files that can be used with various spreadsheets, like the excellent ones from [Focused Objective](https://www.focusedobjective.com/w/support/) or with tools like [Actionable Agile](https://analytics.actionableagile.com).
+# Configuration Index
 
-Alternatively, this tool can directly [generate HTML](https://github.com/mikebowler/jira-export/wiki/HTML-Reports) files with pretty charts in them.
+* `Exporter.configure`
+  * [`target_path`](#target_path)
+  * [`jira_config`](#jira_config)
+  * [`timezone_offset`](#timezone_offset)
+  * [`project`]({% link config_project.md %})
+    * [`file_prefix`]({% link config_project.md %}#file_prefix)
+    * [`download`]({% link config_project.md %}#download)
+    * [`board`]({% link config_project.md %}#board)
+      * [`cycletime`]({% link config_project.md %}#board)
+    * [`file`]({% link config_file_csv.md %}) (when exporting data in CSV)
+      * [`file_suffix`]({% link config_file_csv.md %}#file_suffix)
+      * [`only_use_row_if`]({% link config_file_csv.md %}#only_use_row_if)
+      * [`columns`]({% link config_file_csv.md %}#file_suffix)
+        * [`write_headers`]({% link config_file_csv.md %}#write_headers)
+        * [`column_entry_times`]({% link config_file_csv.md %}#column_entry_times)
+        * [Type specific values]({% link config_file_csv.md %}#type_specific_values)
+    * [`file`]({% link config_file_html.md %}) (when creating an HTML report)
+      * [`file_suffix`]({% link config_file_html.md %}#file_suffix)
+      * [`discard_changes_before`]({% link config_file_html.md %}#discard_changes_before)
+      * [`html_report`]({% link config_file_html.md %}#html_report)
+        * [`board_id`]({% link config_file_html.md %}#board_id)
+        * [All Charts]({% link config_charts.md %})
+          * [`cycletime_scatterplot`]({% link config_charts.md %}#cycletime_scatterplot)
+          * [`cycletime_histogram`]({% link config_charts.md %}#cycletime_histogram)
+          * [`throughput_chart`]({% link config_charts.md %}#throughput_chart)
+          * [`aging_work_in_progress_chart`]({% link config_charts.md %}#aging_work_in_progress_chart)
+          * [`daily_wip_by_age_chart`]({% link config_charts.md %}#daily_wip_by_age_chart)
+          * [`daily_wip_by_blocked_stalled_chart`]({% link config_charts.md %}#daily_wip_by_blocked_stalled_chart)
+          * [`daily_wip_by_parent`]({% link config_charts.md %}#daily_wip_by_parent)
+          * [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
+          * [`expedited_chart`]({% link config_charts.md %}#expedited_chart)
+          * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown)
+          * [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart)
+          * [`dependency_chart`]({% link config_charts.md %}#dependency_chart)
+            * [`issue_rules`]({% link config_charts.md %}#issue_rules)
+            * [`link_rules`]({% link config_charts.md %}#link_rules)
+      * [Styling the report]({% link config_charts.md %}#css)
+    * [`status_category_mapping`]({% link config_project.md %}#status_category_mapping)
+    * [`anonymize`]({% link config_project.md %}#anonymize)
+    * [Project specific settings]({% link config_project.md %}#settings)
+    * [`standard_project`]({% link config_standard_project.md %})
+    * `aggregated_project`
+
 
 
 ----
 
-
-* [Changes]({% link changes.md %})
-* [Common configuration]({% link config_top_level.md %})
-* [Connecting to Jira]({% link connecting_to_jira.md %})
-* [Deprecated]({% link deprecated.md %})
 * [Examples folder]({% link examples_folder.md %})
-* [Exporting raw data]({% link exporting_data.md %})
-* [FAQ]({% link faq.md %})
-* [HTML Reports]({% link reports.md %})
-* [JRuby]({% link jruby.md %})
-* [Quick Start]({% link quickstart.md %})
-* [Report a bug!](https://github.com/mikebowler/jirametrics/issues)
-* How to contribute
 * Creating your own variant of `standard_project`

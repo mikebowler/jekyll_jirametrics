@@ -1,6 +1,6 @@
 - title: Home
   url: /
-- title: Changes
-  url: /changes/
 - title: Github
   url: https://github.com/mikebowler/jirametrics
+- title: About
+  url: /about/

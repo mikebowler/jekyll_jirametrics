@@ -3,39 +3,49 @@ layout: page
 permalink: /config/project/
 title: Configuring the Project
 ---
-# `project`
+## `project`
 
 The project declaration holds information about what is a project. This will often correspond to Jira's notion of a project but may not, as some companies will have many different teams working off a single Jira project. This project declaration is intended to wrap what one team will be doing and will usually (but isn't required to) have only one board.
 
+{: .tip }
+Putting an `x` in front of project will cause that project to be ignored. Example: `xproject`
+
 ```ruby
-# Example project
-project name: "MyName" do
-  file_prefix 'sample'
+Exporter.configure do
+  target_path 'target'
+  jira_config 'improvingflow.json'
+  timezone_offset '-08:00'
 
-  download do
-    rolling_date_count 90
-    no_earlier_than '2024-10-01'
+  project do
+    # ... project 1 ...
   end
 
-  board id: 1 do
-    cycletime do
-      start_at first_time_in_status_category('In Progress')
-      stop_at still_in_status_category('Done')
-    end
+  project do
+    # ... project 2 ...
   end
 
-  file do
-    file_suffix '.csv'
+  xproject do
+    # ... ignored project ...
+  end
+end
+```
 
-    columns do
-      write_headers true
+What if you need to have different target paths or Jira config for different projects? Each project will find the preceding settings and use those so you can redefine them at any time and the subsequent projects will use the new settings.
 
-      date 'Done', currently_in_status_category('Done')
-      date 'Start', first_time_in_status_category('In Progress')
-      string 'Type', type
-      string 'Key', key
-      string 'Summary', summary
-    end
+```ruby
+Exporter.configure do
+  target_path 'target'
+  jira_config 'improvingflow.json'
+
+  project do
+    # ... project 1 ...
+  end
+
+  target_path 'target2'
+  jira_config 'other.json'
+
+  project do
+    # ... project 2 using different target and jira config ...
   end
 end
 ```
@@ -138,7 +148,8 @@ start_at ->(issue) { issue.get_whatever_data_you_want }
 
 ## `file`
 
-The **file** section contains information specific to the output file we're going to create. There can be multiples of these, if we're generating multiple different files.
+The `file` section contains information specific to the output file we're going to create. There can be multiples of these, if we're generating multiple different files.
+
 
 ```ruby
 project do
@@ -154,33 +165,13 @@ project do
 end
 ```
 
-The **file** section contains information about a specific file that we want to export.
+What the file section looks like, will depend on whether we are exporting a CSV or an HTML report.
+* Configuring `file` to [generate CSV files]({% link config_file_csv.md %})
+* Configuring `file` to [generate an HTML report]({% link config_file_html.md %}).
 
-**file_suffix** specifies the suffix that will be used for the generated file. If not specified, it defaults to '.csv'
+## `status_category_mapping`
 
-The **columns** block provides information about the actual data that will be exported.
-
-**only_use_row_if** is a bit of a hack to exclude rows that we don't want to see in the export. For example, sometimes we only want to write a row if it has either a start date or an end date or both. We could use this to exclude the row unless one of those values is present.
-
-The full list of issues is made available in the **issues** variable so it's possible to do things like exclude issues we don't want. The sample below is excluding any issues that are either epics or sub-tasks. We'll often use it to exclude specific issues that we know have bad data.
-
-```ruby
-file do
-  file_suffix '.csv'
-
-  issues.reject! do |issue|
-    %w[Sub-task Epic].include? issue.type
-  end
-
-  only_use_row_if do |row|
-    row[0] || row[1]
-  end
-end
-```
-
-### Status category mapping declaration
-
-**status_category_mapping** is there to work around a specific problem where statuses have been deleted from Jira but the Issue histories still reference that status. In this case, you'll get an error during the export, telling you to add a `status_category_mapping` and you put it inside the project section.
+`status_category_mapping` is there to work around a specific problem where statuses have been deleted from Jira but the Issue histories still reference that status. In this case, you'll get an error during the export, telling you to add a `status_category_mapping` and you put it inside the project section.
 
 The category will always be one of 'To Do', 'In Progress', or 'Done'. The status will be the name of the status that we can't find and that will be named in the error message above.
 
@@ -190,7 +181,19 @@ project do
 end
 ```
 
-### Settings
+## `anonymize`
+
+Lastly, we can anonymize the report with the `anonymize` setting.
+
+```ruby
+project do
+  anonymize
+  ...
+end
+```
+
+{: #settings }
+## Project specific settings
 
 The project section also has the ability to add custom settings that are used in various places. Each of these custom settings is unique and they're described in the table below.
 
@@ -203,21 +206,21 @@ end
 
 | Settings key | Description |
 |:--------|:-------|
-| 'blocked_statuses' | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). Example: *settings['blocked_statuses']=['Blocked']* |
-| 'flagged_means_blocked' | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
-| 'stalled_statuses' | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
-| 'ignore_ssl_errors' | true to ignore the SSL errors that are common with self-signed certificates |
-| 'intercept_jql' | Pass a lambda that can make changes to the JQL before it's executed. If you have to use this then your Jira instance is pretty poorly configured. It's here because we have to work with instances that are. |
-| 'customfield_parent_links' | A list of custom_field ids that link to parent keys. If you're using Jira Advanced Roadmap then parent relationships will be set up with a custom field and this is how you set it up. |
-| 'expedited_priority_names' | An array of priorities that will be considered to be expedited. ie ['Highest', 'Critical'] |
+| `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). Example: *settings['blocked_statuses']=['Blocked']* |
+| `flagged_means_blocked` | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
+| `stalled_statuses` | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
+| `ignore_ssl_errors` | Set to `true` to ignore the SSL errors that are common with self-signed certificates |
+| `intercept_jql` | Pass a lambda that can make changes to the JQL before it's executed. If you have to use this then your Jira instance is pretty poorly configured. It's here because we have to work with instances that are. |
+| `customfield_parent_links` | A list of custom_field ids that link to parent keys. If you're using Jira Advanced Roadmap then parent relationships will be set up with a custom field and this is how you set it up. |
+| `expedited_priority_names` | An array of priorities that will be considered to be expedited. ie ['Highest', 'Critical'] |
 
-### Anonymization
+## Excluding issues from the data set
 
-Lastly, we can anonymize the report with the **anonymize** setting.
+The full list of issues is made available in the `issues` variable so it's possible to do things like exclude issues we don't want. The sample below is excluding any issues that are either epics or sub-tasks. We'll often use it to exclude specific issues that we know have bad data.
 
 ```ruby
-project do
-  anonymize
-  ...
+issues.reject! do |issue|
+  %w[Sub-task Epic].include? issue.type
 end
 ```
+

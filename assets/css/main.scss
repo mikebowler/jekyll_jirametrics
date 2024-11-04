@@ -29,9 +29,14 @@ p.tip {
 	padding: 0.2em 0.5em;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	code::before {
 		color: black;
 		content: "⮕ "
+	}
+}
+h3 {
+	code::before {
+		margin-left: 2em;
 	}
 }
