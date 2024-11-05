@@ -1,16 +1,11 @@
 ---
 layout: page
 permalink: /quickstart/
+title: Quick Start
 ---
 There are so many possible configuration options for this tool, that it can be a little overwhelming to get your first report working. This page will show one quick end-to-end from not having anything installed to a full report, in just a few minutes.
 
-Assuming you already have [ruby](ruby-lang.org) 3.0+ installed, run:
-
-```
-gem install jirametrics
-```
-
-**Alternate:** If you are installing on Java, see [these instructions](https://github.com/mikebowler/jirametrics/wiki/JRuby)
+If you haven't installed JiraMetrics yet, [follow these instructions]({% link install.md %}).
 
 Create a directory to hold all the data you're going to download and the reports you'll generate, and navigate into it.
 
@@ -21,7 +16,7 @@ cd myreports
 
 The two configuration files you're going to create will all be in this directory, and you'll be running the tool from here as well.
 
-Create a file called `jira_config.json` and populate it [[as described here|Connecting-to-a-Jira-Instance]].
+Create a file called `jira_config.json` and populate it [as described here]().
 
 In my case, I'm on an instance of Jira Cloud and so mine looks like this. You'll need to change it to reflect your own settings.
 
@@ -72,8 +67,8 @@ Now we're ready to run the tool. From the command line, run:
 jirametrics go
 ```
 
-> [!TIP]
-> The most common error at this point is one about a missing status. If you get that, see the [FAQ](https://github.com/mikebowler/jirametrics/wiki/FAQ).
+{: .tip }
+The most common error at this point is one about a missing status. If you get that, see [FAQ #1]({% link faq.md %}#q1).
 
 Assuming everything ran successfully, you should see output that looks something like this. You may have more lines depending on how much data is being pulled. The board I'm using for testing has very little data in it.
 
@@ -87,7 +82,7 @@ Sample
   Downloading primary issues for board 2
     Downloaded 1-2 of 2 issues to target/sample_issues/ 
   Downloading linked issues for board 2
-Full output from downloader in downloader.log
+Full output from downloader in jirametrics.log
 Sample
 ```
 
@@ -115,6 +110,8 @@ end
 
 ---
 
-Note:  `standard_project` is the fastest way to get something up and running but it makes a lot of assumptions about how your boards work. You'll likely want to create your own variation of that, that works better for you. Refer to [[the docs for standard_project|Examples-folder]] to see how you could customize your own. The jirametrics tool is a lot more customizable than is shown in `standard_project`.
+Note:  `standard_project` is the fastest way to get something up and running but it makes a lot of assumptions about how your boards work. You'll likely want to create your own variation of that, that works better for you. Refer to [`standard_project`]({% link config_standard_project.md %}) to see how you could customize your own. 
 
-If you want a quick Look at the kinds of charts you can create, look at the [[HTML Reports]] page
+The jirametrics tool is a lot more customizable than is shown in `standard_project`.
+
+If you want a quick Look at the kinds of charts you can create, look at the documentation for the [charts]({% link config_charts.md %}).

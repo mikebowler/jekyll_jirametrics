@@ -19,7 +19,6 @@ If you're making changes to your configuration then you might want to skip the d
 | export | Generate the respective output files. These could be CSV's or HTML reports, as specified in the configuration |
 | info | Dump information about a specific issue to the terminal. This is really intended as a debugging tool for the developers but we're making it accessible for everyone. Usage: `jirametrics info ABC-123`. Requires v2.7 |
 
-
 ## Options
 
 | Option | Description |
