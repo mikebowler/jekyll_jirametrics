@@ -33,11 +33,11 @@ task :deploy do
   )
   run_command(
     label: 'Deploying to S3',
-    command: 'aws s3 sync _site s3://okanaganagile.com'
+    command: 'aws s3 sync _site s3://jirametrics.org'
   )
   run_command(
     label: 'Invalidating cloudfront cache',
-    command: 'aws cloudfront create-invalidation --distribution-id EEQB5GCKN1V2P --paths "/*"'
+    command: 'aws cloudfront create-invalidation --distribution-id ECIZKMUQI7KP7 --paths "/*"'
   )
 end
 

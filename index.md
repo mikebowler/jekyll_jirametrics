@@ -7,7 +7,7 @@ layout: home
 
 # What is it?
 
-It's a way to pull useful metrics out of Jira.
+It's a way to pull useful metrics out of Jira&trade;[^jira].
 
 Jira collects and maintains all kinds of useful data about your workflow. Unfortunately it does a horrible job of exposing that in any meaningful way. This project addresses that gap by giving you a way to pull that data out of Jira and either dumping it into CSV files that you can then manipulate yourself or by creating an HTML report with key findings.
 
@@ -83,3 +83,4 @@ There are a lot of configuration items that can be set. Here's an index to get y
     * [`aggregated_project`]({% link config_aggregated_project.md %})
     * [Project specific settings]({% link config_project.md %}#settings)
 
+[^jira]: Jira is a registered trademark of Atlassian Corporation Plc
