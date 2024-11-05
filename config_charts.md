@@ -24,7 +24,7 @@ You can customize this report with `grouping_rules` as shown below.
 | color |The color used for the group. If a colour isn't set then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
 
-<img width="1224" alt="scatterplot" src="https://user-images.githubusercontent.com/1743195/172074171-a94fd773-23ad-4aa3-af5b-2bc6bdc0abb4.png">
+{% imagesize /assets/images/cycletime_scatterplot.png:img alt="Cycletime Scatterplot" %}
 
 Example
 
@@ -69,7 +69,7 @@ Rules options
 | color |The color used for the group. If no color is specified then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
 
-<img width="1224" alt="histogram" src="https://user-images.githubusercontent.com/1743195/172074191-d07480f7-49d3-413e-a9e5-bf9cc95449e5.png">
+{% imagesize /assets/images/cycletime_histogram.png:img alt="Cycletime Histogram" %}
 
 ----
 
@@ -112,7 +112,7 @@ throughput_chart do
 end
 ```
 
-<img width="1224" alt="throughput" src="https://user-images.githubusercontent.com/1743195/172074204-adcd5850-2d00-4be4-b0e7-fbc50270abaa.png">
+{% imagesize /assets/images/throughput_chart.png:img alt="Throughput chart" %}
 
 ----
 
@@ -144,7 +144,7 @@ For each day in the period, how many items were in progress? Items are colour co
 daily_wip_by_age_chart
 ```
 
-<img width="1433" alt="Screen Shot 2022-09-18 at 10 26 13 AM" src="https://user-images.githubusercontent.com/1743195/190920651-b332cce2-e703-4b0d-9598-d53ebe6929a0.png">
+{% imagesize /assets/images/daily_wip_by_age_chart.png:img alt="Daily WIP by Age" %}
 
 ----
 
@@ -156,7 +156,7 @@ For each day in the period, how many items are blocked (Flagged in Jira terms) o
 daily_wip_by_blocked_stalled_chart
 ```
 
-<img width="1433" alt="Screen Shot 2022-09-18 at 10 26 27 AM" src="https://user-images.githubusercontent.com/1743195/190920668-8c8ee505-32b6-4331-a7a0-466f4aa5c16c.png">
+{% imagesize /assets/images/daily_wip_by_blocked_stalled.png:img alt="Daily WIP by Blocked/Stalled" %}
 
 ----
 
@@ -224,10 +224,10 @@ sprint_burndown :counts_only
 
 Graphs the estimates (y axis) against the actual cycle time of the item. It's useful to be able to see how much correlation there is between the estimates and the actual time it took. By default, it uses _story points_ for the estimate although that can be configured as seen below.
 
-![Estimate accuracy](https://github.com/mikebowler/jirametrics/assets/1743195/f1550ea3-4746-4727-a593-8c6d85bc4422)
+{% imagesize /assets/images/estimate_accuracy_chart.png:img alt="Estimate accuracy chart" %}
 
 {: .tip }
-There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_
+There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://improvingflow.com/2023/07/08/per-story-estimates.html).
 
 ```ruby
 estimate_accuracy_chart
@@ -243,7 +243,7 @@ estimate_accuracy_chart do
 end
 ```
 
-**Note:** In this example, _custom_field_34_ is meant to show what's possible. It may not be that field name in your instance.
+**Note:** In this example, _custom_field_34_ is meant to show what's possible. It's almost certainly not going to be called that in your instance. You have to find what field is holding the value you need.
 
 | Parameters | Description |
 |:--------|:-------|
