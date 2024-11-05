@@ -29,7 +29,7 @@ task :deploy do
   update_prod_configuration
   run_command(
     label: 'Building the site',
-    command: 'JEKYLL_ENV=production jekyll --config _config.yml,_config_production.yml build'
+    command: 'JEKYLL_ENV=production jekyll build --config _config.yml,_config_production.yml'
   )
   run_command(
     label: 'Deploying to S3',
