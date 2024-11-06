@@ -15,7 +15,7 @@ plugins:
   - jekyll-paginate
   - jekyll-image-size
 
-# google_analytics: G-RS364FQLLY
+google_analytics: G-M5D87W2CHY
 
 google_fonts:
   - name: "Source Sans Pro"
