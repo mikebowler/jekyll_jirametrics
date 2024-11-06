@@ -5,6 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.7.1 (November 5, 2024)
+
+* All documentation has been moved from the Github wiki to [this site](https://jirametrics.org) that you're looking at now. There are places in the code where error messages refer to specific pieces of documentation and they've been updated to point to the new place.
+* Cleaned up the look, and implementation of the data quality report.
+
 # v2.7 (October 27, 2024)
 
 * Fixed misleading usage information when running `jirametrics` with no options.
