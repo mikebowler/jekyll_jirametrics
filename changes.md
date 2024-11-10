@@ -23,7 +23,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # v2.6 (October 2, 2024)
 
-* When a status can't be found, it now just dumps a warning, rather than blowing up. See Q1 in the [FAQ](https://github.com/mikebowler/jirametrics/wiki/FAQ). This has been a source of frustration for many people so we're trying to get some more reasonable default behaviour. Note that you still want to fix it but now you'll see all the missing statuses at once instead of getting one each time.
+* When a status can't be found, it now just dumps a warning, rather than blowing up. See Q1 in the [FAQ](https://jirametrics.org/faq#q1). This has been a source of frustration for many people so we're trying to get some more reasonable default behaviour. Note that you still want to fix it but now you'll see all the missing statuses at once instead of getting one each time.
 * There is a new `Issue.flow_efficiency_numbers` method that is a first step towards visualizing flow efficiency. Note that none of the charts currently make use of this. See this article for [an introduction to flow efficiency](https://improvingflow.com/2024/07/06/flow-efficiency.html).
 * By default, we assume that `flagged` means blocked but not all teams use the flag for that purpose. Added new setting to change that behaviour: `settings['flagged_means_blocked'] = false`.
 
@@ -95,7 +95,7 @@ Where's v2.1? It had a packaging problem that didn't get caught before it was de
   * There were a couple of cases where you could make a change in Jira and immediately download a report and the data wouldn't reflect the changes you just made. Fixed.
   * Bug #24 highlighted a particularly horrible error message. Now have a more reasonable error in that case.
 * Examples
-  * [standard_project](https://github.com/mikebowler/jirametrics/wiki/Examples-folder#standard-project) now allows you to pass in status_category_mappings
+  * [standard_project](https://jirametrics.org/config/standard_project/) now allows you to pass in status_category_mappings
 
 # v2.0.1 (April 23, 2024)
 
@@ -107,7 +107,7 @@ Where's v2.1? It had a packaging problem that didn't get caught before it was de
 > [!WARNING]
 > Things that had previously been deprecated but had continued to work, have now been removed.
 >
-> If you've been paying attention to deprecation warnings up to now then there should be no surprises in here. However, if you've been ignoring warnings then this version is a potentially breaking change. See also the page on [deprecated warnings](https://github.com/mikebowler/jirametrics/wiki/Deprecated)
+> If you've been paying attention to deprecation warnings up to now then there should be no surprises in here. However, if you've been ignoring warnings then this version is a potentially breaking change.
 
 * [Removed] Quite a while ago, we changed the directory where issues would be loaded from but the logic still remained to look in the old location as well as the new. Everyone should be on the new by now so removed that unneeded code.
 * [Removed] The old way of configuring grouping rules was deprecated over two years ago but still worked. No longer supported.
@@ -178,7 +178,7 @@ end
 # May 2023
 
 * Issue.blocked_percentage has been removed. We're guessing that you didn't even know it was here and won't care that it's gone. The method was incomplete, in that it didn't track all possible ways an issue could be blocked, and generally shouldn't have been there in the first place.
-* Certain statuses can be set up as 'stalled' and will reflect as stalled on all the reports. Configuration details are with [project_config](https://github.com/mikebowler/jira-export/wiki/Common-configuration)
+* Certain statuses can be set up as 'stalled' and will reflect as stalled on all the reports. Configuration details are with [project_config](https://jirametrics.org/config/project/)
 
 # April 2023
 
@@ -194,7 +194,7 @@ end
 * AgingWorkBarChart stalled now shows as starting right away rather than not starting for a full five days, which had been misleading in the past.
 * Fixed bug where Issue.first_time_in_or_right_of_column would fail after anonymization
 * AgingWorkBarChart now shows why an item is blocked (Flagged, status, etc) and not just that it is blocked.
-* Certain statuses can be set up as 'blocked' and will reflect as blocked on all the reports. Configuration details are with [project_config](https://github.com/mikebowler/jira-export/wiki/Common-configuration)
+* Certain statuses can be set up as 'blocked' and will reflect as blocked on all the reports. Configuration details are with [project_config](https://jirametrics.org/config/project/)
 
 # March 2023
 
