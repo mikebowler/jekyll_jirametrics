@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.7.3 (November 13, 2024)
+
+* Fixed an exception when two scrum projects had overlapping names like `myproject` and `really_myproject`. Our matcher wasn't precise enough and was matching where it shouldn't have.
+
 # v2.7.2 (November 11, 2024)
 
 * Fixed a regression that prevented a new full download from working. Incremental downloads hadn't been affected.
