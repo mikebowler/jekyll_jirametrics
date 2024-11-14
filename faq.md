@@ -37,7 +37,7 @@ It might really be that you've hit the Jira instance too often, and you'll have 
 
 By default, we consider an item to be stalled if there is no activity in Jira for 5 days. Activity could be a status change or a comment or the movement of a subtask. If it's being shown as stalled then it had no activity at all for that long.
 
-* You can change the number of days in [settings]({% link config_project.md %}#settings) with the key ` stalled_threshold_days`
+* You can change the number of days in [settings]({% link config_project.md %}#settings) with the key `stalled_threshold_days`
 * You can also designate a particular status so that the work immediately becomes stalled when entering this status. That is also in [settings]({% link config_project.md %}#settings) with the key `stalled_statuses`
 
 {: #blocked }
