@@ -45,7 +45,7 @@ By default, we consider an item to be stalled if there is no activity in Jira fo
 
 "Blocked" indicates that the work cannot proceed because of some external blocker.
 
-By default, the only thing that automatically actives "blocked" is the Jira flag. When the flag is enabled on a ticket, it's considered blocked.
+By default, the only thing that automatically triggers "blocked" is the Jira flag. When the flag is enabled on a ticket, it's considered blocked. In our experience, this is by far the most common use of the Flag so we turn that on by default.
 
 * If your team uses Flagged for some other purpose then you can change that with the [setting]({% link config_project.md %}#settings) `flagged_means_blocked`.
 * You can also designate a particular status so that the work immediately becomes blocked when entering this status. That is also in [settings]({% link config_project.md %}#settings) with the key `blocked_statuses`
