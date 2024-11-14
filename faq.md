@@ -14,7 +14,7 @@ permalink: /faq/
 
 `Status name "My Status" for issue ABC-123 not found...`
 
-What this means is that there used to be a status by that name but it's since been deleted in your Jira instance. Unfortunately, the history still references it and so we need to know information about it, but Jira no longer knows anything about it.
+What this means is that there used to be a status by that name but it's since been deleted in your Jira instance. Unfortunately, the history still references it and so we need to know what category it belongs to. You would think that Jira would version that sort of thing so we could still query that information after it was removed from use but no, it does not. Instead, you will need to specify that status to category mapping in the configuration.
 
 * If you're using the `standard_project` declaration then use the `status_category_mapping` [as defined here](https://jirametrics.org/config/standard_project/).
 * Otherwise the other `status_category_mapping` is defined [over here](https://jirametrics.org/config/project/#status_category_mapping).

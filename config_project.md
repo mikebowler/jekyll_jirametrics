@@ -123,17 +123,22 @@ If there isn't a board ID in your URL then that means that this project isn't cl
 
 The `cycletime` has two components which define when we consider the work started and when we consider it stopped. For either of `start_at` or `stop_at`, we have a variety of ways to determine the exact time.
 
-For example, if we want to start the clock when the issue enters the 'In Progress' status then we could write `start_at first_time_in_status 'In Progress'`
+For example, if we want to start the clock when the issue enters the 'In Progress' status then we could write<br />`start_at first_time_in_status 'In Progress'`
+
+{: .tip }
+The one we use more often than any other is `first_time_in_or_right_of_column`. Consider if this one meets your needs before looking through all the others.
 
 The full set of options that we can use for this are below.
 
 | method | description |
 |---+---|
+| `currently_in_status` | Similar to `first_time_in_status` except that it only matches if the work is still in that status. If it has moved out of that status, it will no longer match.<br />`currently_in_status 'In Progress'` |
+| `currently_in_status_category` | Similar to `first_time_in_status_category` except that it only matches if the work is still in that category. |
+| `first_time_in_or_right_of_column` | Returns the first time the issue enters this column or any column the right of it.<br />`first_time_in_or_right_of_column 'In Progress'`
 | `first_time_in_status` | Returns the first time the issue enters one of the specified statuses. |
 | `first_time_in_status_category` | Returns the first time we entered a status belonging to the specified status category. Categories are "To Do", "In Progress" and "Done". |
 | `first_time_not_in_status` | Takes a list of status names and returns the first time that the issue is NOT in one of these statuses. Commonly used if there are a couple of columns at the beginning of the board that we don't want to consider for the purposes of calculating cycletime. |
-| `currently_in_status` | Similar to `first_time_in_status` except that it only matches if the work is still in that status. If it has moved out of that status, it will no longer match. |
-| `currently_in_status_category` | Similar to `first_time_in_status_category` except that it only matches if the work is still in that category. |
+| `still_in_or_right_of_column` | Same as `first_time_in_or_right_of_column` except that it still has to be in one of these columns |
 | `still_in_status` | If an issue has ever been in one of these statuses AND is still in one of these statuses then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named status. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status` |
 | `still_in_status_category` | If an issue has ever been in one of these category AND is still in one of these category then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named category. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status_category` |
 | `first_status_change_after_created` | Returns the timestamp of the first status change after the issue was created. |
@@ -206,15 +211,16 @@ end
 
 | Settings key | Description |
 |:--------|:-------|
-| `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). Example: *settings['blocked_statuses']=['Blocked']* |
-| `flagged_means_blocked` | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
 | `blocked_link_text` | If you have a link type that indicates blocked, then set this to the text that is used, such as 'Blocked by' |
-| `stalled_statuses` | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
-| `stalled_threshold_days` | The number of days of inactivity before an item becomes considered stalled. Defaults to 5 |
-| `ignore_ssl_errors` | Set to `true` to ignore the SSL errors that are common with self-signed certificates |
-| `intercept_jql` | Pass a lambda that can make changes to the JQL before it's executed. If you have to use this then your Jira instance is pretty poorly configured. It's here because we have to work with instances that are. |
+| `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). <br />Example: `settings['blocked_statuses']=['Blocked']` |
 | `customfield_parent_links` | A list of custom_field ids that link to parent keys. If you're using Jira Advanced Roadmap then parent relationships will be set up with a custom field and this is how you set it up. |
 | `expedited_priority_names` | An array of priorities that will be considered to be expedited. ie ['Highest', 'Critical'] |
+| `flagged_means_blocked` | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
+| `ignore_ssl_errors` | Set to `true` to ignore the SSL errors that are common with self-signed certificates |
+| `intercept_jql` | Pass a lambda that can make changes to the JQL before it's executed. If you have to use this then your Jira instance is pretty poorly configured. It's here because we have to work with instances that are. |
+| `stalled_statuses` | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
+| `stalled_threshold_days` | The number of days of inactivity before an item becomes considered stalled. Defaults to 5 |
+
 
 ## Excluding issues from the data set
 
