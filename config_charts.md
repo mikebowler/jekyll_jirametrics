@@ -8,6 +8,11 @@ This page lists all the built-in charts you can put in an HTML report.
 
 _It is possible to create your own charts without forking the codebase, although the process isn't obvious or documented. If you really want to do that then [reach out]({% link about.md %}) and we can talk._
 
+* This will become a table of contents (this text will be scrapped).
+{:toc}
+
+----
+
 ## `cycletime_scatterplot`
 
 Plots the cycle time (y axis) against the date that the work completed (x axis).
