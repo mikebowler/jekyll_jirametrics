@@ -2,5 +2,9 @@
   url: /
 - title: Github
   url: https://github.com/mikebowler/jirametrics
+- title: Changes
+  url: /changes
+- title: FAQ
+  url: /faq
 - title: About
   url: /about/
