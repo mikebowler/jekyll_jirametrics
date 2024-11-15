@@ -62,7 +62,7 @@ end
 
 ## Setting the project id
 
-There are certain situations having to do with team-managed projects where we need to know the id of the project. If this happens and we are unable to determine the project from the board itself (often we can) then you'll get an error about having to specify the project id and you do that like this.
+There are certain situations having to do with team-managed projects where we need to know the id of the project. If this happens and we are unable to determine the project from the board itself (often we can) then you'll get an error about having to specify the project id. You can do that like this:
 
 ```ruby
 project id: 5 do
