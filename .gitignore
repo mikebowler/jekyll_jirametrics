@@ -4,3 +4,4 @@ _site
 .jekyll-metadata
 vendor
 _config_production.yml
+.DS_Store
