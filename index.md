@@ -29,6 +29,7 @@ At a high level, there are four steps, and we'll walk through each.
 
 # Other things you might want to know
 
+* At the top of every report is a data quality section. Here's [more information on that]({% link quality_report.md %}).
 * We release new versions fairly frequently. The full [changelog]({% link changes.md %}) can be found here.
 * Getting errors or weird behaviour when running the tool? Check out the [Frequently Asked Questions]({% link faq.md %})
 * If you find a bug or have an idea for a feature, [report it here](https://github.com/mikebowler/jirametrics/issues)
