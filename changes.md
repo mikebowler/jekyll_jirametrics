@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (unknown release)
+
+* Bug: It wasn't possible to clear the description or title texts
+
 # v2.7.3 (November 13, 2024)
 
 * Fixed an exception when two scrum projects had overlapping names like `myproject` and `really_myproject`. Our matcher wasn't precise enough and was matching where it shouldn't have.

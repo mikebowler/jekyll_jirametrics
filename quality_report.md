@@ -3,7 +3,7 @@ layout: page
 permalink: /data_quality/
 title: Quality Report
 ---
-The charts we look at will only be as good as the data that went into them, even though our own cognitive biases will lead us to believe otherwise.
+The charts we look at will only be as good as the data that went into them, even though our own [cognitive biases](https://unconsciousagile.com/2024/11/10/cognitive-bias.html) will lead us to believe otherwise.
 
 It's critical that we understand how good the data is, before we use it to make decisions. At the top of every report, we have a "Data Quality" section and in that, we list those things that we think are important to note.
 

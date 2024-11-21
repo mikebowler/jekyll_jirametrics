@@ -34,6 +34,13 @@ At a high level, there are four steps, and we'll walk through each.
 * Getting errors or weird behaviour when running the tool? Check out the [Frequently Asked Questions]({% link faq.md %})
 * If you find a bug or have an idea for a feature, [report it here](https://github.com/mikebowler/jirametrics/issues)
 * If you want to contribute then check out the github projects for [the tool itself](https://github.com/mikebowler/jirametrics) or for [the documentation](https://github.com/mikebowler/jekyll_jirametrics) and submit a PR.
+* Dark/Light mode just works out of the box. If you have your machine configured for dark mode, that's what you'll see.
+
+# Presentation: Getting Great Metrics out of Jira
+
+This talk walks through the kinds of metrics you can pull with JiraMetrics and walks through many of the charts.
+
+{% include responsive-embed url="https://www.youtube.com/embed/hzXeJr6GG3w" ratio="16:9" %}
 
 ----
 
