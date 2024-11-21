@@ -38,7 +38,7 @@ At a high level, there are four steps, and we'll walk through each.
 
 # Presentation: Getting Great Metrics out of Jira
 
-This talk walks through the kinds of metrics you can pull with JiraMetrics and walks through many of the charts.
+This talk walks through the kinds of metrics you can pull with JiraMetrics and walks through many of the charts. The talk was given in November 2024 to the KanbanTO group, and shows off JiraMetrics v2.7.3
 
 {% include responsive-embed url="https://www.youtube.com/embed/hzXeJr6GG3w" ratio="16:9" %}
 
