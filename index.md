@@ -84,7 +84,6 @@ There are a lot of configuration items that can be set. Here's an index to get y
           * [`dependency_chart`]({% link config_charts.md %}#dependency_chart)
             * [`issue_rules`]({% link config_charts.md %}#issue_rules)
             * [`link_rules`]({% link config_charts.md %}#link_rules)
-      * [Styling the report]({% link config_charts.md %}#css)
     * [`status_category_mapping`]({% link config_project.md %}#status_category_mapping)
     * [`anonymize`]({% link config_project.md %}#anonymize)
     * [`standard_project`]({% link config_standard_project.md %})

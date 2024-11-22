@@ -50,3 +50,10 @@ By default, the only thing that automatically triggers "blocked" is the Jira fla
 * If your team uses Flagged for some other purpose then you can change that with the [setting]({% link config_project.md %}#settings) `flagged_means_blocked`.
 * You can also designate a particular status so that the work immediately becomes blocked when entering this status. That is also in [settings]({% link config_project.md %}#settings) with the key `blocked_statuses`
 * An item can be designated as blocked with the use of a link. We can say that ticket ABC-1 is blocked by ABC-2, and we configure that in [settings]({% link config_project.md %}#settings) with the key `blocked_link_text`
+
+{: #css }
+## How do I customize the CSS for the report?
+
+Perhaps you want to change the colours on the report or you want to otherwise change the appearance, we give you the ability to insert your own CSS file that will override ours.
+
+Instructions are [over here]({% link config_file_html.md %}#css).
