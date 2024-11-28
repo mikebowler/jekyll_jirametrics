@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext (unknown release)
+# v2.8 (Not released yet)
 
 * Bug: It wasn't possible to clear the description or title texts
 * Added `first_time_label_added` for determining start or end times.
