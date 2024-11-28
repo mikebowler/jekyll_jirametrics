@@ -8,6 +8,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 # vNext (unknown release)
 
 * Bug: It wasn't possible to clear the description or title texts
+* Added `first_time_label_added` for determining start or end times.
 
 # v2.7.3 (November 13, 2024)
 
