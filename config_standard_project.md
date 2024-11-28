@@ -38,8 +38,10 @@ The value passed into `boards` is a little more complicated. It might be `:defau
 If it's not `:default` then it will be the same hash that you would normally pass into a [`cycletime`]({% link config_project.md %}#board) declaration.
 
 ```ruby
-standard_project name: 'Sample', file_prefix: 'sample', boards: { 2 => {
-  start_at first_time_in_status_category('In Progress')
-  stop_at currently_in_status_category('Done')
-} }
+standard_project name: 'Sample', file_prefix: 'sample', boards: {
+    1 => lambda do |_|
+            start_at first_time_in_status('Refined')
+            stop_at still_in_status_category('Done')
+          end
+  }
 ```
