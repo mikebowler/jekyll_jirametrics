@@ -9,6 +9,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Bug: It wasn't possible to clear the description or title texts
 * Added `first_time_label_added` for determining start or end times.
+* Moved the generated timestamp of the report to the footer.
+* Added the version number of JiraMetrics to the footer so there's a record of what version of the tool was used for this particular report.
 
 # v2.7.3 (November 13, 2024)
 
