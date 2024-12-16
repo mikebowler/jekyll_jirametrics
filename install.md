@@ -12,7 +12,7 @@ Unless you have a reason to want to run on the JVM, I'd recommend using CRuby.
 {: .tip }
 If you're on a mac, you may have noticed that Ruby is already installed on your machine. The bad news is that it's likely too old to be useful. Run `ruby -v` and if the version is less than 3.0 then you'll still need to install a newer version.
 
-1. Install CRuby itself with the instructions here. If you're using Windows, there is a one-click installer. If you're on almost any other platform, your local package manager will have a way to do that. In my case, I'm using a mac so it's as simple as `brew install ruby`
+1. Install CRuby itself with [the instructions here](https://www.ruby-lang.org/en/downloads/). If you're using Windows, there is a one-click installer. If you're on almost any other platform, your local package manager will have a way to do that. In my case, I'm using a mac so it's as simple as `brew install ruby`
 2. Once Ruby is installed, you can install JiraMetrics with this command.
 ```
 gem install jirametrics
