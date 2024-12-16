@@ -16,7 +16,7 @@ cd myreports
 
 The two configuration files you're going to create will all be in this directory, and you'll be running the tool from here as well.
 
-Create a file called `jira_config.json` and populate it [as described here]().
+Create a file called `jira_config.json` and populate it [as described here]({% link connecting_to_jira.md %}).
 
 In my case, I'm on an instance of Jira Cloud and so mine looks like this. You'll need to change it to reflect your own settings.
 
