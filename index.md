@@ -35,6 +35,7 @@ At a high level, there are four steps, and we'll walk through each.
 * If you find a bug or have an idea for a feature, [report it here](https://github.com/mikebowler/jirametrics/issues)
 * If you want to contribute then check out the github projects for [the tool itself](https://github.com/mikebowler/jirametrics) or for [the documentation](https://github.com/mikebowler/jekyll_jirametrics) and submit a PR.
 * Dark/Light mode just works out of the box. If you have your machine configured for dark mode, that's what you'll see.
+* Our security folks have concerns about people pulling potentially confidential information. [What can I tell them?]({% link security.md %})
 
 # Presentation: Getting Great Metrics out of Jira
 

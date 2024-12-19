@@ -7,10 +7,11 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # v2.8 (Not released yet)
 
-* Bug: It wasn't possible to clear the description or title texts
+* Bug: It wasn't possible to clear the description or title texts on individual charts.
 * Added `first_time_label_added` for determining start or end times.
 * Moved the generated timestamp of the report to the footer.
 * Added the version number of JiraMetrics to the footer so there's a record of what version of the tool was used for this particular report.
+* `no_earlier_than` previously only worked during the download stage and this proved to be confusing as there was no effect when just doing an export. It now works at both points and should be clearer as to what is actually happening.
 
 # v2.7.3 (November 13, 2024)
 
