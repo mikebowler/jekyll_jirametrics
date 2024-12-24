@@ -5,13 +5,15 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.8 (Not released yet)
+# v2.8pre2 (Pre-release only)
 
 * Bug: It wasn't possible to clear the description or title texts on individual charts.
 * Added `first_time_label_added` for determining start or end times.
 * Moved the generated timestamp of the report to the footer.
 * Added the version number of JiraMetrics to the footer so there's a record of what version of the tool was used for this particular report.
 * `no_earlier_than` previously only worked during the download stage and this proved to be confusing as there was no effect when just doing an export. It now works at both points and should be clearer as to what is actually happening.
+* All the methods like `first_time_in_status` used to return a Time object and now return the ChangeItem that happened at that time. Unless you're writing your own methods, you likely won't even be aware that anything changed here. If you are, then you'll get a warning when returning a Time. The reason for this change is to give more context that will be useful in future reporting.
+* Bug: We've discovered that Jira allows for multiple statuses with the same name and when this happens, it broke some of our existing logic. Fixes for this edge case have been added.
 
 # v2.7.3 (November 13, 2024)
 
