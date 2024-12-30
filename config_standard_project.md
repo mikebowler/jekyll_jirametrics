@@ -29,7 +29,7 @@ Take a look at [the source code](https://github.com/mikebowler/jirametrics/blob/
 | `ignore_issues` | It's common that we want to exclude some specific issues from the report because they're outliers and they skew the data in undesirable ways. This is a list of ids to exclude. Example: `ignore_issues: ['ABC123' ,'ABC456']` |
 | `ignore_types` | By default the tool will ignore sub-tasks and epics. This allows you to customize that. Example: `ignore_types: ['Sub-task']`. Added in v2.7 |
 | `starting_status` | While it's highly undesirable to move items back to the backlog, some teams have to do that and so the tool accommodates it. This status is the one that is considered the starting point. If we move back to this, we consider it in the backlog and not started. If we don't specify this parameter and this is a kanban board, then we use whatever statuses have been configured as `backlog` for that. Sprint boards don't have this concept. |
-| `status_category_mappings` | Allows you to specify extra statuses that have been deleted from Jira. Takes a hash of key/value pairs where the key is the status name and the value is the category. |
+| `status_category_mappings` | Allows you to specify extra statuses that have been deleted from Jira. Takes a hash of key/value pairs where the key is the status name and the value is the category. If you are specifying an ID as well as the name then use the format `"Review:4"` where the name is before the colon and the ID is after. |
 | `rolling_date_count` | Set the number of days of history we want to look at |
 | `no_earlier_than` | Restrict how far back we go by specifying one date |
 

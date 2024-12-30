@@ -136,7 +136,7 @@ The full set of options that we can use for this are below.
 | `currently_in_status_category` | Similar to `first_time_in_status_category` except that it only matches if the work is still in that category. |
 | `first_time_in_or_right_of_column` | Returns the first time the issue enters this column or any column the right of it.<br />`first_time_in_or_right_of_column 'In Progress'`
 | `first_time_in_status` | Returns the first time the issue enters one of the specified statuses. |
-| `first_time_in_status_category` | Returns the first time we entered a status belonging to the specified status category. Categories are "To Do", "In Progress" and "Done". |
+| `first_time_in_status_category` | Returns the first time we entered a status belonging to the specified status category. Categories in an English language Jira instance will be "To Do", "In Progress" and "Done". |
 | `first_time_label_added` | Returns the first time a specific label has shown up on the ticket. Added in v2.8 |
 | `first_time_not_in_status` | Takes a list of status names and returns the first time that the issue is NOT in one of these statuses. Commonly used if there are a couple of columns at the beginning of the board that we don't want to consider for the purposes of calculating cycletime. |
 | `still_in_or_right_of_column` | Same as `first_time_in_or_right_of_column` except that it still has to be in one of these columns |
@@ -179,10 +179,19 @@ What the file section looks like, will depend on whether we are exporting a CSV 
 
 `status_category_mapping` is there to work around a specific problem where statuses have been deleted from Jira but the Issue histories still reference that status. In this case, you'll get an error during the export, telling you to add a `status_category_mapping` and you put it inside the project section.
 
-The category will always be one of 'To Do', 'In Progress', or 'Done'. The status will be the name of the status that we can't find and that will be named in the error message above.
+In an English language Jira instance, the category will always be one of 'To Do', 'In Progress', or 'Done'. The status will be the name of the status that we can't find, followed by a colon and then the id, and that will be named in the error message above.
 
 ```ruby
 project do
+  status_category_mapping status: 'MyNewStatus:3', category: 'In Progress'
+end
+```
+
+What if you only know the status name and not the id? Put that in the configuration anyway and we'll hopefully give you a better error message that might tell you what the ID is.
+
+```ruby
+project do
+  # Note that the id is missing for MyNewStatus
   status_category_mapping status: 'MyNewStatus', category: 'In Progress'
 end
 ```
