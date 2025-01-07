@@ -5,9 +5,17 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released yet)
+
+* Status/category mappings have been an ongoing pain point for a long time. When a status gets removed from Jira, all of a sudden the reports can't be generated until someone sets up a `status_category_mapping` and it isn't always obvious what the values should be. We are now much better at guessing the correct mapping and will use that guess where we can. You will see suggestions in the output, where we guessed and what values we used.
+* Bug: Fixed an exception in the data quality report when a status can't be found at all.
+
 # v2.8 (December 30, 2024)
 
 The main focus of this release is improving the experience with better error messages, and more helpful suggestions.
+
+{: .tip }
+If you're seeing a ton of warnings after upgrading to 2.8, try commenting out all your `status_category_mappings` first. You may find that you don't need them anymore and removing them might just fix all the warnings that you're now seeing.
 
 * Bug: It wasn't possible to clear the description or title texts on individual charts.
 * Added `first_time_label_added` for determining start or end times.
