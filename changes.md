@@ -9,6 +9,13 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Status/category mappings have been an ongoing pain point for a long time. When a status gets removed from Jira, all of a sudden the reports can't be generated until someone sets up a `status_category_mapping` and it isn't always obvious what the values should be. We are now much better at guessing the correct mapping and will use that guess where we can. You will see suggestions in the output, where we guessed and what values we used.
 * Bug: Fixed an exception in the data quality report when a status can't be found at all.
+* On StatusCollection, there used to be methods `todo`, `in_progress`, and `done` that would return the names of statuses that matched those categories. Since we now know that names aren't unique, those methods have just been removed. They hadn't been documented before and were never officially supported so we aren't going through a deprecation process.
+* Bug: Fixed case where the quality report didn't always correctly warn about items that had been moved back to the backlog.
+* Whenever a status or status-category is specified, we can do a better job of identifying typos.
+* For the methods `first_time_in_status_category`, `still_in_status_category`, and `currently_in_status_category`...
+  * ...will now accept names ("Done"), name/ID pairs ("Done:3"), or just ID's ("3"). If the name and ID are both specified then we will verify that they match and raise and error if they don't.
+  * ...will also accept one of the following keys `:new`, `:indeterminate`, or `:done` to reflect the three categories. The code had previously worked with names but those names will change in non-English installations of Jira so the keys are better. 
+* `standard_project` now uses the keys, which should make things easier for non-English instances.
 
 # v2.8 (December 30, 2024)
 
