@@ -14,6 +14,8 @@ Jira collects and maintains all kinds of useful data about your workflow. Unfort
 {: .tip }
 If you just want to see something working fast, without wading through a lot of documentation on configuration, jump to the [QuickStart]({% link quickstart.md %}) and come back to the rest later.
 
+JiraMetrics is an open source project, released under an Apache License.
+
 # How do I make it work?
 
 At a high level, there are four steps, and we'll walk through each.
