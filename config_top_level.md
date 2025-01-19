@@ -15,6 +15,8 @@ Exporter.configure do
   target_path 'target'
   jira_config 'improvingflow.json'
   timezone_offset '-08:00'
+  holiday_dates '2024-12-25', '2024-12-26'
+
 
   project do
     file_prefix 'sample'
@@ -63,3 +65,11 @@ Timezones in the Jira data are frequently all over the place, so in order to mak
 {: .tip }
 If you don't specify a `timezone_offset` then the report will all be generated in UTC, which is almost certainly not what you want.
 
+## `holiday_dates`
+
+A list of non-working days. When we show the gray bars to indicate weekends, we'll also show a gray bar
+for any other holidays that are specified here.
+
+```ruby
+holiday_dates '2024-12-25', '2024-12-26'
+```

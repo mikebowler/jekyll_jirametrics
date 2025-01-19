@@ -52,9 +52,11 @@ This talk walks through the kinds of metrics you can pull with JiraMetrics and w
 There are a lot of configuration items that can be set. Here's an index to get you to the ones you want, quickly.
 
 * `Exporter.configure`
-  * [`target_path`](#target_path)
-  * [`jira_config`](#jira_config)
-  * [`timezone_offset`](#timezone_offset)
+  * [`target_path`]({% link config_top_level.md %}#target_path)
+  * [`jira_config`]({% link config_top_level.md %}#jira_config)
+  * [`timezone_offset`]({% link config_top_level.md %}#timezone_offset)
+  * [`holiday_dates`]({% link config_top_level.md %}#holiday_dates)
+
   * [`project`]({% link config_project.md %})
     * [`file_prefix`]({% link config_project.md %}#file_prefix)
     * [`download`]({% link config_project.md %}#download)
