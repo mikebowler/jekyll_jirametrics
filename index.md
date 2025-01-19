@@ -32,11 +32,10 @@ At a high level, there are four steps, and we'll walk through each.
 # Other things you might want to know
 
 * At the top of every report is a data quality section. Here's [more information on that]({% link quality_report.md %}).
-* We release new versions fairly frequently. The full [changelog]({% link changes.md %}) can be found here.
+* We release new versions fairly frequently. The full [changelog]({% link changes.md %}) can be found here and you can upgrade to the latest with `gem update jirametrics`
 * Getting errors or weird behaviour when running the tool? Check out the [Frequently Asked Questions]({% link faq.md %})
 * If you find a bug or have an idea for a feature, [report it here](https://github.com/mikebowler/jirametrics/issues)
-* If you want to contribute then check out the github projects for [the tool itself](https://github.com/mikebowler/jirametrics) or for [the documentation](https://github.com/mikebowler/jekyll_jirametrics) and submit a PR.
-* Dark/Light mode just works out of the box. If you have your machine configured for dark mode, that's what you'll see.
+* If you want to contribute then [check out the contribution page]({% link contributing.md %})
 * Our security folks have concerns about people pulling potentially confidential information. [What can I tell them?]({% link security.md %})
 
 # Presentation: Getting Great Metrics out of Jira

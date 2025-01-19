@@ -8,5 +8,5 @@ This tool has been made better by the contributions of many people, who have off
 
 * If you wish to purchase support or training then [contact Mike](https://gargoylesoftware.com/mike_bowler/followup/). We can help you set it up and walk your teams through the reports to understand their own data.
 * If you find a bug or have an idea for a feature, [report it on our GitHub page](https://github.com/mikebowler/jirametrics/issues). 
-	* Problems with the documentation are also considered bugs so log them there too.
-* If you want to contribute then check out the github projects for [the tool itself](https://github.com/mikebowler/jirametrics) or for [the documentation](https://github.com/mikebowler/jekyll_jirametrics) and submit a PR.
+	* Problems with the documentation are also considered bugs although they're in a different project so [log them over here](https://github.com/mikebowler/jekyll_jirametrics/issues).
+* If you want to contribute then [check out the contribution page]({% link contributing.md %}) and submit a PR.
