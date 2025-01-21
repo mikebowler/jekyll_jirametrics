@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.9.1 (January 21, 2025)
+
+* Fixed an exception when running the tool for the very first time.
+
 # v2.9 (January 17, 2025)
 
 * Status/category mappings have been an ongoing pain point for a long time. When a status gets removed from Jira, all of a sudden the reports can't be generated until someone sets up a `status_category_mapping` and it isn't always obvious what the values should be. We are now much better at guessing the correct mapping and will use that guess where we can. You will see suggestions in the output, where we guessed and what values we used.
