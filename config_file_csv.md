@@ -63,9 +63,9 @@ Methods that are frequently used here are any of methods that you would have use
 
 | `key` | The Jira issue number |
 | `type` | The issue type |
-| summary | The issue description |
-| url | The issue URL.
-| blocked_percentage | Takes two of the above date methods (first for the start time and second for the end time) and then calculates the percentage of time that this issue was marked as blocked (flagged in Jira parlance).|
+| `summary` | The issue description |
+| `url` | The issue URL.
+| `blocked_percentage` | Takes two of the above date methods (first for the start time and second for the end time) and then calculates the percentage of time that this issue was marked as blocked (flagged in Jira parlance).|
 
 If there isn't already a method to do what you want, you can specify some code to calculate that value for yourself.
 
