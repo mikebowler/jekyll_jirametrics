@@ -73,3 +73,5 @@ for any other holidays that are specified here.
 ```ruby
 holiday_dates '2024-12-25', '2024-12-26'
 ```
+
+You might wonder why we don't just pull holiday information out of Jira since all of that can be entered there and it seems redundant to do it twice. The short answer is that they don't expose that information through the API. See ticket [CONFSERVER-51323](https://jira.atlassian.com/browse/CONFSERVER-51323).
