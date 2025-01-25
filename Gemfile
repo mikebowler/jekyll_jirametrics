@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.3'
+ruby '3.4.1'
 
 gem 'jekyll'
 gem 'jekyll-theme-so-simple', path: '../so-simple-theme'
