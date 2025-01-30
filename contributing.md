@@ -23,7 +23,7 @@ Also the command `rake focus` will run only the tests that have the `:focus` tag
 
 We do expect that all new code will have tests, unless there's a really good reason to skip them. Yes, we're aware that the existing codebase doesn't have 100% coverage. We're making a point of continually inproving that coverage number though.
 
-We use [RuboCop](https://rubocop.org) as our linter and there are rubocop rules in the project. Please ensure that your changes run with no rubocop warnings as that just makes it easier for the committers.
+We use [RuboCop](https://rubocop.org) as our linter and there are [rubocop rules](https://github.com/mikebowler/jirametrics/blob/main/.rubocop.yml) in the project. Please ensure that your changes run with no rubocop warnings as that just makes it easier for the committers.
 
 Run it from the terminal with `rubocop` or integrate it into your source editor.
 
