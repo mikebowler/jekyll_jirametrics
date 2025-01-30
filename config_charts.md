@@ -173,6 +173,8 @@ Grouping the WIP by the parent ticket. This is useful to see if we're focused on
 daily_wip_by_parent
 ```
 
+See [this article](https://improvingflow.com/2025/01/29/wip-by-parent.html) for more details on what we can learn from this chart.
+
 ----
 
 ## `daily_wip_chart`
