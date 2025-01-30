@@ -21,6 +21,12 @@ To run the tests, you can invoke `rake spec` or `rake test`. Why two different c
 
 Also the command `rake focus` will run only the tests that have the `:focus` tag on them. It's often convenient to only run one test at a time, if we're trying to debug something.
 
+We do expect that all new code will have tests, unless there's a really good reason to skip them. Yes, we're aware that the existing codebase doesn't have 100% coverage. We're making a point of continually inproving that coverage number though.
+
+We use [RuboCop](https://rubocop.org) as our linter and there are rubocop rules in the project. Please ensure that your changes run with no rubocop warnings as that just makes it easier for the committers.
+
+Run it from the terminal with `rubocop` or integrate it into your source editor.
+
 # JiraMetrics.org documentation website
 
 Once you have downloaded the [source from github](https://github.com/mikebowler/jekyll_jirametrics), you'll want to go to the root of that folder and run `bundle install` from the terminal to install all dependencies.
