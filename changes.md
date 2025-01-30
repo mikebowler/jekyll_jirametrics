@@ -5,6 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext
+
+* Fixed some timezone logic, for which the unit tests only failed when being run somewhere other than the Pacific Timezone.
+* Added some statistics to the cycletime histogram chart. Thanks to Fernando Cuenca for the contribution.
+
 # v2.9.1 (January 21, 2025)
 
 * Fixed an exception when running the tool for the very first time.
