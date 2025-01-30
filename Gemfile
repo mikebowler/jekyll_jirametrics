@@ -24,9 +24,6 @@ end
 # No longer core on ruby 3.0.0
 gem 'webrick'
 
-# For link checking
-gem 'html-proofer'
-
 gem 'csv'
 
 # # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
