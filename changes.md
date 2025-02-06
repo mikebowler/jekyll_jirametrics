@@ -5,10 +5,13 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext
+# v2.10 (February 6, 2025)
 
-* Fixed some timezone logic, for which the unit tests only failed when being run somewhere other than the Pacific Timezone.
-* Added some statistics to the cycletime histogram chart. Thanks to Fernando Cuenca for the contribution.
+* Cycletime Histogram improvements
+  * Added a collection of statistics under the chart. Thanks to Fernando Cuenca for the contribution.
+  * Added percentile lines on the chart.
+* Bug: Fixed exception in rare case when comparing output rows
+* Bug: Fixed some timezone logic, for which the unit tests only failed when being run somewhere other than the Pacific Timezone.
 
 # v2.9.1 (January 21, 2025)
 
