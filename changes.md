@@ -5,6 +5,16 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released)
+
+* Jira will happily let you create two columns on a board with the same name. Unfortunately there are no id's with those columns so there is now no way to tell them apart. This change will add a numerical suffix such as Backlog-2 to duplicate columns so that we're able to work with them.
+* [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
+  * Now shows multiple percentiles worth of movement data.
+  * The CSS variable `--aging-work-in-progress-chart-shading-color` has been removed and replaced with four new ones for the percentile colours. This will only matter to you if you're [customizing the CSS]({% link config_file_html.md%}#css).
+* [Aging work table]({% link config_charts.md %}#aging_work_table) - improvements
+  * In addition to the current age, we display how much longer it's likely to take to finish this. This is a forecast, based on historical data for this board.
+  * If an item has a due date then we display that. We also show if we're likely to complete by that date.
+
 # v2.10 (February 6, 2025)
 
 * Cycletime Histogram improvements

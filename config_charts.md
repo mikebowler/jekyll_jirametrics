@@ -141,6 +141,12 @@ Rules options
 
 ----
 
+## `aging_work_table`
+
+For items that are started but not finished, show a whole variety of information in a tabular format. This includes additional information not  found in other charts such as the parent hierarchy, what `fix_version` this issue is in (if any), what sprints it's in (if any), due dates, etc.
+
+----
+
 ## `daily_wip_by_age_chart`
 
 For each day in the period, how many items were in progress? Items are colour coded based on how long they've been in progress.
