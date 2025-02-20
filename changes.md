@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext (not released)
+# v2.11 (not released)
 
 * Jira will happily let you create two columns on a board with the same name. Unfortunately there are no id's with those columns so there is now no way to tell them apart. This change will add a numerical suffix such as Backlog-2 to duplicate columns so that we're able to work with them.
 * [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
@@ -14,6 +14,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 * [Aging work table]({% link config_charts.md %}#aging_work_table) - improvements
   * In addition to the current age, we display how much longer it's likely to take to finish this. This is a forecast, based on historical data for this board.
   * If an item has a due date then we display that. We also show if we're likely to complete by that date.
+* If Javascript is disabled in the browser then almost none of the charts will be visible and the report will be largely useless. We now display a warning the the top of the page if this is the case. This has been reported as a frequent problem when reports are stored on Sharepoint as it will disable javascript by default and then people are left wondering why the report isn't helpful.
+* Bug: Fixed obscure exception when one issue had been blocked on another issue that isn't currently downloaded AND we were using either `currently_in_status` or `currently_in_status_category`.
 
 # v2.10 (February 6, 2025)
 

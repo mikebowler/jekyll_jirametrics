@@ -68,6 +68,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
         * [`write_headers`]({% link config_file_csv.md %}#write_headers)
         * [`column_entry_times`]({% link config_file_csv.md %}#column_entry_times)
         * [Type specific values]({% link config_file_csv.md %}#type_specific_values)
+        * [Accessing custom fields]({% link config_file_csv.md %}#custom_fields)
     * [`file`]({% link config_file_html.md %}) (when creating an HTML report)
       * [`file_suffix`]({% link config_file_html.md %}#file_suffix)
       * [`discard_changes_before`]({% link config_file_html.md %}#discard_changes_before)

@@ -75,6 +75,26 @@ columns do
 end
 ```
 
+{: #custom_fields }
+### Accessing custom fields
+
+Often teams have created custom fields in their Jira instance and they want to retrieve that data. We start with one of `date` or `string` and then specify some logic to pull that custom field out of the issue. Unfortunately, this requires us to reach directly into the JSON response that was returned for this issue, but the good news is that it isn't too difficult.
+
+We start with a declaration like this:
+```ruby
+columns do
+  string 'points', ->(issue) { issue.raw['fields']['custom_field123'] }
+end
+```
+
+`issue.raw` returns the raw JSON that had been returned from the Jira instance. From there, you can reach in and pull out the values you care about. Custom fields are typically stored under 'fields' in the JSON.
+
+If you look under the target directory, you'll find one or more directories that end in `_issues` and within one of those directories, you'll find the raw JSON responses that Jira had given us. Opening one of these in any text editor will let you see the full response.
+
+The tricky part is figuring out which custom field is the one that you care about. It's tricky because it won't have the same name as what you see in the Jira user interface. Instead, you'll have to search for possible values to see what that has been set to.
+
+For example, if I have a custom field where one possible value is 'Bob' then I search the JSON for 'Bob' and that's the field I care about.
+
 ### `column_entry_times`
 
 This will autogenerate multiple columns based on the columns found on your board and will put an entry date in each of those columns. This is useful for tools like Actionable Agile that need entry times per column. Note that to use this option, you must have specified a board_id in the project.
