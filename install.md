@@ -33,3 +33,18 @@ jruby -S gem install jirametrics
 ```
 4. You will now invoke the tool with `jruby -S jirametrics` instead of just `jirametrics` as the rest of the instructions say. Everything else is the same.
 5. Optional: If you want to use the dependency report then you'll want to install [graphviz](https://graphviz.org/download/)
+
+## System package managers
+
+### pkgsrc
+
+For platforms with binary packages available:
+```
+sudo pkgin -y install 'ruby*-jirametrics'
+```
+
+Or for any platform, from source, inside a pkgsrc checkout:
+```
+cd devel/ruby-jirametrics
+bmake install
+```
