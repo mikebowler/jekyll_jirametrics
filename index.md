@@ -81,7 +81,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
           * [`aging_work_in_progress_chart`]({% link config_charts.md %}#aging_work_in_progress_chart)
           * [`daily_wip_by_age_chart`]({% link config_charts.md %}#daily_wip_by_age_chart)
           * [`daily_wip_by_blocked_stalled_chart`]({% link config_charts.md %}#daily_wip_by_blocked_stalled_chart)
-          * [`daily_wip_by_parent`]({% link config_charts.md %}#daily_wip_by_parent)
+          * [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart)
           * [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
           * [`expedited_chart`]({% link config_charts.md %}#expedited_chart)
           * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown)

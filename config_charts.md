@@ -171,12 +171,12 @@ daily_wip_by_blocked_stalled_chart
 
 ----
 
-## `daily_wip_by_parent`
+## `daily_wip_by_parent_chart`
 
 Grouping the WIP by the parent ticket. This is useful to see if we're focused on more strategic goals (small number of epics) or whether our focus is scattered.
 
 ```ruby
-daily_wip_by_parent
+daily_wip_by_parent_chart
 ```
 
 See [this article](https://improvingflow.com/2025/01/29/wip-by-parent.html) for more details on what we can learn from this chart.
