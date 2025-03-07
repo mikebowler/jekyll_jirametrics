@@ -16,6 +16,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
   * If an item has a due date then we display that. We also show if we're likely to complete by that date.
 * If Javascript is disabled in the browser then almost none of the charts will be visible and the report will be largely useless. We now display a warning the the top of the page if this is the case. This has been reported as a frequent problem when reports are stored on Sharepoint as it will disable javascript by default and then people are left wondering why the report isn't helpful.
 * Bug: Fixed obscure exception when one issue had been blocked on another issue that isn't currently downloaded AND we were using either `currently_in_status` or `currently_in_status_category`.
+* Bug: Fixed bug where `info` was only being written to the log and not to the console
 
 # v2.10 (February 6, 2025)
 
@@ -130,7 +131,7 @@ If you're seeing a ton of warnings after upgrading to 2.8, try commenting out al
 * Aging Work Table: 
   * When an aging cutoff is in use, it's now more visible and obvious
   * Header and description text wasn't overridable. It is now.
-* Daily WIP by parent has been an example of how to create a chart for a while. It's proven to be generally useful enough that it's now a built-in chart. Add it with `daily_wip_by_parent`
+* Daily WIP by parent has been an example of how to create a chart for a while. It's proven to be generally useful enough that it's now a built-in chart. Add it with `daily_wip_by_parent_chart`
 * Improved error messages in a couple of cases.
 
 # v2.1.1 (May 8, 2024)
