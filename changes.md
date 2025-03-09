@@ -7,16 +7,17 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # v2.11 (not released)
 
-* Jira will happily let you create two columns on a board with the same name. Unfortunately there are no id's with those columns so there is now no way to tell them apart. This change will add a numerical suffix such as Backlog-2 to duplicate columns so that we're able to work with them.
 * [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
-  * Now shows multiple percentiles worth of movement data.
   * The CSS variable `--aging-work-in-progress-chart-shading-color` has been removed and replaced with four new ones for the percentile colours. This will only matter to you if you're [customizing the CSS]({% link config_file_html.md%}#css).
+  * We no longer show all the columns, only those that are considered "in progress", to reduce clutter.
 * [Aging work table]({% link config_charts.md %}#aging_work_table) - improvements
   * In addition to the current age, we display how much longer it's likely to take to finish this. This is a forecast, based on historical data for this board.
   * If an item has a due date then we display that. We also show if we're likely to complete by that date.
 * If Javascript is disabled in the browser then almost none of the charts will be visible and the report will be largely useless. We now display a warning the the top of the page if this is the case. This has been reported as a frequent problem when reports are stored on Sharepoint as it will disable javascript by default and then people are left wondering why the report isn't helpful.
 * Bug: Fixed obscure exception when one issue had been blocked on another issue that isn't currently downloaded AND we were using either `currently_in_status` or `currently_in_status_category`.
-* Bug: Fixed bug where `info` was only being written to the log and not to the console
+* Bug: Fixed bug where `info` was only being written to the log and not to the console, making it seem if it weren't working at all.
+* `info` improvement: Statuses now list the id of the status as well as the name.
+* Jira will happily let you create two columns on a board with the same name. Unfortunately there are no id's with those columns so there is now no way to tell them apart. This change will add a numerical suffix such as Backlog-2 to duplicate columns so that we're able to work with them.
 
 # v2.10 (February 6, 2025)
 
