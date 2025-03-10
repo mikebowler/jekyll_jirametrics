@@ -8,6 +8,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 # v2.11 (not released)
 
 * [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
+  * We've always shown the 85% point in each column so we can immediately see if an item is an outlier. We now show the 50%, 85%, 98%, and 100% points as well.
   * The CSS variable `--aging-work-in-progress-chart-shading-color` has been removed and replaced with four new ones for the percentile colours. This will only matter to you if you're [customizing the CSS]({% link config_file_html.md%}#css).
   * We no longer show all the columns, only those that are considered "in progress", to reduce clutter.
 * [Aging work table]({% link config_charts.md %}#aging_work_table) - improvements
