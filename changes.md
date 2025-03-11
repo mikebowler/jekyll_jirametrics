@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.11 (not released)
+# v2.11 (March 11, 2025)
 
 * [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
   * We've always shown the 85% point in each column so we can immediately see if an item is an outlier. We now show the 50%, 85%, 98%, and 100% points as well.

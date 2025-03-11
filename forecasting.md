@@ -3,17 +3,23 @@ layout: page
 permalink: /forecasting/
 title: Probabilistic Forecasting
 ---
-One of the most common reasons we want to look at metrics is so that we can more accurately answer the question _"when will we be done?"_ With those metrics, we can create a probabilistic forecast that answers that question based on historical data.
+One of the most common reasons we want to look at metrics is so that we can more accurately answer the question _"when will we be done?"_ With those metrics, we can create a [probabilistic forecast](https://improvingflow.com/2024/06/02/probabilistic-forecasting.html) that answers that question based on historical data.
 
-Although JiraMetrics doesn't create a probablistic forecast for you, it can easily extract the data you need to do a forecast in tools like [Actionable Agile](https://actionableagile.com) (commercial) or the [Focused Objective throughput forecaster](https://www.focusedobjective.com/pages/free-spreadsheets-and-tools) (free).
+## Single item forecasting
 
-There are multiple forms of [probabilistic forecasting](https://improvingflow.com/2024/06/02/probabilistic-forecasting.html) although the one you'll likely use most often is a [monte carlo simulation](https://improvingflow.com/2024/06/05/monte-carlo.html). That's also the one used by both the tools mentioned above.
+JiraMetrics can generate a single-item forecast for items that are already in progress. You can see this on the [Aging Work Table]({% link config_charts.md %}#aging_work_table), where the forecast column will show you how many days are likely remaining. If a forecast can't be generated then an error will be shown with the details of why that is.
+
+{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+
+## Monte Carlo forecasting
+
+Although JiraMetrics doesn't create a monte carlo forecast for you, it can easily extract the data you need to do a forecast in tools like [Actionable Agile](https://actionableagile.com) (commercial) or the [Focused Objective throughput forecaster](https://www.focusedobjective.com/pages/free-spreadsheets-and-tools) (free).
 
 If you haven't used JiraMetrics before then you'll likely want to start with the [QuickStart]({% link quickstart.md %}) and then you can come back here for the configuration to help with probabilistic forecasting.
 
-## Actionable Agile
+To use the **Focused Objective** spreadsheet, you'll need only the throughput data across multiple weeks and you can easily get that by looking at the [`throughput_chart`]({% link config_charts.md %}#throughput_chart).
 
-Actionable Agile needs a specific format for the input file and this configuration will generate that. Note that only the part within `columns` is specific to this output. The rest is only provided for context.
+Using **Actionable Agile** is a little trickier as it requires more data in a specific format but even this isn't hard. The configuration below will generate exactly what you need. Note that only the part within `columns` is specific to this output. The rest is only provided for context.
 
 
 ```ruby
@@ -53,27 +59,5 @@ Exporter.configure do
     end
   end
 end
-
-
-# This is typical configuration for the Actionable Agile tool
 ```
 
-## Focused Objective Spreadsheet
-
-The typical configuration I use to extract data for this spreadsheet looks like this.
-
-```ruby
-file do
-  file_suffix '.csv'
-  # This is a typical configuration for the team dashboard at FocusedObjective.com
-  columns do
-    write_headers true
-
-    date 'Done', currently_in_status_category('Done')
-    date 'Start', first_time_in_status_category('In Progress')
-    string 'Type', type
-    string 'Key', key
-    string 'Summary', summary
-  end
-end
-```

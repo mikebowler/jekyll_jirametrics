@@ -145,6 +145,8 @@ Rules options
 
 For items that are started but not finished, show a whole variety of information in a tabular format. This includes additional information not  found in other charts such as the parent hierarchy, what `fix_version` this issue is in (if any), what sprints it's in (if any), due dates, etc.
 
+{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+
 ----
 
 ## `daily_wip_by_age_chart`
