@@ -2,6 +2,8 @@
   url: /
 - title: Github
   url: https://github.com/mikebowler/jirametrics
+- title: Quick Start
+  url: /quickstart
 - title: Changes
   url: /changes
 - title: FAQ
