@@ -5,6 +5,13 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released)
+
+* Estimation changes
+  * The [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) and [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) both pull the estimate from the issue history. In the past we've looked for the field "Story Points" which works just fine in an English instance of Jira but fails for many (all?) non-English instances.
+  * Also changed them to support time based estimates, if the board is configured to use them.
+* Bug: Fixed exception when downloading for the first time and status_category_mappings are already set.
+
 # v2.11 (March 11, 2025)
 
 * [Aging work in progress chart]({% link config_charts.md %}#aging_work_in_progress_chart) - improvements
