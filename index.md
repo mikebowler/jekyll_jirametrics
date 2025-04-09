@@ -18,9 +18,15 @@ JiraMetrics is an open source project, released under an [Apache License](https:
 
 JiraMetrics is a standalone tool that can connect to any Jira instance that you have. It is not a plugin that needs to be configured by an administrator. If you can access Jira through a web browser, then you can configure this tool to also get reports from that instance.
 
-<p class="promotion">
-  <a href="https://gargoylesoftware.com/mike_bowler/followup">Mike</a> (primary author of JiraMetrics) is starting a newsletter and the first hundred people who sign up, will get free access to his video course on flow metrics. The course isn't dependent on JiraMetrics but is directly relevant to anyone using it. <a href="https://gargoylesoftware.com/newsletter">Check out the newsletter here</a>.
-</p>
+<div style="display: flex; border: 1px dashed green; background: #EAFFF1; padding: 0.2em 0.5em; gap: 0.5em; margin-bottom: 0.5em;">
+  <div>
+    <b>Promotion: </b><a href="https://mikebowler.ca">Mike</a> (primary author of JiraMetrics) is starting a newsletter and the first hundred people who sign up, will get free access to his video course on flow metrics. While the course isn't dependent on JiraMetrics, is directly relevant to anyone using it.<br /><a href="https://gargoylesoftware.com/newsletter">Check out the newsletter here</a>.
+  </div>
+  <div>
+    <img src="/assets/images/flow_metrics_basics_cover.png" />
+  </div>
+</div>
+
 
 # How do I make it work?
 

@@ -29,16 +29,6 @@ p.tip {
 	padding: 0.2em 0.5em;
 }
 
-p.promotion::before {
-	font-weight: bold;
-	content: "Promotion: ";
-}
-p.promotion {
-	border: 1px dashed green; 
-	background: #EAFFF1;
-	padding: 0.2em 0.5em;
-}
-
 h1, h2, h3 {
 	code::before {
 		color: black;
