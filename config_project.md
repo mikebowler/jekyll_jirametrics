@@ -144,6 +144,7 @@ The full set of options that we can use for this are below.
 | `still_in_status_category` | If an issue has ever been in one of these category AND is still in one of these category then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named category. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status_category` |
 | `first_status_change_after_created` | Returns the timestamp of the first status change after the issue was created. |
 | `time_created` | Returns the creation timestamp of the issue |
+| `first_time_visible_on_board`| returns the timestamp when the issue first became visible on the board |
 
 
 What if there aren't any built-in methods to extract the piece of data that you want? You can pass in an arbitrary bit of code that will get executed for each issue.

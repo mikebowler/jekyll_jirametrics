@@ -10,7 +10,10 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 * Estimation changes
   * The [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) and [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) both pull the estimate from the issue history. In the past we've looked for the field "Story Points" which works just fine in an English instance of Jira but fails for many (all?) non-English instances.
   * Also changed them to support time based estimates, if the board is configured to use them.
+* Aging Work Table now shows the issue priority.
 * Bug: Fixed exception when downloading for the first time and status_category_mappings are already set.
+* New criteria that can be used with `start_at` or `stop_at`: `first_time_visible_on_board`
+* New chart: [Daily View]({% link config_charts.md %}#daily_view) that is an optimized view for use during the daily standup/sprint/meeting.
 
 # v2.11 (March 11, 2025)
 

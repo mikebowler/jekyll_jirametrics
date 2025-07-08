@@ -20,7 +20,7 @@ JiraMetrics is a standalone tool that can connect to any Jira instance that you 
 
 <div style="display: flex; border: 1px dashed green; background: #EAFFF1; padding: 0.2em 0.5em; gap: 0.5em; margin-bottom: 0.5em;">
   <div>
-    <b>Promotion: </b><a href="https://mikebowler.ca">Mike</a> (primary author of JiraMetrics) is starting a newsletter and the first hundred people who sign up, will get free access to his video course on flow metrics. While the course isn't dependent on JiraMetrics, it is directly relevant to anyone using it.<br /><a href="https://gargoylesoftware.com/newsletter">Check out the newsletter here</a>.
+    <b>Promotion: </b><a href="https://www.mikebowler.ca">Mike</a> (primary author of JiraMetrics) is starting a newsletter and the first hundred people who sign up, will get free access to his video course on flow metrics. While the course isn't dependent on JiraMetrics, it is directly relevant to anyone using it.<br /><a href="https://gargoylesoftware.com/newsletter">Check out the newsletter here</a>.
   </div>
   <div>
     <img src="/assets/images/flow_metrics_basics_cover.png" />
