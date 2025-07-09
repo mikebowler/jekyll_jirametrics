@@ -274,6 +274,8 @@ This report lists all the aging items in order of importance. We find that many 
 
 The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
 
+----
+
 ## `dependency_chart`
 
 Jira gives you the ability to link issues. So you can say that one issue depends on another or one blocks another. This visualizes all of those relationships.
