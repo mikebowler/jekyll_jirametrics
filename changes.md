@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext (not released)
+# v2.12 (July 13, 2025)
 
 * New chart: [Daily View]({% link config_charts.md %}#daily_view) that is an optimized view for use during the daily standup/sprint/meeting.
 * Estimation changes
