@@ -96,6 +96,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
           * [`daily_wip_by_blocked_stalled_chart`]({% link config_charts.md %}#daily_wip_by_blocked_stalled_chart)
           * [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart)
           * [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
+          * [`daily_view`]({% link config_charts.md %}#daily_view)
           * [`expedited_chart`]({% link config_charts.md %}#expedited_chart)
           * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown)
           * [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart)

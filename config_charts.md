@@ -270,9 +270,11 @@ end
 
 ## `daily_view`
 
-This report lists all the aging items in order of importance. We find that many teams aren't clear on what order they should discuss items in their daily meeting (standup / sprint / etc) so this chart lays them out in the correct order, sorted first by priority and then by age within that priority level. Most important at the top and least at the bottom.
+This report lists all the aging items in order of importance. We find that many teams aren't clear on what order they should discuss items in their daily meeting (standup / scrum / etc) so this chart lays them out in the correct order, sorted first by priority and then by age within that priority level. Most important at the top and least at the bottom.
 
 The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
+
+{% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
 
 ----
 
