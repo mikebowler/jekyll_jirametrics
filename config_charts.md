@@ -274,6 +274,8 @@ This report lists all the aging items in order of importance. We find that many 
 
 The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
 
+To understand the motivation for this chart, see [this article](https://improvingflow.com/2025/07/14/jirametrics.html).
+
 {% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
 
 ----
