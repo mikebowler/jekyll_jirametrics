@@ -5,6 +5,9 @@ layout: home
 	{% imagesize /assets/images/site_icon.png:img alt="JiraMetrics Logo" %}
 </div>
 
+{: .important }
+Jira has recently made some breaking changes and has planned more of them. If you're seeing strange errors from JiraMetrics then make sure you're on the most recent version before you spend too much time debugging.
+
 # What is it?
 
 In a nutshell, it's a way to pull useful metrics out of Jira&trade;[^jira].

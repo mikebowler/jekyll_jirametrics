@@ -5,6 +5,13 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released yet)
+
+* When on Jira _Cloud_ (not _Data Centre_ or _Server_), we now use the v3 API to retrieve issue details because the v2 API is being removed. Data Centre and Server, on the other hand, only support the v2 API so we cannot use the v3 API with them. Until now, all Jira installations supported the same API's and this is no longer true. If you notice different behaviour in Cloud then let us know.
+* When on Jira _Cloud_, we now have better support for the rich text formatting that is available. Cloud and Data Centre return that rich text data in very different formats and we've been focused on making cloud look good right now.
+* When javascript is disabled, most of the charts won't work and a large message will be displayed at the top of the page explaining that. Despite being large, several people reported not seeing this message and not understanding why the report wasn't showing anything useful. Now that message is even more obnoxious and in your face. Javascript needs to be enabled for any of this to work.
+* Atlassian has begun rolling out the naming change from `Issue` to `Work item` and this has broken some of our parsing logic. If you were seeing an error like `Issue(ISSUE_ID) Can't parse link text: This work item clones OTHER_ISSUE_ID` then that's now fixed.
+
 # v2.12.1 (July 13, 2025)
 
 * Forgot to mark the new chart as released. It now is.

@@ -29,6 +29,17 @@ p.tip {
 	padding: 0.2em 0.5em;
 }
 
+.important {
+	border: 1px solid red;
+	background: #FFCCCB;
+	padding: 0.5em;
+	border-radius: 0.5em;
+}
+.important::before {
+	font-weight: bold;
+	content: "Important: ";
+}
+
 h1, h2, h3 {
 	code::before {
 		color: black;
