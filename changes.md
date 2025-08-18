@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext (not released)
+# v2.14 (August 18, 2025)
 
 * If a file prefix is reused across projects in the same configuration then files will get overridden and generally bad things will happen. When it happens, it's almost certainly a mistake and probably due to too much copy/pasting. We now detect when that's happened and dump out an error.
 * Fixed bug where an item could sometimes say 'stalled by inactivity: days' (note the missing day count), when in fact it wasn't stalled at all.
