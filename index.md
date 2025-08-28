@@ -6,7 +6,7 @@ layout: home
 </div>
 
 {: .important }
-Jira has recently made some breaking changes and has planned more of them. If you're seeing strange errors from JiraMetrics then make sure you're on the most recent version before you spend too much time debugging.
+Jira has recently made some breaking changes and has planned more of them. If you're seeing strange errors from JiraMetrics then make sure you're on the most recent version before you spend too much time debugging. [Upgrade instructions here]({% link install.md %}).
 
 # What is it?
 
