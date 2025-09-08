@@ -5,6 +5,13 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released)
+
+* All reports are now foldable. You can collapse or expand as needed.
+* Standardized how folding is done across the report, which means things will look a little different in places, but will generally be more consistent.
+* Fixed exception in `jirametrics info` when a comment contains ADF, Jiras "rich text" format.
+* Better error messages in one case where Jira was returning HTML instead of JSON.
+
 # v2.14 (August 18, 2025)
 
 * If a file prefix is reused across projects in the same configuration then files will get overridden and generally bad things will happen. When it happens, it's almost certainly a mistake and probably due to too much copy/pasting. We now detect when that's happened and dump out an error.
