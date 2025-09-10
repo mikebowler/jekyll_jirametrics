@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.16 (September 10, 2025)
+
+* v2.15 introduced a bug that caused the tool to immediately crash on loading, for some machines. That's fixed.
+
 # v2.15 (September 8, 2025)
 
 * All reports are now foldable. You can collapse or expand as needed.
