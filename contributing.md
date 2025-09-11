@@ -11,7 +11,9 @@ JiraMetrics is hosted on Github, as is the source for this documentation site. W
 
 # JiraMetrics
 
-Once you have downloaded the [source from github](https://github.com/mikebowler/jirametrics), you'll want to go to the root of that folder and run `bundle install` from the terminal to install all dependencies.
+Once you have downloaded the [source from github](https://github.com/mikebowler/jirametrics), you'll want to go to the root of that folder and run `bundle install` from the terminal to install all the ruby dependencies.
+
+Then run `npm install` to install the javascript dependencies. Javascript? Yes, we have one file of Javascript functions that are used by the final report, and we have to have some way to run unit tests for that.
 
 Most of the individual commands that you would call on JiraMetrics itself, can be run through `rake` so that you don't have to package and install the gem just to test some new code. The supported commands are `go`, `download`, and `export`
 
