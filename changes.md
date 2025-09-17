@@ -5,6 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext (not released)
+
+* Cache invalidation is said to be one of the hardest problems in computer science. We had a bug where if an issue was deleted (not closed or cancelled, but actually deleted) then it would remain in our local cache and would appear to keep aging in the reports. The new logic shouldn't allow that to happen anymore.
+  * There will be a one-time correction where issues that fell into this situation are deleted, and you may notice fewer data points in the charts.
+  * Additionally, we no longer do incremental downloads, so the time it takes to do a download may be longer now although it should still be faster than it was before we implemented the incremental feature. This is the trade-off for cache invalidation accuracy.
+* Fixed exception when the configuration file can't be found.
+* Daily View: Now display the year in history timestamps. 
+
 # v2.16 (September 10, 2025)
 
 * v2.15 introduced a bug that caused the tool to immediately crash on loading, for some machines. That's fixed.
