@@ -229,6 +229,7 @@ end
 | `flagged_means_blocked` | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
 | `ignore_ssl_errors` | Set to `true` to ignore the SSL errors that are common with self-signed certificates |
 | `intercept_jql` | Pass a lambda that can make changes to the JQL before it's executed. If you have to use this then your Jira instance is pretty poorly configured. It's here because we have to work with instances that are. |
+| `jira_cloud` | The tool will normally auto-detect whether you're talking to an instance of Jira Cloud or Data Center. If it gets that wrong then you can use this property to override that. Values are `true` or `false` |
 | `stalled_statuses` | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
 | `stalled_threshold_days` | The number of days of inactivity before an item becomes considered stalled. Defaults to 5 |
 
