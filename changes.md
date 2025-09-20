@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext (not released)
+# v2.17 (September 20, 2025)
 
 * We cache issues locally to improve download performance. There were two problems with our caching logic that have now been fixed. The first is that if an issue is deleted in Jira (not closed but actually deleted), then it remained in our cache and could show in the reports as an incorrectly aging item. The second is that over time, the cache continued to grow, taking up space on your local machine that it didn't need.
   * The first time you run a download with this version, there will be a one-time correction where issues that fell into this situation are deleted, and you may notice fewer data points in the charts.
