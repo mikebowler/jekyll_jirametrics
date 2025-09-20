@@ -7,11 +7,11 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext (not released)
 
-* Cache invalidation is said to be one of the hardest problems in computer science. We had a bug where if an issue was deleted (not closed or cancelled, but actually deleted) then it would remain in our local cache and would appear to keep aging in the reports. The new logic shouldn't allow that to happen anymore.
-  * There will be a one-time correction where issues that fell into this situation are deleted, and you may notice fewer data points in the charts.
-  * Additionally, we no longer do incremental downloads, so the time it takes to do a download may be longer now although it should still be faster than it was before we implemented the incremental feature. This is the trade-off for cache invalidation accuracy.
+* We cache issues locally to improve download performance. There were two problems with our caching logic that have now been fixed. The first is that if an issue is deleted in Jira (not closed but actually deleted), then it remained in our cache and could show in the reports as an incorrectly aging item. The second is that over time, the cache continued to grow, taking up space on your local machine that it didn't need.
+  * The first time you run a download with this version, there will be a one-time correction where issues that fell into this situation are deleted, and you may notice fewer data points in the charts.
+  * Additionally, we no longer do fully incremental downloads, so the time it takes to do a download may be longer now although it should still be faster than it was before we implemented the incremental feature. This is the trade-off for cache invalidation accuracy.
 * Fixed exception when the configuration file can't be found.
-* Daily View: Now display the year in history timestamps. 
+* Daily View: Now display the year in history timestamps. This can be important when an issue has been active for over a year. Yes, that happens more often than you might believe.
 
 # v2.16 (September 10, 2025)
 
@@ -27,9 +27,9 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 # v2.14 (August 18, 2025)
 
 * If a file prefix is reused across projects in the same configuration then files will get overridden and generally bad things will happen. When it happens, it's almost certainly a mistake and probably due to too much copy/pasting. We now detect when that's happened and dump out an error.
-* Fixed bug where an item could sometimes say 'stalled by inactivity: days' (note the missing day count), when in fact it wasn't stalled at all.
+* Fixed bug where an item could sometimes say `stalled by inactivity: days` (note the missing day count), when in fact it wasn't stalled at all.
 * On the [Daily View]({% link config_charts.md %}#daily_view)...
-  * Child issues are now collapsible
+  * Child issues are now foldable
   * We had previously excluded child issues that are done, but now we show them, albeit with less detail.
 * Fixed exception when an [ADF](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/) document is returned with no content section.
 
