@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.17.1 (October 1, 2025)
+
+* Fixed bug where issues with a LOT of changes in the changelog wouldn't download all of those changes and therefore some calculations were wrong.
+
 # v2.17 (September 20, 2025)
 
 * We cache issues locally to improve download performance. There were two problems with our caching logic that have now been fixed. The first is that if an issue is deleted in Jira (not closed but actually deleted), then it remained in our cache and could show in the reports as an incorrectly aging item. The second is that over time, the cache continued to grow, taking up space on your local machine that it didn't need.
