@@ -5,7 +5,7 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.18
+# v2.18 (October 3, 2025)
 
 * Fixed a number of subtle bugs having to do with the new changelog logic.
 * This release will force a refresh of the local cache and a fresh download of everything. For this reason, it's not just considered a bug fix release.
