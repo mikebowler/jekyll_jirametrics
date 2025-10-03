@@ -5,6 +5,12 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.18
+
+* Fixed a number of subtle bugs having to do with the new changelog logic.
+* This release will force a refresh of the local cache and a fresh download of everything. For this reason, it's not just considered a bug fix release.
+* Reverted download logic for Data Center as it appears we broke something there but we have no way to test against data center so we're pushing this and hoping for feedback from people using it in that environment. Note that Cloud is fine and the vast majority of people using this tool are on Cloud.
+
 # v2.17.1 (October 1, 2025)
 
 * Fixed bug where issues with a LOT of changes in the changelog wouldn't download all of those changes and therefore some calculations were wrong.
