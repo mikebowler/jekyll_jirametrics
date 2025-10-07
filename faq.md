@@ -57,3 +57,19 @@ By default, the only thing that automatically triggers "blocked" is the Jira fla
 Perhaps you want to change the colours on the report or you want to otherwise change the appearance, we give you the ability to insert your own CSS file that will override ours.
 
 Instructions are [over here]({% link config_file_html.md %}#css).
+
+----
+
+# Jira instance types
+
+## Some features, like proper cache invalidation, are marked as Cloud only. Why is that?
+
+There are three main reasons. 
+
+1. We no longer have access to an instance of Jira Data Center and have to rely on people reporting bugs to try things in their environment. This is very time consuming for everyone.
+2. Jira Data Center has already had it's end of life announced (March 2029) and Atlassian themselves are putting very little attention here. 
+3. The API's between Cloud and Data Center are already starting to deviate and so implimenting the same feature for both, sometimes requires completely different implementations.
+
+The bottom line is that it makes no sense for us to continue adding functionality here, when the whole platform is going away. Particularly when that feature development is more time consuming for us.
+
+If you're using Data Center today and have budget to fund development of features for Data Center then we're happy to entertain that; see our [support options](/support). We're unlikely to be adding to the Data Center support otherwise, however.
