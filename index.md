@@ -5,31 +5,27 @@ layout: home
 	{% imagesize /assets/images/site_icon.png:img alt="JiraMetrics Logo" %}
 </div>
 
-{: .important }
-Jira has recently made some breaking changes and has planned more of them. If you're seeing strange errors from JiraMetrics then make sure you're on the most recent version before you spend too much time debugging. [Upgrade instructions here]({% link install.md %}).
-
 # What is it?
 
 In a nutshell, it's a way to pull useful metrics out of Jira&trade;[^jira].
 
-Jira collects and maintains all kinds of useful data about your workflow. Unfortunately it does a horrible job of exposing that in any meaningful way. This project addresses that gap by giving you a way to pull that data out of Jira and either dumping it into CSV files that you can then manipulate yourself or by creating an HTML report with key findings.
+Jira collects and maintains all kinds of useful data about your workflow. Unfortunately it does a horrible job of exposing that in any meaningful way. This project addresses that gap by giving you a way to pull that data out of Jira and either generating a HTML report or giving you the raw data in the form of CSV files.
 
 {: .tip }
 If you just want to see something working fast, without wading through a lot of documentation on configuration, jump to the [QuickStart]({% link quickstart.md %}) and come back to the rest later.
 
-JiraMetrics is an open source project, released under an [Apache License](https://github.com/mikebowler/jirametrics/blob/main/LICENSE).
+JiraMetrics is an open source project, released under an [Apache License](https://github.com/mikebowler/jirametrics/blob/main/LICENSE). In a nutshell, that means that you can use it for free; see the license for more specifics around that. We do offer [paid support]({% link support.md %}) for those who wish it.
 
 JiraMetrics is a standalone tool that can connect to any Jira instance that you have. It is not a plugin that needs to be configured by an administrator. If you can access Jira through a web browser, then you can configure this tool to also get reports from that instance.
 
 <div style="display: flex; border: 1px dashed green; background: #EAFFF1; padding: 0.2em 0.5em; gap: 0.5em; margin-bottom: 0.5em;">
   <div>
-    <b>Promotion: </b><a href="https://www.mikebowler.ca">Mike</a> (primary author of JiraMetrics) is starting a newsletter and the first hundred people who sign up, will get free access to his video course on flow metrics. While the course isn't dependent on JiraMetrics, it is directly relevant to anyone using it.<br /><a href="https://gargoylesoftware.com/newsletter">Check out the newsletter here</a>.
+    For a primer on the basic flow metrics then see <a href="https://funnel.gargoylesoftware.com/flow-metrics-basics">this course</a> by <a href="https://mikebowler.ca">Mike Bowler</a>, the primary author of JiraMetrics. While the course isn't specific to JiraMetrics, it is directly relevant to anyone using it.
   </div>
   <div>
-    <img src="/assets/images/flow_metrics_basics_cover.png" />
+    <a href="https://funnel.gargoylesoftware.com/flow-metrics-basics"><img src="/assets/images/flow_metrics_basics_cover.png" /></a>
   </div>
 </div>
-
 
 # How do I make it work?
 
