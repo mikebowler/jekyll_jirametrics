@@ -12,7 +12,7 @@ theme: jekyll-theme-so-simple
 plugins:
   # - jekyll-feed
   - jekyll-redirect-from
-  - jekyll-paginate
+  # - jekyll-paginate
   - jekyll-image-size
   - jekyll-seo-tag
 
@@ -22,8 +22,8 @@ google_fonts:
   - name: "Source Sans Pro"
     weights: "400,400i,700,700i"
 
-paginate: 10  # amount of posts to show per page
-paginate_path: /page:num/
+# paginate: 10  # amount of posts to show per page
+# paginate_path: /page:num/
 
 feed:
   posts_limit: 10
@@ -33,3 +33,8 @@ search_full_content: true
 skin: "/assets/css/skins/light.css"
 
 copyright: '&copy; 2022-2025 <a href="http://gargoylesoftware.com">Gargoyle Software Inc.</a>'
+
+# Disable warnings about @import statements
+sass:
+  quiet_deps: true
+  silence_deprecations: ['import']
