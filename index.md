@@ -108,4 +108,25 @@ There are a lot of configuration items that can be set. Here's an index to get y
     * [`aggregated_project`]({% link config_aggregated_project.md %})
     * [Project specific settings]({% link config_project.md %}#settings)
 
+----
+
+{: #next-steps }
+# So now we've got data, now what?
+
+Sometimes we collected data because we want to make decisions based on what's there.
+* Perhaps we want to know how long it will take to get one or more items finished, and we could use probabilistic forecasting]({% link forecasting.md %}) for that.
+* Perhaps we're setting up a Service Level Agreement (SLA) or [Service Level Expectation (SLE)](https://improvingflow.com/2023/06/18/service-level-expectation.html), and need to understand the current baseline.
+* Perhaps we're trying to get a sense of how focused the team is on delivering value, rather than just being busy. While flow metrics don't directly show use value delivered, there are many hints that we can get from this to indicate if we're on track. If the WIP is too high then we're distracted. If there is significant blocked or stalled work then we're not delivering
+
+Often we want to improve the system, and are looking for both a baseline and also a way to see how those metrics change over time. This is great information to feed into a retrospective.
+
+<div style="display: flex; border: 1px dashed green; background: #EAFFF1; padding: 0.2em 0.5em; gap: 0.5em; margin-bottom: 0.5em;">
+  <div>
+    Mike also has a course on <a href="https://gargoylesoftware.com/retrospective-magic">improving your retrospectives</a>, and all the information you get from JiraMetrics is great input for those. Then within the retrospective, you decide how satisfied you are with the existing system and devise some experiments to improve. Subsequently you use JiraMetrics again to measure any improvements to that system..
+  </div>
+  <div>
+    <a href="https://gargoylesoftware.com/retrospective-magic"><img src="/assets/images/retrospective_magic_cover.jpeg" /></a>
+  </div>
+</div>
+
 [^jira]: Jira is a registered trademark of Atlassian Corporation Plc
