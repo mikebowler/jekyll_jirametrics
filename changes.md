@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext
+
+* Performance: Put some caching in the calculation logic. On our test data here, this cuts the time to export in half. If you want to test before and after for yourself, you can disable the caching by putting this line in your settings `"cache_cycletime_calculations": false`
+
 # v2.19 (October 7, 2025)
 
 * One more change for Jira Data Center (Cloud is unaffected by this release), to address the point from 2.18 below. The downloader is working for Data Center. Note that the caching issue discussed in 2.17 is only fixed for Jira Cloud. See the [FAQ]({% link faq.md %}#data_center) for an explanation of why our support for Data Center is deviating from our support for Cloud.
