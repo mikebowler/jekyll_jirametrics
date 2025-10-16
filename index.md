@@ -111,7 +111,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
 ----
 
 {: #next-steps }
-# So now we've got data, now what?
+# So now we've got data. What's next?
 
 We're always collecting data because we want to make decisions based on what's there. If we don't want to make decisions then any data collection is frankly a waste of time.
 
