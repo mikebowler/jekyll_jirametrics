@@ -8,6 +8,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 # vNext
 
 * Performance: Put some caching in the calculation logic. On our test data here, this cuts the time to export in half. If you want to test before and after for yourself, you can disable the caching by putting this line in your settings `"cache_cycletime_calculations": false`
+* Fixed a bug in rendering of the [aging work in progress]({% link config_charts.md %}#aging_work_in_progress_chart) table that could show some items in the wrong position on the chart. Note that the age shown in the tooltip was always correct, just not always where the dot was drawn.
+* Fixed an exception when an incorrectly spelled status is specified in status_category_mappings and the config is using [standard project]({% link config_standard_project.md %}). It should have stopped the export anyway but this exception provided a very misleading error message.
 
 # v2.19 (October 7, 2025)
 
