@@ -124,10 +124,10 @@ What decisions might we want to make?
 
 <div style="display: flex; border: 1px dashed green; background: #EAFFF1; padding: 0.2em 0.5em; gap: 0.5em; margin-bottom: 0.5em;">
   <div>
-    Mike also has a course on <a href="https://gargoylesoftware.com/retrospective-magic">improving your retrospectives</a>, and all the information you get from JiraMetrics is great input for those. Then within the retrospective, you decide how satisfied you are with the existing system and devise some experiments to improve. Subsequently you use JiraMetrics again to measure any improvements to that system..
+    Mike also has a course on <a href="https://www.retrospectivemagic.com">improving your retrospectives</a>, and all the information you get from JiraMetrics is great input for those. Then within the retrospective, you decide how satisfied you are with the existing system and devise some experiments to improve. Subsequently you use JiraMetrics again to measure any improvements to that system..
   </div>
   <div>
-    <a href="https://gargoylesoftware.com/retrospective-magic"><img src="/assets/images/retrospective_magic_cover.jpeg" /></a>
+    <a href="https://www.retrospectivemagic.com"><img src="/assets/images/retrospective_magic_cover.jpeg" /></a>
   </div>
 </div>
 
