@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-#ruby '3.4.7'
-
 gem 'jekyll'
 gem 'jekyll-theme-so-simple', path: '../so-simple-theme'
 
