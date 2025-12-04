@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.20.1 (December 4, 2025)
+
+* Fixed an exception when using cookie based authentication.
+
 # v2.20 (November 3, 2025)
 
 * Performance: Put some caching in the calculation logic. On our test data here, this cuts the time to export in half. If you want to test before and after for yourself, you can disable the caching by putting this line in your settings `"cache_cycletime_calculations": false`
