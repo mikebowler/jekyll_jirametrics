@@ -22,3 +22,10 @@ Paid support for JiraMetrics is effectively a block of time where we help you. I
 * Creation of custom reports through JiraMetrics, to highlight things that matter to you.
 
 If you wish to pay as you go, you can book an hour of [Mike Bowler's](https://mikebowler.ca) time [through Calendly](https://calendly.com/mikebowler/coaching-consulting) and pay immediately with a credit card. If you would like a more structured support contract or a larger block than just one hour then reach out to [sales@GargoyleSoftware.com](mailto:sales@GargoyleSoftware.com) and we'll be happy to help.
+
+{: #sponsor }
+## Sponsorship
+
+If you wish to support ongoing development of this tool but don't want or need a full support contract then we gratefully accept sponsorship through Github.
+
+<p><iframe src="https://github.com/sponsors/mikebowler/button" title="Sponsor mikebowler" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe></p>

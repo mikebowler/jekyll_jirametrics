@@ -14,7 +14,9 @@ Jira collects and maintains all kinds of useful data about your workflow. Unfort
 {: .tip }
 If you just want to see something working fast, without wading through a lot of documentation on configuration, jump to the [QuickStart]({% link quickstart.md %}) and come back to the rest later.
 
-JiraMetrics is an open source project, released under an [Apache License](https://github.com/mikebowler/jirametrics/blob/main/LICENSE). In a nutshell, that means that you can use it for free; see the license for more specifics around that. We do offer [paid support]({% link support.md %}) for those who wish it.
+JiraMetrics is an open source project, released under an [Apache License](https://github.com/mikebowler/jirametrics/blob/main/LICENSE). In a nutshell, that means that you can use it for free; see the license for more specifics around that. We do offer [paid support]({% link support.md %}) for those who wish it, and gratefully accept sponsorship through Github.
+
+<p><iframe src="https://github.com/sponsors/mikebowler/button" title="Sponsor mikebowler" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe></p>
 
 JiraMetrics is a standalone tool that can connect to any Jira instance that you have. It is not a plugin that needs to be configured by an administrator. If you can access Jira through a web browser, then you can configure this tool to also get reports from that instance.
 
