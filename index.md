@@ -74,7 +74,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
     * [`file_prefix`]({% link config_project.md %}#file_prefix)
     * [`download`]({% link config_project.md %}#download)
     * [`board`]({% link config_project.md %}#board)
-      * [`cycletime`]({% link config_project.md %}#board)
+      * [`cycletime`]({% link config_cycletime.md %})
     * [`file`]({% link config_file_csv.md %}) (when exporting data in CSV)
       * [`file_suffix`]({% link config_file_csv.md %}#file_suffix)
       * [`only_use_row_if`]({% link config_file_csv.md %}#only_use_row_if)

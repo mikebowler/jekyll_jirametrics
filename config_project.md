@@ -104,7 +104,7 @@ end
 
 ## `board`
 
-The board section tells us what board we're pulling data for, and how we declare the cycle time for that board.
+The board section tells us what board we're pulling data for, and how we declare the [cycle time]({% link config_cycletime.md %}) for that board.
 
 
 ```ruby
@@ -120,38 +120,6 @@ To find the board id, navigate to the respective board in your web browser and t
 
 {: .tip }
 If there isn't a board ID in your URL then that means that this project isn't classified as a Software project in Jira and you won't have access to any of the Agile features. It's highly unlikely that you'll run into this but it is possible. JiraMetrics cannot do anything useful with projects like this.
-
-The `cycletime` has two components which define when we consider the work started and when we consider it stopped. For either of `start_at` or `stop_at`, we have a variety of ways to determine the exact time.
-
-For example, if we want to start the clock when the issue enters the 'In Progress' status then we could write<br />`start_at first_time_in_status 'In Progress'`
-
-{: .tip }
-The one we use more often than any other is `first_time_in_or_right_of_column`. Consider if this one meets your needs before looking through all the others.
-
-The full set of options that we can use for this are below.
-
-| method | description |
-|---+---|
-| `currently_in_status` | Similar to `first_time_in_status` except that it only matches if the work is still in that status. If it has moved out of that status, it will no longer match.<br />`currently_in_status 'In Progress'` |
-| `currently_in_status_category` | Similar to `first_time_in_status_category` except that it only matches if the work is still in that category. |
-| `first_time_in_or_right_of_column` | Returns the first time the issue enters this column or any column the right of it.<br />`first_time_in_or_right_of_column 'In Progress'`
-| `first_time_in_status` | Returns the first time the issue enters one of the specified statuses. |
-| `first_time_in_status_category` | Returns the first time we entered a status belonging to the specified status category. Categories in an English language Jira instance will be "To Do", "In Progress" and "Done". |
-| `first_time_label_added` | Returns the first time a specific label has shown up on the ticket. Added in v2.8 |
-| `first_time_not_in_status` | Takes a list of status names and returns the first time that the issue is NOT in one of these statuses. Commonly used if there are a couple of columns at the beginning of the board that we don't want to consider for the purposes of calculating cycletime. |
-| `still_in_or_right_of_column` | Same as `first_time_in_or_right_of_column` except that it still has to be in one of these columns |
-| `still_in_status` | If an issue has ever been in one of these statuses AND is still in one of these statuses then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named status. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status` |
-| `still_in_status_category` | If an issue has ever been in one of these category AND is still in one of these category then was was the last time it entered one? This is useful for tracking cases where an item moves forward on the board, then backwards, then forward again. We're tracking the last time it entered the named category. Important: If you have two status changes in a row and both of them return true then this returns the _first_ timestamp. There are subtle cases where we want this behaviour although most of the time, you'd be better off using `currently_in_status_category` |
-| `first_status_change_after_created` | Returns the timestamp of the first status change after the issue was created. |
-| `time_created` | Returns the creation timestamp of the issue |
-| `first_time_visible_on_board`| returns the timestamp when the issue first became visible on the board |
-
-
-What if there aren't any built-in methods to extract the piece of data that you want? You can pass in an arbitrary bit of code that will get executed for each issue.
-
-```ruby
-start_at ->(issue) { issue.get_whatever_data_you_want }
-```
 
 ## `file`
 

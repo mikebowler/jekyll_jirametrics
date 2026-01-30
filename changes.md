@@ -5,6 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.21 (January 29, 2026)
+
+* Added new option for `start_at`: `first_time_added_to_active_sprint`
+  * If this issue will ever be in an active sprint then return the time that it was first added to that sprint, whether or not the sprint was active at that time. Although it seems like an odd thing to calculate, it's a reasonable proxy for 'ready' in cases where the team doesn't have an explicit 'ready' status. You'd be better off with an explicit 'ready' but sometimes that's not an option.
+* `Issue.time_created` was a documented API but was missing from the code. Fixed that.
+* All charts now support overriding the `cycletime`. See [the docs](http://localhost:4000/config/cycletime/#override) for details.
+* Fixed bug where the data quality report was incorrectly identifying some items as blocked when they had other link types, such as cloned.
+
 # v2.20.1 (December 4, 2025)
 
 * Fixed an exception when using cookie based authentication.
