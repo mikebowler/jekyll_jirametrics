@@ -5,6 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext
+
+* Some teams use unstarted sprints as holding areas to organize issues, but the burndown chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
+* Fixed: Due to a mishandling of `exit()` in one of the tests, about 150 of the tests were not running during a normal test run, with no warnings to indicate that this was happening.
+
 # v2.21 (January 29, 2026)
 
 * Added new option for `start_at`: `first_time_added_to_active_sprint`
@@ -96,7 +101,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 * [Aging work table]({% link config_charts.md %}#aging_work_table) - improvements
   * In addition to the current age, we display how much longer it's likely to take to finish this. This is a forecast, based on historical data for this board.
   * If an item has a due date then we display that. We also show if we're likely to complete by that date.
-* If Javascript is disabled in the browser then almost none of the charts will be visible and the report will be largely useless. We now display a warning the the top of the page if this is the case. This has been reported as a frequent problem when reports are stored on Sharepoint as it will disable javascript by default and then people are left wondering why the report isn't helpful.
+* If Javascript is disabled in the browser then almost none of the charts will be visible and the report will be largely useless. We now display a warning the top of the page if this is the case. This has been reported as a frequent problem when reports are stored on Sharepoint as it will disable javascript by default and then people are left wondering why the report isn't helpful.
 * Bug: Fixed obscure exception when one issue had been blocked on another issue that isn't currently downloaded AND we were using either `currently_in_status` or `currently_in_status_category`.
 * Bug: Fixed bug where `info` was only being written to the log and not to the console, making it seem if it weren't working at all.
 * `info` improvement: Statuses now list the id of the status as well as the name.
