@@ -121,6 +121,16 @@ end
 
 ----
 
+## `aging_work_bar_chart`
+
+This chart shows all active (started but not completed) work, ordered from oldest at the top to newest at the bottom.
+
+There are potentially three bars for each issue, although a bar may be missing if the issue has no information relevant to that. Hovering over any of the bars will provide more details.
+
+1. The top bar tells you what status the issue is in at any time. The colour indicates the status category, which will be one of  To Do,  In Progress, or  Done
+2. The middle bar indicates  blocked or  stalled.
+3. The bottom bar indicated  expedited.
+
 ## `aging_work_in_progress_chart`
 
 For items that have started but not finished, what column are they currently in and how old are they?

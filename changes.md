@@ -9,6 +9,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Some teams use unstarted sprints as holding areas to organize issues, but the burndown chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
 * Fixed: Due to a mishandling of `exit()` in one of the tests, about 150 of the tests were not running during a normal test run, with no warnings to indicate that this was happening.
+* When asking Jira for the sprints for a specific board, it sometimes returns sprints that have nothing to do with this board. We now exclude those.
+* Added length of sprint to the statistics for the burndown chart
 
 # v2.21 (January 29, 2026)
 
