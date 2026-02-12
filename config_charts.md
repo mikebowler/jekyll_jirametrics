@@ -13,6 +13,70 @@ _It is possible to create your own charts without forking the codebase, although
 
 ----
 
+## `aging_work_bar_chart`
+
+This chart shows all active (started but not completed) work, ordered from oldest at the top to newest at the bottom.
+
+There are potentially three bars for each issue, although a bar may be missing if the issue has no information relevant to that. Hovering over any of the bars will provide more details.
+
+1. The top bar tells you what status the issue is in at any time. The colour indicates the status category, which will be one of  To Do,  In Progress, or  Done
+2. The middle bar indicates  blocked or  stalled.
+3. The bottom bar indicated  expedited.
+
+----
+
+## `aging_work_in_progress_chart`
+
+For items that have started but not finished, what column are they currently in and how old are they?
+
+```ruby
+aging_work_in_progress_chart
+```
+
+This chart supports the same grouping rules as Throughput Chart. See that chart for an example..
+
+Rules options
+
+| Rule | Description |
+|:--------|:-------|
+| label|The name used for the group |
+| color |The color used for the group. If no color is specified then it will be randomly chosen. |
+| ignore |Discard this item from the dataset |
+
+----
+
+## `aging_work_table`
+
+For items that are started but not finished, show a whole variety of information in a tabular format. This includes additional information not  found in other charts such as the parent hierarchy, what `fix_version` this issue is in (if any), what sprints it's in (if any), due dates, etc.
+
+{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+
+----
+
+## `cycletime_histogram`
+
+Plots the distribution of cycle times. How many times did something complete in three days?
+
+By looking at the histogram, we can see groupings of different types of work and we can also tell how predictable the work is by how much the cycle times cluster together.
+
+```ruby
+cycletime_histogram
+```
+
+This chart supports the same grouping rules as Throughput Chart. See that chart for an example..
+
+Rules options
+
+| Rule | Description |
+|:--------|:-------|
+| label|The name used for the group |
+| color |The color used for the group. If no color is specified then it will be randomly chosen. |
+| ignore |Discard this item from the dataset |
+
+{% imagesize /assets/images/cycletime_histogram.png:img alt="Cycletime Histogram" %}
+
+----
+
 ## `cycletime_scatterplot`
 
 Plots the cycle time (y axis) against the date that the work completed (x axis).
@@ -54,108 +118,15 @@ end
 
 ----
 
-## `cycletime_histogram`
+## `daily_view`
 
-Plots the distribution of cycle times. How many times did something complete in three days?
+This report lists all the aging items in order of importance. We find that many teams aren't clear on what order they should discuss items in their daily meeting (standup / scrum / etc) so this chart lays them out in the correct order, sorted first by priority and then by age within that priority level. Most important at the top and least at the bottom.
 
-By looking at the histogram, we can see groupings of different types of work and we can also tell how predictable the work is by how much the cycle times cluster together.
+The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
 
-```ruby
-cycletime_histogram
-```
+To understand the motivation for this chart, see [this article](https://improvingflow.com/2025/07/14/jirametrics.html).
 
-This chart supports the same grouping rules as Throughput Chart. See that chart for an example..
-
-Rules options
-
-| Rule | Description |
-|:--------|:-------|
-| label|The name used for the group |
-| color |The color used for the group. If no color is specified then it will be randomly chosen. |
-| ignore |Discard this item from the dataset |
-
-{% imagesize /assets/images/cycletime_histogram.png:img alt="Cycletime Histogram" %}
-
-----
-
-## `throughput_chart`
-
-A line chart showing how many items completed each week (Monday to Sunday)
-
-```ruby
-throughput_chart
-```
-
-By default, this splits data across issue types and also shows a totals line.
-
-Rules options
-
-| Rule | Description |
-|:--------|:-------|
-| label|The name used for the group |
-| color |The color used for the group. If no color is specified then it will be randomly chosen. |
-| ignore |Discard this item from the dataset |
-
-Example
-
-```ruby
-throughput_chart do
-  grouping_rules do |issue, rules|
-    # Put all data into groups by type. Use the name of the
-    # type as the label for the group
-    rules.label = issue.type
-    if issue.type == 'Story'
-      # Set the colour of stories to be green
-      rules.color = 'green'
-    else issue.type == 'Spike'
-      # Ignore spikes
-      rules.ignore
-    else
-      rules.color = 'yellow'
-    end
-  end
-end
-```
-
-{% imagesize /assets/images/throughput_chart.png:img alt="Throughput chart" %}
-
-----
-
-## `aging_work_bar_chart`
-
-This chart shows all active (started but not completed) work, ordered from oldest at the top to newest at the bottom.
-
-There are potentially three bars for each issue, although a bar may be missing if the issue has no information relevant to that. Hovering over any of the bars will provide more details.
-
-1. The top bar tells you what status the issue is in at any time. The colour indicates the status category, which will be one of  To Do,  In Progress, or  Done
-2. The middle bar indicates  blocked or  stalled.
-3. The bottom bar indicated  expedited.
-
-## `aging_work_in_progress_chart`
-
-For items that have started but not finished, what column are they currently in and how old are they?
-
-```ruby
-aging_work_in_progress_chart
-```
-
-This chart supports the same grouping rules as Throughput Chart. See that chart for an example..
-
-Rules options
-
-| Rule | Description |
-|:--------|:-------|
-| label|The name used for the group |
-| color |The color used for the group. If no color is specified then it will be randomly chosen. |
-| ignore |Discard this item from the dataset |
-
-----
-
-## `aging_work_table`
-
-For items that are started but not finished, show a whole variety of information in a tabular format. This includes additional information not  found in other charts such as the parent hierarchy, what `fix_version` this issue is in (if any), what sprints it's in (if any), due dates, etc.
-
-{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+{% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
 
 ----
 
@@ -214,79 +185,6 @@ daily_wip_chart do
   end
 end
 ```
-
-----
-
-## `expedited_chart`
-
-This chart shows how many items are expedited and how long they've been that way. Configure what it means for an item to be expedited through the `expedited_priority_names` key in [project specific settings]({% link config_project.md %}#settings)
-
-
-```ruby
-expedited_chart
-```
-
-----
-
-## `sprint_burndown`
-
-Displays all the sprint burndowns that happened during this period. By default, this renders two charts - the top one is burndown by story points and the bottom one is burndown by story count. If you only want one or the other then you can customize that.
-
-```ruby
-# Generate both burndowns
-sprint_burndown
-
-# Generate only the story point burndown
-sprint_burndown :points_only
-
-# Generate only the story count burndown
-sprint_burndown :counts_only
-```
-
-----
-
-## `estimate_accuracy_chart`
-
-Graphs the estimates (y axis) against the actual cycle time of the item. It's useful to be able to see how much correlation there is between the estimates and the actual time it took. By default, it uses _story points_ for the estimate although that can be configured as seen below.
-
-{% imagesize /assets/images/estimate_accuracy_chart.png:img alt="Estimate accuracy chart" %}
-
-{: .tip }
-There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://improvingflow.com/2023/07/08/per-story-estimates.html).
-
-```ruby
-estimate_accuracy_chart
-```
-
-What if you don't use the _story point_ field and use something custom like TShirt sizes? You can specify that with the yaxis
-
-```ruby
-estimate_accuracy_chart do
-  y_axis(sort_order: %w[Small Medium Large], label: "TShirt Sizes") do |issue, started_time|
-    issue.raw['fields']['custom_field_34'] 
-  end 
-end
-```
-
-**Note:** In this example, _custom_field_34_ is meant to show what's possible. It's almost certainly not going to be called that in your instance. You have to find what field is holding the value you need.
-
-| Parameters | Description |
-|:--------|:-------|
-| sort_order|All the possible options in the order you want to see them displayed. Bottom to top. |
-| label |The label you want displayed on the axis |
-| block |The code that will extract the value from the issue object. This is custom to your setup |
-
-----
-
-## `daily_view`
-
-This report lists all the aging items in order of importance. We find that many teams aren't clear on what order they should discuss items in their daily meeting (standup / scrum / etc) so this chart lays them out in the correct order, sorted first by priority and then by age within that priority level. Most important at the top and least at the bottom.
-
-The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
-
-To understand the motivation for this chart, see [this article](https://improvingflow.com/2025/07/14/jirametrics.html).
-
-{% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
 
 ----
 
@@ -372,3 +270,108 @@ dependency_chart do
   end
 end
 ```
+
+----
+
+## `estimate_accuracy_chart`
+
+Graphs the estimates (y axis) against the actual cycle time of the item. It's useful to be able to see how much correlation there is between the estimates and the actual time it took. By default, it uses _story points_ for the estimate although that can be configured as seen below.
+
+{% imagesize /assets/images/estimate_accuracy_chart.png:img alt="Estimate accuracy chart" %}
+
+{: .tip }
+There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://improvingflow.com/2023/07/08/per-story-estimates.html).
+
+```ruby
+estimate_accuracy_chart
+```
+
+What if you don't use the _story point_ field and use something custom like TShirt sizes? You can specify that with the yaxis
+
+```ruby
+estimate_accuracy_chart do
+  y_axis(sort_order: %w[Small Medium Large], label: "TShirt Sizes") do |issue, started_time|
+    issue.raw['fields']['custom_field_34'] 
+  end 
+end
+```
+
+**Note:** In this example, _custom_field_34_ is meant to show what's possible. It's almost certainly not going to be called that in your instance. You have to find what field is holding the value you need.
+
+| Parameters | Description |
+|:--------|:-------|
+| sort_order|All the possible options in the order you want to see them displayed. Bottom to top. |
+| label |The label you want displayed on the axis |
+| block |The code that will extract the value from the issue object. This is custom to your setup |
+
+----
+
+## `expedited_chart`
+
+This chart shows how many items are expedited and how long they've been that way. Configure what it means for an item to be expedited through the `expedited_priority_names` key in [project specific settings]({% link config_project.md %}#settings)
+
+
+```ruby
+expedited_chart
+```
+
+----
+
+## `sprint_burndown`
+
+Displays all the sprint burndowns that happened during this period. By default, this renders two charts - the top one is burndown by story points and the bottom one is burndown by story count. If you only want one or the other then you can customize that.
+
+```ruby
+# Generate both burndowns
+sprint_burndown
+
+# Generate only the story point burndown
+sprint_burndown :points_only
+
+# Generate only the story count burndown
+sprint_burndown :counts_only
+```
+
+----
+
+## `throughput_chart`
+
+A line chart showing how many items completed each week (Monday to Sunday)
+
+```ruby
+throughput_chart
+```
+
+By default, this splits data across issue types and also shows a totals line.
+
+Rules options
+
+| Rule | Description |
+|:--------|:-------|
+| label|The name used for the group |
+| color |The color used for the group. If no color is specified then it will be randomly chosen. |
+| ignore |Discard this item from the dataset |
+
+Example
+
+```ruby
+throughput_chart do
+  grouping_rules do |issue, rules|
+    # Put all data into groups by type. Use the name of the
+    # type as the label for the group
+    rules.label = issue.type
+    if issue.type == 'Story'
+      # Set the colour of stories to be green
+      rules.color = 'green'
+    else issue.type == 'Spike'
+      # Ignore spikes
+      rules.ignore
+    else
+      rules.color = 'yellow'
+    end
+  end
+end
+```
+
+{% imagesize /assets/images/throughput_chart.png:img alt="Throughput chart" %}
+
