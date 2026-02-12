@@ -7,10 +7,12 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
-* Some teams use unstarted sprints as holding areas to organize issues, but the burndown chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
+* Some teams use unstarted sprints as holding areas to organize issues, but the [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
 * Fixed: Due to a mishandling of `exit()` in one of the tests, about 150 of the tests were not running during a normal test run, with no warnings to indicate that this was happening.
 * When asking Jira for the sprints for a specific board, it sometimes returns sprints that have nothing to do with this board. We now exclude those.
-* Added length of sprint to the statistics for the burndown chart
+* Added length of sprint to the statistics for the [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart
+* Fixed bug in sort order in the AgingWorkBarChart
+* Documentation fix: [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) was missed in the documentation.
 
 # v2.21 (January 29, 2026)
 
