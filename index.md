@@ -91,6 +91,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
         * [All Charts]({% link config_charts.md %})
           * [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart)
           * [`aging_work_in_progress_chart`]({% link config_charts.md %}#aging_work_in_progress_chart)
+          * [`aging_work_table`]({% link config_charts.md %}#aging_work_table)
           * [`cycletime_histogram`]({% link config_charts.md %}#cycletime_histogram)
           * [`cycletime_scatterplot`]({% link config_charts.md %}#cycletime_scatterplot)
           * [`daily_view`]({% link config_charts.md %}#daily_view)
