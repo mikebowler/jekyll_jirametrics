@@ -18,7 +18,7 @@ end
 def update_prod_configuration
   json = JSON.parse(`curl https://api.github.com/repos/mikebowler/jirametrics/releases`)
   release = json.find { |r| !r['draft'] && !r['prerelease'] }
-  name = release['name']
+  name = release['tag_name']
   created = Date.parse(release['created_at']).to_s
   File.open '_config_production.yml', 'w' do |file|
     file.puts "description: \"Current: #{name}, Released: #{created}\""
@@ -42,7 +42,7 @@ task :deploy do
 end
 
 task :server do
-  update_prod_configuration unless File.exist? '_config_production.yml'
+  update_prod_configuration # unless File.exist? '_config_production.yml'
   run_command(
     label: 'Run local server on port 4000',
     command: 'jekyll serve --livereload --drafts --config _config.yml,_config_production.yml'
