@@ -15,6 +15,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
   * Now supports `age_cutoff`, just like [`aging_work_table`]({% link config_charts.md %}#aging_work_table).
   * Documentation fix: [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) was missed in the documentation.
   * Now replaced the old expedited line with a priority line. it still shows which priorities are considered expedited, but now shows more detail.
+  * Added a forth line for Scrum boards showing which sprint this issue has been in.
 * [`throughput_chart`]({% link config_charts.md %}#throughput_chart)
   * Bug: Issues that were explicitly ignored in the grouping rules were still being included in totals.
 * Fixed: Due to a mishandling of `exit()` in one of the tests, about 150 of the tests were not running during a normal test run, with no warnings to indicate that this was happening.
