@@ -58,6 +58,11 @@ Perhaps you want to change the colours on the report or you want to otherwise ch
 
 Instructions are [over here]({% link config_file_html.md %}#css).
 
+{: #stitcher }
+## I need to create a consolidated report that pulls charts from multiple other reports into one place
+
+Check out the [stitcher]({% link stitcher.md %})
+
 ----
 
 # Jira instance types

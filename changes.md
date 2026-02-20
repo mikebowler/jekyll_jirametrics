@@ -5,14 +5,20 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# vNext
+# v2.22 (February 20, 2026)
 
-* Some teams use unstarted sprints as holding areas to organize issues, but the [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
+* [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart
+  * Added length of sprint to the statistics.
+  * Some teams use unstarted sprints as holding areas to organize issues, but this chart was displaying them anyway, causing extra noise in the UI. Now we ignore those.
+* [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart)
+  * Fixed bug in sort order 
+  * Now supports `age_cutoff`, just like [`aging_work_table`]({% link config_charts.md %}#aging_work_table).
+  * Documentation fix: [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) was missed in the documentation.
+  * Now replaced the old expedited line with a priority line. it still shows which priorities are considered expedited, but now shows more detail.
+* [`throughput_chart`]({% link config_charts.md %}#throughput_chart)
+  * Bug: Issues that were explicitly ignored in the grouping rules were still being included in totals.
 * Fixed: Due to a mishandling of `exit()` in one of the tests, about 150 of the tests were not running during a normal test run, with no warnings to indicate that this was happening.
-* When asking Jira for the sprints for a specific board, it sometimes returns sprints that have nothing to do with this board. We now exclude those.
-* Added length of sprint to the statistics for the [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart
-* Fixed bug in sort order in the AgingWorkBarChart
-* Documentation fix: [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) was missed in the documentation.
+* Experimental: We're trying something new with [the stitcher]({% link stitcher.md %}). This is a way to create a single consolidated report that pulls individual charts from multiple other reports. This is still experimental and is likely to change but we'd love to get feedback on it.
 
 # v2.21 (January 29, 2026)
 
