@@ -5,6 +5,16 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.23 (Not released)
+
+* Stitcher: Log an error, rather than raising an exception, if a chart can't be found. The chart might be missing because there just isn't any data and that shouldn't stop the whole process.
+* [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) now calculate the correlation coefficient for points vs cycletime
+* Anywhere a blocked/stalled reason is provided, if it was blocked by a flag then we look for a corresponding comment and display that as the reason for setting the flag.
+* Fixed subtle bug where actions that happened just before the download didn't always show in the charts. For example, an items closed just before the download, might not show up in the cycletime scatterplot for several hours.
+* If the `rolling_date_count` changes from one download to another, we force a full download rather than a partial, to ensure we have all the correct issues. Note that this will force a full download after you install this version as we never tracked what `rolling_date_count` you'd used before.
+* The expedited report has been removed from `standard_project`. This chart has often caused more confusion than it was worth and now other charts provide good representation of expedited / priority information. The chart will still be there if you like it, it just won't be shown by default.
+* We can annotate several of the charts with timestamps/dates where significant things happened. See [annotations]({% link config_project.md %}#annotations) for details.
+
 # v2.22 (February 20, 2026)
 
 * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart

@@ -111,6 +111,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
     * [`standard_project`]({% link config_standard_project.md %})
     * [`aggregated_project`]({% link config_aggregated_project.md %})
     * [Project specific settings]({% link config_project.md %}#settings)
+      * [Annotations]({% link config_project.md %}#annotations)
 
 ----
 

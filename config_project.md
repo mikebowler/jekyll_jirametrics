@@ -193,6 +193,7 @@ end
 | `blocked_link_text` | If you have a link type that indicates blocked, then set this to the text that is used, such as 'Blocked by' |
 | `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). <br />Example: `settings['blocked_statuses']=['Blocked']` |
 | `customfield_parent_links` | A list of custom_field ids that link to parent keys. If you're using Jira Advanced Roadmap then parent relationships will be set up with a custom field and this is how you set it up. |
+| `date_annotations` | A list of dates or times where something significant happened. See [annotations](#annotations) below |
 | `expedited_priority_names` | An array of priorities that will be considered to be expedited. ie ['Highest', 'Critical'] |
 | `flagged_means_blocked` | By default, we assume that `flagged` indicates that a ticket is blocked but some teams use `flagged` to mean something else so you can turn it off with `'flagged_means_blocked' => false`. Requires JiraMetrics v2.6 or higher |
 | `ignore_ssl_errors` | Set to `true` to ignore the SSL errors that are common with self-signed certificates |
@@ -201,6 +202,18 @@ end
 | `stalled_statuses` | A list of statuses that should be considered stalled, same as blocked above. This is useful if you have queues in your workflow where the work is just sitting and waiting for someone to free up.|
 | `stalled_threshold_days` | The number of days of inactivity before an item becomes considered stalled. Defaults to 5 |
 
+{: #annotations }
+### Annotating charts
+
+We can annotate several of the charts with timestamps/dates where significant things happened. Declare the annotation in settings with the `date_annotations` key.
+
+These spots will be annotated on the [`cycletime_scatterplot`]({% link config_charts.md %}#cycletime_scatterplot), [`throughput_chart`]({% link config_charts.md %}#throughput_chart), [`daily_wip_by_age_chart`]({% link config_charts.md %}#daily_wip_by_age_chart), [`daily_wip_by_blocked_stalled_chart`]({% link config_charts.md %}#daily_wip_by_blocked_stalled_chart), [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart), and [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
+```ruby
+"date_annotations":
+  { "date": "2025-12-05T10:00:00", "label": "Stuff happened" },
+  { "date": "2025-12-08T10:00:00", "label": "More stuff" }
+]
+```
 
 ## Excluding issues from the data set
 
