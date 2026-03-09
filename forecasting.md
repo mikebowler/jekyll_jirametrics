@@ -3,7 +3,7 @@ layout: page
 permalink: /forecasting/
 title: Probabilistic Forecasting
 ---
-One of the most common reasons we want to look at metrics is so that we can more accurately answer the question _"when will we be done?"_ With those metrics, we can create a [probabilistic forecast](https://improvingflow.com/2024/06/02/probabilistic-forecasting.html) that answers that question based on historical data.
+One of the most common reasons we want to look at metrics is so that we can more accurately answer the question _"when will we be done?"_ With those metrics, we can create a [probabilistic forecast](https://blog.mikebowler.ca/2024/06/02/probabilistic-forecasting/) that answers that question based on historical data.
 
 ## Single item forecasting
 

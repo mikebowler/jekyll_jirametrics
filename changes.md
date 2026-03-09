@@ -7,13 +7,20 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # v2.23 (Not released)
 
-* Stitcher: Log an error, rather than raising an exception, if a chart can't be found. The chart might be missing because there just isn't any data and that shouldn't stop the whole process.
-* [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) now calculate the correlation coefficient for points vs cycletime
+* [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) now calculates the correlation coefficient for points vs cycletime
 * Anywhere a blocked/stalled reason is provided, if it was blocked by a flag then we look for a corresponding comment and display that as the reason for setting the flag.
-* Fixed subtle bug where actions that happened just before the download didn't always show in the charts. For example, an items closed just before the download, might not show up in the cycletime scatterplot for several hours.
 * If the `rolling_date_count` changes from one download to another, we force a full download rather than a partial, to ensure we have all the correct issues. Note that this will force a full download after you install this version as we never tracked what `rolling_date_count` you'd used before.
 * The expedited report has been removed from `standard_project`. This chart has often caused more confusion than it was worth and now other charts provide good representation of expedited / priority information. The chart will still be there if you like it, it just won't be shown by default.
 * We can annotate several of the charts with timestamps/dates where significant things happened. See [annotations]({% link config_project.md %}#annotations) for details.
+* Experimental support for getting Pull Request data from Github.
+* Tightened up the `anonymize` logic. Turns out that some data was not being properly anonymized.
+* The `info` command now ignores the Anonymizer since it makes no sense to fully anonymise data that we're mostly using for debugging.
+* DailyWIPChart and it's subclasses have supported `issue_hint` for a while. Now CycletimeScatterplot, CycletimeHistogram, and ThroughputChart do as well
+* In `standard_project`, the ignore_issues parameter can now take a lambda. The lambda will accept an Issue and if it returns true, that issue will be ignored.
+* Bugs
+  * Stitcher: Log an error, rather than raising an exception, if a chart can't be found. The chart might be missing because there just isn't any data and that shouldn't stop the whole process.
+  * Fixed subtle bug where actions that happened just before the download didn't always show in the charts. For example, an items closed just before the download, might not show up in the cycletime scatterplot for several hours.
+
 
 # v2.22 (February 20, 2026)
 
@@ -198,8 +205,8 @@ If you're seeing a ton of warnings after upgrading to 2.8, try commenting out al
 
 # v2.6 (October 2, 2024)
 
-* When a status can't be found, it now just dumps a warning, rather than blowing up. See Q1 in the [FAQ](https://jirametrics.org/faq#q1). This has been a source of frustration for many people so we're trying to get some more reasonable default behaviour. Note that you still want to fix it but now you'll see all the missing statuses at once instead of getting one each time.
-* There is a new `Issue.flow_efficiency_numbers` method that is a first step towards visualizing flow efficiency. Note that none of the charts currently make use of this. See this article for [an introduction to flow efficiency](https://improvingflow.com/2024/07/06/flow-efficiency.html).
+* When a status can't be found, it now just dumps a warning, rather than blowing up. See Q1 in the [FAQ](/faq#q1). This has been a source of frustration for many people so we're trying to get some more reasonable default behaviour. Note that you still want to fix it but now you'll see all the missing statuses at once instead of getting one each time.
+* There is a new `Issue.flow_efficiency_numbers` method that is a first step towards visualizing flow efficiency. Note that none of the charts currently make use of this. See this article for [an introduction to flow efficiency](https://blog.mikebowler.ca/2024/07/06/flow-efficiency/).
 * By default, we assume that `flagged` means blocked but not all teams use the flag for that purpose. Added new setting to change that behaviour: `settings['flagged_means_blocked'] = false`.
 
 # v2.5 (September 22, 2024)

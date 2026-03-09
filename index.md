@@ -123,7 +123,7 @@ We're always collecting data because we want to make decisions based on what's t
 What decisions might we want to make?
 
 * Perhaps we want to know how long it will take to get one or more items finished, and we could use [probabilistic forecasting]({% link forecasting.md %}) for that.
-* Perhaps we're setting up a Service Level Agreement (SLA) or [Service Level Expectation (SLE)](https://improvingflow.com/2023/06/18/service-level-expectation.html), and need to understand the current baseline so that we can set expectations accordingly.
+* Perhaps we're setting up a Service Level Agreement (SLA) or [Service Level Expectation (SLE)](https://blog.mikebowler.ca/2023/06/18/service-level-expectation/), and need to understand the current baseline so that we can set expectations accordingly.
 * Perhaps we're trying to get a sense of how focused the team is on delivering value, rather than just being busy. While flow metrics don't directly show use value delivered, there are many hints that we can get from this to indicate if we're on track. If the WIP is too high then we're distracted. If there is significant blocked or stalled work then we're not delivering.
 * Perhaps we're looking for general improvement, and are looking for both a baseline and also a way to see how those metrics change over time. This is great information to feed into a retrospective.
 

@@ -124,7 +124,7 @@ This report lists all the aging items in order of importance. We find that many 
 
 The expectation is that you can use just this view during your daily meeting, without looking at the Jira board itself. We're still experimenting with exactly what information needs to be presented in order to meet that goal, so this may change over time.
 
-To understand the motivation for this chart, see [this article](https://improvingflow.com/2025/07/14/jirametrics.html).
+To understand the motivation for this chart, see [this article](https://blog.mikebowler.ca/2025/07/14/jirametrics/).
 
 {% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
 
@@ -162,7 +162,7 @@ Grouping the WIP by the parent ticket. This is useful to see if we're focused on
 daily_wip_by_parent_chart
 ```
 
-See [this article](https://improvingflow.com/2025/01/29/wip-by-parent.html) for more details on what we can learn from this chart.
+See [this article](https://blog.mikebowler.ca/2025/01/29/wip-by-parent/) for more details on what we can learn from this chart.
 
 ----
 
@@ -280,7 +280,7 @@ Graphs the estimates (y axis) against the actual cycle time of the item. It's us
 {% imagesize /assets/images/estimate_accuracy_chart.png:img alt="Estimate accuracy chart" %}
 
 {: .tip }
-There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://improvingflow.com/2023/07/08/per-story-estimates.html).
+There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://blog.mikebowler.ca/2023/07/08/per-story-estimates/).
 
 ```ruby
 estimate_accuracy_chart

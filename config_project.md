@@ -167,7 +167,10 @@ end
 
 ## `anonymize`
 
-Lastly, we can anonymize the report with the `anonymize` setting.
+Lastly, we can anonymize the report with the `anonymize` setting, which will strip out any confidential information before generating the report.
+
+{: .important }
+The anonymizer only anonymizes data going into the HTML report or into the generated CSV. It does NOT anonymize the input source files so if you send them to someone else, you may still have an exposure.
 
 ```ruby
 project do
@@ -191,7 +194,7 @@ end
 | Settings key | Description |
 |:--------|:-------|
 | `blocked_link_text` | If you have a link type that indicates blocked, then set this to the text that is used, such as 'Blocked by' |
-| `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://improvingflow.com/2023/03/31/blocked-column.html). <br />Example: `settings['blocked_statuses']=['Blocked']` |
+| `blocked_statuses` | A list of statuses that should be considered blocked. Before you start to use these, see this article on [why blocked statuses are usually a bad idea](https://blog.mikebowler.ca/2023/03/31/blocked-column/). <br />Example: `settings['blocked_statuses']=['Blocked']` |
 | `customfield_parent_links` | A list of custom_field ids that link to parent keys. If you're using Jira Advanced Roadmap then parent relationships will be set up with a custom field and this is how you set it up. |
 | `date_annotations` | A list of dates or times where something significant happened. See [annotations](#annotations) below |
 | `expedited_priority_names` | An array of priorities that will be considered to be expedited. ie ['Highest', 'Critical'] |
