@@ -140,6 +140,8 @@ daily_wip_by_age_chart
 
 {% imagesize /assets/images/daily_wip_by_age_chart.png:img alt="Daily WIP by Age" %}
 
+For documentation on options for this chart, see [`daily_wip_chart`](#daily_wip_chart)
+
 ----
 
 ## `daily_wip_by_blocked_stalled_chart`
@@ -152,6 +154,8 @@ daily_wip_by_blocked_stalled_chart
 
 {% imagesize /assets/images/daily_wip_by_blocked_stalled.png:img alt="Daily WIP by Blocked/Stalled" %}
 
+For documentation on options for this chart, see [`daily_wip_chart`](#daily_wip_chart)
+
 ----
 
 ## `daily_wip_by_parent_chart`
@@ -163,6 +167,8 @@ daily_wip_by_parent_chart
 ```
 
 See [this article](https://blog.mikebowler.ca/2025/01/29/wip-by-parent/) for more details on what we can learn from this chart.
+
+For documentation on options for this chart, see [`daily_wip_chart`](#daily_wip_chart)
 
 ----
 
@@ -181,10 +187,17 @@ daily_wip_chart do
   TEXT
   grouping_rules do |issue, rules|
     rules.label = issue.parent&.key || 'No parent'
-    rules.color = 'white' if rules.label == 'No parent' 
+    rules.color = 'white' if rules.label == 'No parent'
   end
 end
 ```
+
+| Grouping rule | Description |
+| --- | --- | 
+| label | The text description that will be used for this grouping |
+| color | The colour that will be used in the chart for this grouping |
+| highlight | True if this item should be highlighted (drawn differently) |
+| issue_hint | Extra text that will be visible in the tooltip |
 
 ----
 
@@ -196,7 +209,7 @@ Jira gives you the ability to link issues. So you can say that one issue depends
 dependency_chart
 ```
 
-Note that this requires graphviz to be installed. See the [GraphViz](https://graphviz.org/download/) website for installation instructions.
+Note that this requires graphviz to be installed. See the [GraphViz](https://graphviz.org/download/) website for installation instructions. If GraphViz can't be found then the report will still be generated but this paticular chart will be skipped.
 
 You can customize this chart with two different kinds of rules. One to describe the actual issues themselves and the other to describe the links between issues.
 

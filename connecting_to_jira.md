@@ -15,7 +15,7 @@ At the time of this writing (April 2024), Jira Cloud supports the API-Token. Jir
 
 # 1. Authentication with the API Token (Cloud)
 
-Navigate to https://id.atlassian.com/manage-profile/security/api-tokens and create an API token. Insert that token in the jira.config like this:
+Navigate to [https://id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens) and create an API token. Insert that token in the jira.config like this:
 
 ```json
 {

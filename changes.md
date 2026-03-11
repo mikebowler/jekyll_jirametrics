@@ -5,21 +5,24 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.23 (Not released)
+# v2.23 (March 10, 2026)
 
 * [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) now calculates the correlation coefficient for points vs cycletime
 * Anywhere a blocked/stalled reason is provided, if it was blocked by a flag then we look for a corresponding comment and display that as the reason for setting the flag.
 * If the `rolling_date_count` changes from one download to another, we force a full download rather than a partial, to ensure we have all the correct issues. Note that this will force a full download after you install this version as we never tracked what `rolling_date_count` you'd used before.
 * The expedited report has been removed from `standard_project`. This chart has often caused more confusion than it was worth and now other charts provide good representation of expedited / priority information. The chart will still be there if you like it, it just won't be shown by default.
 * We can annotate several of the charts with timestamps/dates where significant things happened. See [annotations]({% link config_project.md %}#annotations) for details.
-* Experimental support for getting Pull Request data from Github.
 * Tightened up the `anonymize` logic. Turns out that some data was not being properly anonymized.
 * The `info` command now ignores the Anonymizer since it makes no sense to fully anonymise data that we're mostly using for debugging.
-* DailyWIPChart and it's subclasses have supported `issue_hint` for a while. Now CycletimeScatterplot, CycletimeHistogram, and ThroughputChart do as well
+* DailyWIPChart and it's subclasses have supported `issue_hint` on the grouping rules for a while. Now CycletimeScatterplot, CycletimeHistogram, and ThroughputChart do as well
+* DailyWIPChart and it's subclasses now support `highlight` on the grouping rule. This will highlight these items within the group.
 * In `standard_project`, the ignore_issues parameter can now take a lambda. The lambda will accept an Issue and if it returns true, that issue will be ignored.
 * Bugs
   * Stitcher: Log an error, rather than raising an exception, if a chart can't be found. The chart might be missing because there just isn't any data and that shouldn't stop the whole process.
   * Fixed subtle bug where actions that happened just before the download didn't always show in the charts. For example, an items closed just before the download, might not show up in the cycletime scatterplot for several hours.
+  * For a Team Managed project with sprints enabled (ie behaving like a Scrum board), we weren't correctly identifying it as being scrum and therefore weren't showing the sprint specific charts, like the burndowns.
+* Experimental
+  * Support for getting Pull Request data from Github, and linking it back to Jira issues. This is almost certainly going to change before we're done so while you're welcome to try it out, consider this _"Undocumented and subject to change"_ for now.
 
 
 # v2.22 (February 20, 2026)
