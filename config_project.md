@@ -212,7 +212,7 @@ We can annotate several of the charts with timestamps/dates where significant th
 
 These spots will be annotated on the [`cycletime_scatterplot`]({% link config_charts.md %}#cycletime_scatterplot), [`throughput_chart`]({% link config_charts.md %}#throughput_chart), [`daily_wip_by_age_chart`]({% link config_charts.md %}#daily_wip_by_age_chart), [`daily_wip_by_blocked_stalled_chart`]({% link config_charts.md %}#daily_wip_by_blocked_stalled_chart), [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart), and [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
 ```ruby
-"date_annotations":
+"date_annotations": [
   { "date": "2025-12-05T10:00:00", "label": "Stuff happened" },
   { "date": "2025-12-08T10:00:00", "label": "More stuff" }
 ]
