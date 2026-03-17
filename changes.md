@@ -5,6 +5,22 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.23.1 (Not released)
+
+* We do better validation on the status names passed in as `blocked_statuses` or `stalled_statuses`. If the names specified don't match a name of an actual status, a warning is now displayed.
+* We've always obeyed the system setting for light / dark mode. Now we also make it manually selectable
+* [`daily_view`]({% link config_charts.md %}#daily_view) improvements
+  * Some pieces now start folded so it's less visually distracting.
+  * Also added some totals in places to provide more context.
+  * Made it more obvious when an aging item is not visible on the board.
+  * If due dates are passed, highlight them.
+* [DataQualityReport]({% link quality_report.md %})
+  * The check for items not being visible on the board previously only looked for statuses that weren't mapped to columns on the board. Now it also checks for items not in an active sprint (scrum only).
+* Bugs
+  * The second throughput chart in [`standard_project`]({% link config_standard_project.md %}) groups by the current status of the issue, which will be the actual completion status in most cases. If the status continues to change, however, this grouping is now incorrect. Changed the logic to group by the status at the time of completion instead.
+  * The (potential) fourth bar on the [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) wasn't documented in the report.
+  * The settings used to respond differently depending on whether you used the new or old hash syntax. Fixed.
+
 # v2.23 (March 10, 2026)
 
 * [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart) now calculates the correlation coefficient for points vs cycletime
