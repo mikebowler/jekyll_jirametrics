@@ -69,7 +69,6 @@ There are a lot of configuration items that can be set. Here's an index to get y
   * [`jira_config`]({% link config_top_level.md %}#jira_config)
   * [`timezone_offset`]({% link config_top_level.md %}#timezone_offset)
   * [`holiday_dates`]({% link config_top_level.md %}#holiday_dates)
-
   * [`project`]({% link config_project.md %})
     * [`file_prefix`]({% link config_project.md %}#file_prefix)
     * [`download`]({% link config_project.md %}#download)

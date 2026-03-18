@@ -5,15 +5,20 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.23.1 (Not released)
+# v2.24 (March 17, 2026)
 
 * We do better validation on the status names passed in as `blocked_statuses` or `stalled_statuses`. If the names specified don't match a name of an actual status, a warning is now displayed.
-* We've always obeyed the system setting for light / dark mode. Now we also make it manually selectable
+* Light mode / dark mode
+  * We've always obeyed the system setting for light / dark mode. Now we also make it manually selectable from a control in the top right corner of the report.
+  * Any time a colour is specified in a grouping rule, it can now be either a single colour like
+`rules.color = 'white'` or a pair `rules.color = ['white', 'red']` to be able to specify different colours for light mode (first value) and dark mode (second value)
 * [`daily_view`]({% link config_charts.md %}#daily_view) improvements
   * Some pieces now start folded so it's less visually distracting.
   * Also added some totals in places to provide more context.
   * Made it more obvious when an aging item is not visible on the board.
   * If due dates are passed, highlight them.
+* [`aging_work_table`]({% link config_charts.md %}#aging_work_table)
+  * We now highlight aging items that aren't visible on the board, along with the reason that they aren't.
 * [DataQualityReport]({% link quality_report.md %})
   * The check for items not being visible on the board previously only looked for statuses that weren't mapped to columns on the board. Now it also checks for items not in an active sprint (scrum only).
 * Bugs
