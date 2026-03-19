@@ -5,6 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.25 (Not released yet)
+
+* A common use case for throughput data is to take the samples and put them into a monte carlo simulation. We've now made this easier by creating a direct link to the Focused Objective [throughput forecaster](https://focusedobjective.com/throughput) with all the data prepopulated. This link can be found on the throughput chart.
+* New charts for working with pull request data
+  * [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot))
+  * [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram))
+* The [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart) and it's subclasses now support `label_hint` in the grouping rules. When specified, this gives more context in the tooltip text, both on the legend and in the chart itself. The only chart that actually uses that at the moment is the [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart).
+
 # v2.24 (March 17, 2026)
 
 * We do better validation on the status names passed in as `blocked_statuses` or `stalled_statuses`. If the names specified don't match a name of an actual status, a warning is now displayed.

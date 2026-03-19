@@ -103,6 +103,8 @@ There are a lot of configuration items that can be set. Here's an index to get y
             * [`link_rules`]({% link config_charts.md %}#link_rules)
           * [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart)
           * [`expedited_chart`]({% link config_charts.md %}#expedited_chart)
+          * [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram))
+          * [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot))
           * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown)
           * [`throughput_chart`]({% link config_charts.md %}#throughput_chart)
     * [`status_category_mapping`]({% link config_project.md %}#status_category_mapping)

@@ -330,6 +330,78 @@ expedited_chart
 
 ----
 
+## `pull_request_cycle_time_histogram`
+
+Plots the distribution of pull request cycle times. How many PRs closed in one day? Two days? This makes it easy to see how predictable PR turnaround is and whether there are outliers worth investigating.
+
+```ruby
+pull_request_cycle_time_histogram
+```
+
+The unit used for the x axis defaults to `:days` but can be changed to `:hours` or `:minutes`.
+
+```ruby
+pull_request_cycle_time_histogram do
+  cycletime_unit :hours
+end
+```
+
+You can also customize the grouping with `grouping_rules`.
+
+```ruby
+pull_request_cycle_time_histogram do
+  cycletime_unit :hours
+  grouping_rules do |pull_request, rules|
+    rules.label = pull_request.repo
+    rules.color = 'green'
+  end
+end
+```
+
+| Grouping rule | Description |
+|:--------|:-------|
+| label | The name used for the group |
+| color | The color used for the group. If no color is specified then it will be randomly chosen. |
+| ignore | Discard this item from the dataset |
+
+----
+
+## `pull_request_cycle_time_scatterplot`
+
+Plots the cycle time (y axis) against the date the pull request was closed (x axis), where cycle time is measured from when the PR was opened to when it was closed. By default, items are grouped by repository.
+
+```ruby
+pull_request_cycle_time_scatterplot
+```
+
+The unit used for the y axis defaults to `:days` but can be changed to `:hours` or `:minutes`.
+
+```ruby
+pull_request_cycle_time_scatterplot do
+  cycletime_unit :hours
+end
+```
+
+You can also customize the grouping with `grouping_rules`.
+
+```ruby
+pull_request_cycle_time_scatterplot do
+  cycletime_unit :hours
+  grouping_rules do |pull_request, rules|
+    rules.label = pull_request.repo
+    rules.color = 'green'
+  end
+end
+```
+
+| Grouping rule | Description |
+|:--------|:-------|
+| label | The name used for the group |
+| color | The color used for the group. If no color is specified then it will be randomly chosen. |
+| ignore | Discard this item from the dataset |
+
+----
+
 ## `sprint_burndown`
 
 Displays all the sprint burndowns that happened during this period. By default, this renders two charts - the top one is burndown by story points and the bottom one is burndown by story count. If you only want one or the other then you can customize that.
