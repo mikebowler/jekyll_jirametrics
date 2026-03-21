@@ -118,6 +118,38 @@ end
 
 ----
 
+## `cumulative_flow_diagram`
+
+A Cumulative Flow Diagram (CFD) shows how work accumulates across board columns over time. Each coloured band represents a workflow stage. A widening band means work is piling up in that stage — a bottleneck. Parallel band edges indicate smooth flow.
+
+Dashed lines and hatched regions indicate periods where an item moved backwards through the workflow.
+
+```ruby
+cumulative_flow_diagram
+```
+
+You can customise the chart using `column_rules`:
+
+```ruby
+cumulative_flow_diagram do
+  column_rules do |column, rule|
+    rule.color = '#4a90d9' if column.name == 'In Progress'
+    rule.label = 'WIP'    if column.name == 'In Progress'
+    rule.label_hint = 'Items actively being worked on' if column.name == 'In Progress'
+    rule.ignore         if column.name == 'Review'
+  end
+end
+```
+
+| Rule | Description |
+|:--------|:-------|
+| color | The colour used for the column band. Accepts any CSS colour string. If not set, a colour is chosen automatically. Note: only `#rrggbb` hex values will have the band fill automatically lightened; other formats are used as-is for both the border and fill. |
+| label | Overrides the column name shown in the chart legend. |
+| label_hint | Tooltip text shown when hovering over the legend item for this column. |
+| ignore | Exclude this column from the chart entirely. |
+
+----
+
 ## `daily_view`
 
 This report lists all the aging items in order of importance. We find that many teams aren't clear on what order they should discuss items in their daily meeting (standup / scrum / etc) so this chart lays them out in the correct order, sorted first by priority and then by age within that priority level. Most important at the top and least at the bottom.
@@ -193,11 +225,12 @@ end
 ```
 
 | Grouping rule | Description |
-| --- | --- | 
+| --- | --- |
 | label | The text description that will be used for this grouping |
 | color | The colour that will be used in the chart for this grouping |
 | highlight | True if this item should be highlighted (drawn differently) |
 | issue_hint | Extra text that will be visible in the tooltip |
+| label_hint | Optional tooltip text shown when hovering over the legend item. |
 
 ----
 
@@ -433,9 +466,10 @@ Rules options
 
 | Rule | Description |
 |:--------|:-------|
-| label|The name used for the group |
-| color |The color used for the group. If no color is specified then it will be randomly chosen. |
-| ignore |Discard this item from the dataset |
+| label | The name used for the group |
+| color | The color used for the group. If no color is specified then it will be randomly chosen. |
+| label_hint | Optional tooltip text shown when hovering over the legend item. Also used in the data point tooltip as "N items closed with _label_hint_ between ...". |
+| ignore | Discard this item from the dataset |
 
 Example
 
@@ -459,4 +493,18 @@ end
 ```
 
 {% imagesize /assets/images/throughput_chart.png:img alt="Throughput chart" %}
+
+----
+
+## `throughput_by_completed_resolution_chart`
+
+A variant of [`throughput_chart`](#throughput_chart) that groups completed items by the Jira status and resolution they had when they were done, rather than by issue type. This makes it easy to see how many items completed in each resolution category (e.g. Done/Fixed vs Done/Won't Fix).
+
+Hovering over a legend item shows the exact status name, status ID, and resolution. Hovering over a data point shows the count of items closed with that status/resolution combination for that week.
+
+```ruby
+throughput_by_completed_resolution_chart
+```
+
+This chart supports the same `grouping_rules` override as `throughput_chart` if you want to customise the grouping.
 
