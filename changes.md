@@ -13,7 +13,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
   * [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot))
   * [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram))
 * New chart [`throughput_by_completed_resolution_chart`]({% link config_charts.md %}#throughput_by_completed_resolution_chart). This was previously hardcoded in standard_project and is now it's own class
-* New chart [`cumulative_flow_diagram`]({% link config_charts.md %}#cumulative_flow_diagram). Shows how work accumulates across board columns over time, with support for customising column colours, labels, and tooltips.
+* New chart [`cumulative_flow_diagram`]({% link config_charts.md %}#cumulative_flow_diagram). Shows how work accumulates across board columns over time, with support for customising column colours, labels, and tooltips. Added to `standard_project`
 * The [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart) and it's subclasses now support `label_hint` in the grouping rules. When specified, this gives more context in the tooltip text, both on the legend and in the chart itself. The only chart that actually uses that at the moment is the [`daily_wip_by_parent_chart`]({% link config_charts.md %}#daily_wip_by_parent_chart).
 * The [`throughput_chart`]({% link config_charts.md %}#throughput_chart) now also support `label_hint`
 * Bugs

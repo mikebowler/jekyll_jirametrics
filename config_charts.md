@@ -128,7 +128,9 @@ Dashed lines and hatched regions indicate periods where an item moved backwards 
 cumulative_flow_diagram
 ```
 
-You can customise the chart using `column_rules`:
+The chart overlays two trend lines showing the **arrival rate** (how fast work enters the system) and the **departure rate** (how fast it leaves). Moving the mouse over the chart shows a Little's Law triangle at that point in time, labelled with **WIP** (items in progress), **cycle time** (average days to complete), and **throughput** (items per day). A checkbox above the chart toggles between the triangle and the normal data tooltips.
+
+You can customise the chart using `column_rules` and colour options:
 
 ```ruby
 cumulative_flow_diagram do
@@ -138,8 +140,13 @@ cumulative_flow_diagram do
     rule.label_hint = 'Items actively being worked on' if column.name == 'In Progress'
     rule.ignore         if column.name == 'Review'
   end
+  arrival_rate_line_color   'rgba(255,100,50,0.9)'
+  departure_rate_line_color '#80cbc4'
+  triangle_color            '#ffff00'
 end
 ```
+
+**`column_rules`**
 
 | Rule | Description |
 |:--------|:-------|
@@ -147,6 +154,23 @@ end
 | label | Overrides the column name shown in the chart legend. |
 | label_hint | Tooltip text shown when hovering over the legend item for this column. |
 | ignore | Exclude this column from the chart entirely. |
+
+**Colour options**
+
+| Option | Default | Description |
+|:--------|:-------|:-------|
+| `arrival_rate_line_color` | `rgba(255,138,101,0.85)` | Colour of the arrival rate trend line and its label. Pass `nil` to hide the line entirely. |
+| `departure_rate_line_color` | `rgba(128,203,196,0.85)` | Colour of the departure rate trend line and its label. Pass `nil` to hide the line entirely. |
+| `triangle_color` | dark/light pair | Colour of the Little's Law triangle sides. |
+
+To hide one or both trend lines:
+
+```ruby
+cumulative_flow_diagram do
+  arrival_rate_line_color   nil  # hide arrival trend line
+  departure_rate_line_color nil  # hide departure trend line
+end
+```
 
 ----
 
