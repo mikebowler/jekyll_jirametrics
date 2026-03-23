@@ -5,7 +5,16 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.25 (Not released yet)
+# v2.25.1 (March 23, 2026)
+
+* Added title element to report with the name specified in the project
+* Bugs
+  * On the CumulativeFlow diagram, when the mouse is too far to the right, we are no longer able to calculate average throughput or approximate average cycletime and so the lines should disappear. They weren't.
+  * In rare cases, an exception would be thrown during download. Fixed.
+  * Sometimes the folding logic would get mixed up and would fold too many charts at once. Fixed.
+  * Fixed misleading warning about issues not being visible.
+
+# v2.25 (March 22, 2026)
 
 * Changed default font to something more modern. If you don't like it, [it can be overridden]({% link config_file_html.md %}#css).
 * A common use case for throughput data is to take the samples and put them into a monte carlo simulation. We've now made this easier by creating a direct link to the Focused Objective [throughput forecaster](https://focusedobjective.com/throughput) with all the data prepopulated. This link can be found on the [`throughput_chart`]({% link config_charts.md %}#throughput_chart).
