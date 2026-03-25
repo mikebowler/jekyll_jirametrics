@@ -32,6 +32,7 @@ Take a look at [the source code](https://github.com/mikebowler/jirametrics/blob/
 | `status_category_mappings` | Allows you to specify extra statuses that have been deleted from Jira. Takes a hash of key/value pairs where the key is the status name and the value is the category. If you are specifying an ID as well as the name then use the format `"Review:4"` where the name is before the colon and the ID is after. |
 | `rolling_date_count` | Set the number of days of history we want to look at |
 | `no_earlier_than` | Restrict how far back we go by specifying one date |
+| `github_repos` | One or more GitHub repositories to download pull request data from. Accepts a single `'owner/repo'` string or an array of them. Requires the [GitHub CLI (`gh`)](https://cli.github.com/) to be installed and authenticated. |
 
 The value passed into `boards` is a little more complicated. It might be `:default` which assumes that we start the item when it enters the `In Progress` status category and stop it when it crosses into the `Done` status category. You might think that all boards would be configured that way and yet we find that only about half the boards we work with, do that.
 

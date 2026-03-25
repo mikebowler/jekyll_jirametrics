@@ -102,6 +102,27 @@ download do
 end
 ```
 
+`github_repo` specifies one or more GitHub repositories to download pull request data from. JiraMetrics links PRs to Jira issues by looking for issue keys (e.g. `SP-123`) in the branch name, PR title, and PR description. You can call `github_repo` multiple times, or pass several repositories in a single call. Both the `owner/repo` short form and full GitHub URLs are accepted.
+
+```ruby
+download do
+  rolling_date_count 90
+  github_repo 'owner/repo'
+end
+```
+
+To include pull requests from multiple repositories:
+
+```ruby
+download do
+  rolling_date_count 90
+  github_repo 'owner/repo1', 'owner/repo2'
+end
+```
+
+{: .important }
+Downloading GitHub pull request data requires the [GitHub CLI (`gh`)](https://cli.github.com/) to be installed and authenticated. Run `gh auth login` if you have not already done so.
+
 ## `board`
 
 The board section tells us what board we're pulling data for, and how we declare the [cycle time]({% link config_cycletime.md %}) for that board.

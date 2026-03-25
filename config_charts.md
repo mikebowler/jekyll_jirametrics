@@ -391,6 +391,9 @@ expedited_chart
 
 Plots the distribution of pull request cycle times. How many PRs closed in one day? Two days? This makes it easy to see how predictable PR turnaround is and whether there are outliers worth investigating.
 
+{: .important }
+These charts require GitHub pull request data to be downloaded. Add `github_repo` to your [`download` block]({% link config_project.md %}#download) and ensure the [GitHub CLI (`gh`)](https://cli.github.com/) is installed and authenticated. JiraMetrics links PRs to issues by searching for Jira issue keys in the branch name, PR title, and PR description.
+
 ```ruby
 pull_request_cycle_time_histogram
 ```
@@ -426,6 +429,9 @@ end
 ## `pull_request_cycle_time_scatterplot`
 
 Plots the cycle time (y axis) against the date the pull request was closed (x axis), where cycle time is measured from when the PR was opened to when it was closed. By default, items are grouped by repository.
+
+{: .important }
+These charts require GitHub pull request data to be downloaded. Add `github_repo` to your [`download` block]({% link config_project.md %}#download) and ensure the [GitHub CLI (`gh`)](https://cli.github.com/) is installed and authenticated. JiraMetrics links PRs to issues by searching for Jira issue keys in the branch name, PR title, and PR description.
 
 ```ruby
 pull_request_cycle_time_scatterplot
@@ -494,8 +500,25 @@ Rules options
 | color | The color used for the group. If no color is specified then it will be randomly chosen. |
 | label_hint | Optional tooltip text shown when hovering over the legend item. Also used in the data point tooltip as "N items closed with _label_hint_ between ...". |
 | ignore | Discard this item from the dataset |
+| last_day_of_period | The last day of the time bucket this item belongs to. When set for any issue, the chart switches from fixed weekly periods to the custom periods you define here. Accepts a `Date` or a `String` in `'YYYY-MM-DD'` format. Items whose `last_day_of_period` is not set are excluded from the chart. |
 
-Example
+The `last_day_of_period` rule is useful when you want to group throughput by calendar months (which vary in length), sprints, or any other irregular boundaries rather than the default Monday–Sunday weeks. Each unique `last_day_of_period` value becomes one data point on the x-axis.
+
+Example — grouping by calendar month:
+
+```ruby
+throughput_chart do
+  grouping_rules do |issue, rules|
+    rules.label = issue.type
+    rules.color = color_for(type: issue.type)
+    # Assign the issue to the last day of its completion month
+    stop_date = issue.started_stopped_dates.last
+    rules.last_day_of_period = Date.new(stop_date.year, stop_date.month, -1) if stop_date
+  end
+end
+```
+
+Example — grouping by issue type (default weekly buckets):
 
 ```ruby
 throughput_chart do

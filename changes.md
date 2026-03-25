@@ -5,6 +5,16 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.26 (March 25, 2026)
+
+* The [`throughput_chart`]({% link config_charts.md %}#throughput_chart) used to be locked to one week periods. Now the periods are configurable, meaning that you could group by months (which are different lengths) or by sprints, or even just Wed-Tue instead of the traditional Mon-Sun.
+* Improved the usefulness of the downloading messages. There was a lot of noise in there.
+* In the [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart) we only show the 4th bar when we're reporting on a scrum board. Now we also display it for an aggregated report as there might be a scrum board in the mix.
+* Bugs
+  * ProjectConfig.discard_changes_before was not validating that the specified status exists, potentially leading to subtle errors.
+  * Tightened up a potentially incorrect calculation of the 85% line in scatterplots if the issue has invalid data.
+  * Fixed bug in the [`cumulative_flow_diagram`]({% link config_charts.md %}#cumulative_flow_diagram) where we were showing an issue in the flow as soon as it became visible on the board, rather than when it started.
+
 # v2.25.1 (March 23, 2026)
 
 * Added title element to report with the name specified in the project
