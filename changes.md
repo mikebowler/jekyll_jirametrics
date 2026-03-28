@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.26.1 (March 26, 2026)
+
+* Fixed exception when doing a fresh download AND specifying a `discard_changes_before` block.
+
 # v2.26 (March 25, 2026)
 
 * The [`throughput_chart`]({% link config_charts.md %}#throughput_chart) used to be locked to one week periods. Now the periods are configurable, meaning that you could group by months (which are different lengths) or by sprints, or even just Wed-Tue instead of the traditional Mon-Sun.
