@@ -172,6 +172,8 @@ cumulative_flow_diagram do
 end
 ```
 
+See also, this article on [how to read a cumulative flow diagram](https://blog.mikebowler.ca/2026/03/27/cumulative-flow-diagram/)
+
 ----
 
 ## `daily_view`
