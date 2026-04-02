@@ -5,6 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.26.2 (April 2, 2026)
+
+* Pull requests were only getting correctly matched to issues if the issue key was in the branch name. That's the default behaviour when the branch is created from within Jira but is not always the convention otherwise.
+* Fixed bug in grouping rules for both [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram) and [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot)
+* [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot)
+  * Added the Jira issue key tool tip
+* Fixed incorrect calculation for cycle time
+
 # v2.26.1 (March 26, 2026)
 
 * Fixed exception when doing a fresh download AND specifying a `discard_changes_before` block.
