@@ -51,10 +51,11 @@ At a high level, there are four steps, and we'll walk through each.
 * If you want to contribute then [check out the contribution page]({% link contributing.md %})
 * Our security folks have concerns about people pulling potentially confidential information. [What can I tell them?]({% link security.md %})
 * How do I get started with [probabilistic forecasting]({% link forecasting.md %})?
+* We expose an [MCP server]({% link mcp.md %}) so that AI tooling can query from this data.
 
 # Presentation: Getting Great Metrics out of Jira
 
-This talk walks through the kinds of metrics you can pull with JiraMetrics and walks through many of the charts. The talk was given in November 2024 to the KanbanTO group, and shows off JiraMetrics v2.7.3
+This talk walks through the kinds of metrics you can pull with JiraMetrics and walks through many of the charts. The talk was given in November 2024 to the KanbanTO group, and shows off JiraMetrics v2.7.3. While that version is fairly old now, the talk is mostly still relevant.
 
 {% include responsive-embed url="https://www.youtube.com/embed/hzXeJr6GG3w" ratio="16:9" %}
 

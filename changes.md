@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.27 (April 4, 2026)
+
+* Experimental support for an MCP server so that AI tooling can [query into the data]({% link mcp.md %}). For example: "How many issues are currently stalled?" We are actively looking for feedback on this feature. What do you want to query that it doesn't currently support?
+
 # v2.26.2 (April 2, 2026)
 
 * Pull requests were only getting correctly matched to issues if the issue key was in the branch name. That's the default behaviour when the branch is created from within Jira but is not always the convention otherwise.
