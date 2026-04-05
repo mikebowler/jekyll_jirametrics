@@ -49,6 +49,25 @@ Because `.mcp.json` is per-directory, each directory has its own configuration p
 {: .tip }
 Add `.mcp.json` to your `.gitignore` if the file contains paths specific to your machine.
 
+## AI assistants that require a single-word command
+
+Some AI assistants (such as [apfel](https://github.com/Arthur-Ficial/apfel)) invoke MCP servers by executing a single command with no arguments. They cannot call `jirametrics mcp` because the space makes it look like a path to a binary named `jirametrics mcp` rather than a command with a subcommand.
+
+For these cases, JiraMetrics ships a second executable, `jirametrics-mcp`, which is equivalent to running `jirametrics mcp`. Pass any options you would normally pass to `jirametrics mcp` directly to `jirametrics-mcp`:
+
+```
+jirametrics-mcp --config /full/path/to/your/config.rb
+```
+
+With apfel, for example:
+
+```
+apfel --mcp $(which jirametrics-mcp) "what boards do we have?"
+```
+
+{: .tip }
+Apfel resolves the command as a file path rather than searching your PATH, so you need to pass the full path. `$(which jirametrics-mcp)` expands to the correct path at the time you run the command.
+
 ## Claude Desktop
 
 Claude Desktop loads all configured MCP servers at startup and runs them for the entire session. This works well if you only have one Jira instance to work with.
@@ -76,6 +95,14 @@ If you have multiple JiraMetrics instances with confidentiality requirements bet
 
 # Available tools
 
+## list_projects
+
+Returns all available projects with their issue count and data end date, plus any aggregate groups defined in your config. Claude will call this automatically when a question is ambiguous about which project it applies to, allowing it to ask you to clarify before running a broader query.
+
+This tool takes no parameters.
+
+Aggregate groups appear at the bottom of the output and can be used as the `project` parameter in any tool — they expand automatically to cover all constituent projects. For example, if your config defines a `forest` aggregate over Pine, Maple, Willow, Birch, and Cedar, you can ask "what's aging in forest?" and it will query all five.
+
 ## aging_work
 
 Returns all issues that have been started but not yet completed (work in progress), sorted from oldest to newest. Age is the number of days since the issue was started, calculated relative to the end of the downloaded data range — consistent with how the aging charts in the HTML report calculate age. Flow efficiency (FE) is also returned for each issue: the percentage of elapsed time the issue was actively being worked on.
@@ -84,6 +111,8 @@ Returns all issues that have been started but not yet completed (work in progres
 |:----------|:-----|:------------|
 | `min_age_days` | integer | Only return issues at least this many days old. Omit to return all. |
 | `project` | string | Only return issues from this project name. Omit to return all projects. |
+| `current_status` | string | Only return issues currently in this status (e.g. `"Review"`, `"In Progress"`). |
+| `current_column` | string | Only return issues whose current status maps to this board column (e.g. `"In Progress"`). |
 | `history_field` | string | Only return issues where this field ever had the value specified by `history_value` (e.g. `"priority"`). Must be used together with `history_value`. |
 | `history_value` | string | The value to look for in the change history of `history_field` (e.g. `"Highest"`). Must be used together with `history_field`. |
 | `ever_blocked` | boolean | Only return issues that were ever blocked. Blocked includes flagged items, issues in blocked statuses, and blocking issue links. |
@@ -104,6 +133,8 @@ Ask Claude naturally — it will choose the right parameters:
 - "What aging work is currently blocked?" — uses `currently_blocked: true`
 - "Show work in progress that has stalled" — uses `ever_stalled: true`
 - "What's stalled right now?" — uses `currently_stalled: true`
+- "Show me all aging work currently in Review" — uses `current_status: "Review"`
+- "Show me aging work in the In Progress column" — uses `current_column: "In Progress"`
 
 ## completed_work
 
@@ -137,6 +168,8 @@ Returns issues that have not yet been started (backlog items), sorted by creatio
 | Parameter | Type | Description |
 |:----------|:-----|:------------|
 | `project` | string | Only return issues from this project name. Omit to return all projects. |
+| `current_status` | string | Only return issues currently in this status (e.g. `"To Do"`, `"Backlog"`). |
+| `current_column` | string | Only return issues whose current status maps to this board column (e.g. `"Ready"`). |
 | `history_field` | string | Only return issues where this field ever had the value specified by `history_value`. Must be used together with `history_value`. |
 | `history_value` | string | The value to look for in the change history of `history_field`. Must be used together with `history_field`. |
 | `ever_blocked` | boolean | Only return issues that were ever blocked. |
@@ -150,3 +183,25 @@ Returns issues that have not yet been started (backlog items), sorted by creatio
 - "What's been sitting in the backlog the longest?" — oldest items appear first
 - "Show unstarted work in the Mobile project" — uses `project: "Mobile"`
 - "What backlog items have ever been flagged?" — uses `history_field: "Flagged"`, `history_value: "Impediment"`
+- "Show backlog items in the To Do status" — uses `current_status: "To Do"`
+
+## status_time_analysis
+
+Aggregates the time issues spend in each status or column, ranked by average days per issue. Useful for identifying bottlenecks and understanding where flow slows down. Time in status is counted from issue creation through to completion (or data end date for in-progress issues).
+
+Because the answer differs significantly depending on which issues are included, Claude will ask you to clarify the `issue_state` before running this tool if it isn't clear from context.
+
+| Parameter | Type | Description |
+|:----------|:-----|:------------|
+| `project` | string | Only include issues from this project. Omit to include all projects. |
+| `issue_state` | string | Which issues to include: `"aging"` (in progress), `"completed"`, `"not_started"` (backlog), or `"all"` (default). |
+| `group_by` | string | Group results by `"status"` (default) or `"column"`. Column-level grouping aggregates multiple statuses that map to the same board column. |
+
+### Examples
+
+- "In what status do issues spend the most time?" — no parameters needed
+- "In what column do issues spend the most time?" — uses `group_by: "column"`
+- "Where is work getting stuck for completed issues?" — uses `issue_state: "completed"`
+- "What's the bottleneck in the Mobile project?" — uses `project: "Mobile"`
+- "Where does aging work tend to pile up?" — uses `issue_state: "aging"`
+- "Which column is the biggest bottleneck?" — uses `group_by: "column"`, `issue_state: "completed"`
