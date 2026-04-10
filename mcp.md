@@ -5,7 +5,8 @@ title: MCP Server (AI Integration)
 ---
 
 {: .important }
-MCP support is new and the available tools will grow over time.
+This MCP support is a rapidly moving target as we test with different AI's and make tweaks for them. If this is something you want to use, you'll want to be on the latest prereleases, not just the stable releases. \
+Install those with `gem install jirametrics --pre`
 
 # What is MCP?
 

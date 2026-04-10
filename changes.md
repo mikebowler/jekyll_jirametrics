@@ -5,6 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.28 (April 10, 2026)
+
+* More support for AI through our MCP server. See our [MCP docs]({% link mcp.md %}) for details on what we currently are capable of.
+* We now download issues that were linked from the primary issues so that we can provide better context.
+* The downloading log messages were getting very noisy so we've cleaned them up.
+* Bug: Fixed a problem where we didn't always pick up changes in sub-tasks and parent issues.
+* Bug: `first_time_visible_on_board` wasn't always working properly for Scrum boards (its always been fine for Kanban).
+
 # v2.27 (April 4, 2026)
 
 * Experimental support for an MCP server so that AI tooling can [query into the data]({% link mcp.md %}). For example: "How many issues are currently stalled?" We are actively looking for feedback on this feature. What do you want to query that it doesn't currently support?
