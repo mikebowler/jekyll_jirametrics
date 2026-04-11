@@ -5,6 +5,12 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.28.1
+
+* Added a new entry to the FAQ: [On a team-managed kanban board, why does the data show more items in progress than I see on the board?]({% link faq.md %}#team-managed-kanban-backlog)
+* Bugs:
+  * Fixed bug where in some cases the first column appears at the end.
+
 # v2.28 (April 10, 2026)
 
 * More support for AI through our MCP server. See our [MCP docs]({% link mcp.md %}) for details on what we currently are capable of.
