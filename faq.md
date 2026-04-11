@@ -70,9 +70,9 @@ Check out the [stitcher]({% link stitcher.md %})
 {: #team-managed-kanban-backlog }
 ## On a team-managed kanban board, why does the data show more items in progress than I see on the board?
 
-In a team-managed kanban project, Jira allows items to be in an in-progress status while still sitting in the backlog — they are not visible on the board until you explicitly drag them across. Unfortunately, Jira does not record this "moved to board" action distinctly in the issue changelog. Both dragging an item onto the board and simply reordering items within the backlog produce an identical `Rank` changelog entry, so there is no way to tell them apart from the issue data alone.
+In a team-managed kanban project, Jira allows items to be in an in-progress status while still sitting in the backlog — they are not visible on the board until you explicitly drag them across. Unfortunately, Jira does not record this _"moved to board"_ action distinctly in the issue changelog. Both dragging an item onto the board and simply reordering items within the backlog produce an identical `Rank` changelog entry, so there is no way to tell them apart from the issue data alone.
 
-This means JiraMetrics cannot reliably distinguish "in-progress and on the board" from "in-progress but still in the backlog." Items in the latter state will be counted as in-progress in the metrics even though they are not visible on the board.
+This means JiraMetrics cannot distinguish between _"in-progress and on the board"_ and _"in-progress but still in the backlog."_ Items in the latter state will be counted as in-progress in the metrics even though they are not visible on the board.
 
 The only workaround available today is to use a separate status for backlog items — one that is not mapped to any board column — so that items only enter an in-progress status when they are genuinely being worked on. This is good practice regardless, as it keeps your flow data accurate.
 
