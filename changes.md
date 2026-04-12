@@ -5,11 +5,14 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-# v2.28.1
+# v2.29
 
+* New chart [`wip_by_column_chart`]({% link config_charts.md %}#wip_by_column_chart) to highlight WIP limits.
 * Added a new entry to the FAQ: [On a team-managed kanban board, why does the data show more items in progress than I see on the board?]({% link faq.md %}#team-managed-kanban-backlog)
-* Bugs:
-  * Fixed bug where in some cases the first column appears at the end.
+* [`aging_work_in_progress_chart`]({% link config_charts.md %}#aging_work_in_progress_chart)
+  * Bug: sometimes showed the first column at the end.
+  * Bug: would sometimes show more columns than it should
+  * Bug: Fixed exception when used in an aggregated project
 
 # v2.28 (April 10, 2026)
 

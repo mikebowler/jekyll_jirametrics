@@ -545,6 +545,35 @@ end
 
 ----
 
+## `wip_by_column_chart`
+
+Shows how much time each board column has spent at different WIP (Work in Progress) levels over the reporting period. Each column on the x axis is a board column; each row on the y axis is a WIP level (the number of items in that column at the same time). A horizontal bar at a given intersection shows what percentage of the total time that column spent at that WIP level — a wider bar means more time was spent there.
+
+{% imagesize /assets/images/wip_by_column_chart.png:img alt="WIP by column chart" %}
+
+Dashed lines show the minimum and maximum WIP limits configured on the board. Columns with no activity (always at WIP 0) are trimmed from both ends automatically.
+
+```ruby
+wip_by_column_chart
+```
+
+Optionally enable WIP limit recommendations, which analyse the historical data and suggest adjustments:
+
+```ruby
+wip_by_column_chart do
+  show_recommendations
+end
+```
+
+When `show_recommendations` is enabled, the chart calculates the 85th-percentile WIP level for each column — the WIP at which 85% of the total column time is accounted for — and draws a recommendation line on the chart. Below the chart, a plain-language summary is shown for each column where an adjustment is warranted:
+
+- _"Add a WIP limit to column 'X' — suggested maximum: N"_ — no limit is currently set
+- _"Lower the WIP limit for 'X' from M to N"_ — the current limit is higher than the data suggests is needed
+- _"Raise the WIP limit for 'X' from M to N"_ — the team is regularly working above the current limit
+- _"Almost nothing passes through column 'X'. Do we still need it?"_ — 85% of the time this column has zero items
+
+----
+
 ## `throughput_by_completed_resolution_chart`
 
 A variant of [`throughput_chart`](#throughput_chart) that groups completed items by the Jira status and resolution they had when they were done, rather than by issue type. This makes it easy to see how many items completed in each resolution category (e.g. Done/Fixed vs Done/Won't Fix).

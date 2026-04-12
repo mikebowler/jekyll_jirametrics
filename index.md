@@ -110,6 +110,7 @@ There are a lot of configuration items that can be set. Here's an index to get y
           * [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown)
           * [`throughput_chart`]({% link config_charts.md %}#throughput_chart)
           * [`throughput_by_completed_resolution_chart`]({% link config_charts.md %}#throughput_by_completed_resolution_chart)
+          * [`wip_by_column_chart`]({% link config_charts.md %}#wip_by_column_chart)
     * [`status_category_mapping`]({% link config_project.md %}#status_category_mapping)
     * [`anonymize`]({% link config_project.md %}#anonymize)
     * [`standard_project`]({% link config_standard_project.md %})
