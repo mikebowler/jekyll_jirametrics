@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.29.1 (April 13, 2006)
+
+* Fixed exception when the issue has never had a priority. This is theoretically impossible and yet it's been seen in production now.
+
 # v2.29 (April 12, 2026)
 
 * New chart [`wip_by_column_chart`]({% link config_charts.md %}#wip_by_column_chart) to highlight WIP limits.
