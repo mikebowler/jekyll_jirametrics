@@ -5,6 +5,10 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.29.2 (April 16, 2006)
+
+* Fixed exception in aggregated reports when using [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart)
+
 # v2.29.1 (April 13, 2006)
 
 * Fixed exception when the issue has never had a priority. This is theoretically impossible and yet it's been seen in production now.
