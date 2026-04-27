@@ -63,6 +63,19 @@ Instructions are [over here]({% link config_file_html.md %}#css).
 
 Check out the [stitcher]({% link stitcher.md %})
 
+{: parent_key }
+## JiraMetrics isn't correctly finding the parent issue for issues on my board.
+
+Jira has a confusing history of how it has attached parents at different points in the past. For this reason, we try several different ways of identifying the parent. One of the ways that it uses is a specific custom field, which is different in every instance, so we can't automatically determine it.
+
+Let's assume that you've identified a ticket `ABC-001` and it has a parent ticket `ABC-002` that is not being linked correctly. You need to find the JSON file for ABC-001 which will likely be found in the directory  `{target_path}/{file_prefix}_issues` or something like `target/sample_issues`. Inside that file, you need to search for the parent key, `ABC-002` in this case. You'll find it defined in a custom field.
+
+If you then take that custom field and put it in the settings as shown, then parents will start to display properly.
+
+```
+settings['customfield_parent_links'] = ['customfield_10019']
+```
+
 ----
 
 # Data issues
