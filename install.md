@@ -62,3 +62,7 @@ Or for any platform, from source, inside a pkgsrc checkout:
 cd devel/ruby-jirametrics
 bmake install
 ```
+
+### Docker
+
+What if you want to deploy this as a docker image? The short answer is that we don't provide any direct support for this but there is another project that does. [Check it out.](https://github.com/magicdude4eva/docker-jirametrics) 
