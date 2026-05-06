@@ -5,6 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.29.3 ()
+
+* Introduced some retry logic to get past transient network errors.
+* Updated all chart colours to use the [Okabe-Ito palette](https://jfly.uni-koeln.de/color/), which is designed to be distinguishable by people with the most common forms of colour vision deficiency (colour blindness). If you prefer the original colours, see [Reverting to the legacy colour scheme]({% link config_file_html.md %}#reverting-to-the-legacy-colour-scheme).
+
 # v2.29.2 (April 16, 2006)
 
 * Fixed exception in aggregated reports when using [`aging_work_bar_chart`]({% link config_charts.md %}#aging_work_bar_chart)
