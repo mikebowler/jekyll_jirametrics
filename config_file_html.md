@@ -84,3 +84,17 @@ end
 ```
 
 One caveat is that the dependency report is currently not configurable. This is a limitation of the tool we currently use to generate that report.
+
+### Reverting to the legacy colour scheme
+
+The default colours were updated to improve accessibility for people with colour vision deficiencies (colour blindness). If you prefer the original colour scheme, you can opt out by using the [legacy_colors.css](https://github.com/mikebowler/jirametrics/blob/main/lib/jirametrics/html/legacy_colors.css) file that ships with jirametrics.
+
+Save a copy of that file alongside your config file, then point `include_css` at it:
+
+```ruby
+project name: 'foo' do
+  setting['include_css'] = './legacy_colors.css'
+end
+```
+
+The file covers both light mode and dark mode colours.
