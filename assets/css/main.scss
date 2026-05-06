@@ -15,25 +15,29 @@ div.event {
 		font-weight: bold;
 		text-align: right;
 	}
-	border: 1px solid green; 
-	background: #F1FDF1;
+	border: 1px solid #ccc;
+	background: #fafafa;
+	border-radius: 0.4em;
 }
 
+p.tip {
+	background: #EBF7F9;
+	border: 1px solid #3D9EA8;
+	border-left: 4px solid #3D9EA8;
+	border-radius: 0.4em;
+	padding: 0.5em;
+}
 p.tip::before {
 	font-weight: bold;
 	content: "Tip: ";
 }
-p.tip {
-	border: 1px solid green; 
-	background: #EAFFF1;
-	padding: 0.2em 0.5em;
-}
 
 .important {
-	border: 1px solid red;
-	background: #FFCCCB;
+	background: #FDF4E7;
+	border: 1px solid #B07A2A;
+	border-left: 4px solid #B07A2A;
+	border-radius: 0.4em;
 	padding: 0.5em;
-	border-radius: 0.5em;
 }
 .important::before {
 	font-weight: bold;
