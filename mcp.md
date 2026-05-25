@@ -4,23 +4,24 @@ permalink: /mcp/
 title: MCP Server (AI Integration)
 ---
 
-{: .important }
-This MCP support is a rapidly moving target as we test with different AI's and make tweaks for them. If this is something you want to use, you'll want to be on the latest prereleases, not just the stable releases. \
-Install those with `gem install jirametrics --pre`
+The JiraMetrics MCP server connects Claude directly to your Jira data. Ask questions in plain English and get answers that would otherwise require custom queries or reports:
 
-# What is MCP?
-
-[MCP (Model Context Protocol)](https://modelcontextprotocol.io) is a standard that allows AI assistants such as Claude to directly query data from tools like JiraMetrics. Instead of copying and pasting data into a conversation, the AI can query your Jira data directly and reason about it in context.
-
-For example, once configured, you can ask Claude things like:
 - "Show me all aging work older than 60 days in the Mobile team project"
 - "What's been sitting in Review the longest?"
 - "How many items were cancelled last month?"
 - "What backlog items have ever been flagged as blocked?"
 
+# What is MCP?
+
+[MCP (Model Context Protocol)](https://modelcontextprotocol.io) is a standard that allows AI assistants such as Claude to directly query data from tools like JiraMetrics. Instead of copying and pasting data into a conversation, the AI can query your Jira data directly and reason about it in context.
+
 # Setup
 
-## Claude Code (recommended)
+{: .tip }
+For the latest MCP features, install the prerelease: `gem install jirametrics --pre`
+
+
+## Claude Code
 
 Claude Code supports per-project MCP configuration via a `.mcp.json` file in your project directory. This is the recommended approach because each directory can point to a different Jira instance, keeping client data fully isolated.
 
