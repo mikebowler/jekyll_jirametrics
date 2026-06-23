@@ -5,6 +5,12 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# v2.31 (June 23)
+
+* We now download work log data, if you're doing time tracking.
+* Bug: In some cases, GitHub repos weren't returning any data because the protocol had been stripped out.
+* Improved retry logic in a couple of cases.
+
 # v2.30 (May 6, 2026)
 
 * **Updated all chart colours** to use the [Okabe-Ito palette](https://jfly.uni-koeln.de/color/), which is designed to be distinguishable by people with the most common forms of colour vision deficiency (colour blindness). If you prefer the original colours, see [Reverting to the legacy colour scheme]({% link config_file_html.md %}#reverting-to-the-legacy-colour-scheme).
