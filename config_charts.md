@@ -49,7 +49,7 @@ Rules options
 
 For items that are started but not finished, show a whole variety of information in a tabular format. This includes additional information not  found in other charts such as the parent hierarchy, what `fix_version` this issue is in (if any), what sprints it's in (if any), due dates, etc.
 
-{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+{% imagesize /assets/images/aging_work_table.webp:img alt="Aging work table" %}
 
 ----
 
@@ -73,7 +73,7 @@ Rules options
 | color |The color used for the group. If no color is specified then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
 
-{% imagesize /assets/images/cycletime_histogram.png:img alt="Cycletime Histogram" %}
+{% imagesize /assets/images/cycletime_histogram.webp:img alt="Cycletime Histogram" %}
 
 ----
 
@@ -93,7 +93,7 @@ You can customize this report with `grouping_rules` as shown below.
 | color |The color used for the group. If a colour isn't set then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
 
-{% imagesize /assets/images/cycletime_scatterplot.png:img alt="Cycletime Scatterplot" %}
+{% imagesize /assets/images/cycletime_scatterplot.webp:img alt="Cycletime Scatterplot" %}
 
 Example
 
@@ -184,7 +184,7 @@ The expectation is that you can use just this view during your daily meeting, wi
 
 To understand the motivation for this chart, see [this article](https://blog.mikebowler.ca/2025/07/14/jirametrics/).
 
-{% imagesize /assets/images/daily_view.png:img alt="Daily View" %}
+{% imagesize /assets/images/daily_view.webp:img alt="Daily View" %}
 
 ----
 
@@ -196,7 +196,7 @@ For each day in the period, how many items were in progress? Items are colour co
 daily_wip_by_age_chart
 ```
 
-{% imagesize /assets/images/daily_wip_by_age_chart.png:img alt="Daily WIP by Age" %}
+{% imagesize /assets/images/daily_wip_by_age_chart.webp:img alt="Daily WIP by Age" %}
 
 For documentation on options for this chart, see [`daily_wip_chart`](#daily_wip_chart)
 
@@ -210,7 +210,7 @@ For each day in the period, how many items are blocked (Flagged in Jira terms) o
 daily_wip_by_blocked_stalled_chart
 ```
 
-{% imagesize /assets/images/daily_wip_by_blocked_stalled.png:img alt="Daily WIP by Blocked/Stalled" %}
+{% imagesize /assets/images/daily_wip_by_blocked_stalled.webp:img alt="Daily WIP by Blocked/Stalled" %}
 
 For documentation on options for this chart, see [`daily_wip_chart`](#daily_wip_chart)
 
@@ -349,7 +349,7 @@ end
 
 Graphs the estimates (y axis) against the actual cycle time of the item. It's useful to be able to see how much correlation there is between the estimates and the actual time it took. By default, it uses _story points_ for the estimate although that can be configured as seen below.
 
-{% imagesize /assets/images/estimate_accuracy_chart.png:img alt="Estimate accuracy chart" %}
+{% imagesize /assets/images/estimate_accuracy_chart.webp:img alt="Estimate accuracy chart" %}
 
 {: .tip }
 There is never any correlation between the two, which begs the question _"why we even do story point estimates if they're never accurate?"_ More on that [here](https://blog.mikebowler.ca/2023/07/08/per-story-estimates/).
@@ -541,7 +541,7 @@ throughput_chart do
 end
 ```
 
-{% imagesize /assets/images/throughput_chart.png:img alt="Throughput chart" %}
+{% imagesize /assets/images/throughput_chart.webp:img alt="Throughput chart" %}
 
 ----
 
@@ -549,7 +549,7 @@ end
 
 Shows how much time each board column has spent at different WIP (Work in Progress) levels over the reporting period. Each column on the x axis is a board column; each row on the y axis is a WIP level (the number of items in that column at the same time). A horizontal bar at a given intersection shows what percentage of the total time that column spent at that WIP level — a wider bar means more time was spent there.
 
-{% imagesize /assets/images/wip_by_column_chart.png:img alt="WIP by column chart" %}
+{% imagesize /assets/images/wip_by_column_chart.webp:img alt="WIP by column chart" %}
 
 Dashed lines show the minimum and maximum WIP limits configured on the board. Columns with no activity (always at WIP 0) are trimmed from both ends automatically.
 

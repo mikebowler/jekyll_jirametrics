@@ -9,7 +9,7 @@ One of the most common reasons we want to look at metrics is so that we can more
 
 JiraMetrics can generate a single-item forecast for items that are already in progress. You can see this on the [Aging Work Table]({% link config_charts.md %}#aging_work_table), where the forecast column will show you how many days are likely remaining. If a forecast can't be generated then an error will be shown with the details of why that is.
 
-{% imagesize /assets/images/aging_work_table.png:img alt="Aging work table" %}
+{% imagesize /assets/images/aging_work_table.webp:img alt="Aging work table" %}
 
 ## Monte Carlo forecasting
 
