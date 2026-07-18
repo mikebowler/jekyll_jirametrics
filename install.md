@@ -3,6 +3,10 @@ layout: page
 permalink: /install/
 title: Installation / Upgrade instructions
 ---
+
+{: .important }
+Version 2.31 is the last version that will support ruby 3.0. Starting with JiraMetrics 3.0.0, we will require Ruby v3.4 or higher, which is supported today by both CRuby and JRuby. Why are we updating the minimum required version? 3.4 has already been out for a year and a half and even 3.2 is no longer supported by the ruby community. Nobody supports 3.0 anymore. This upgrade is seriously overdue, and allows us to use new newer language features.
+
 JiraMetrics should run on any Ruby runtime that supports version 3.0 or higher. Instructions below are for CRuby, which is also known as MRI, and for JRuby, which runs on the Java Virtual Machine (JVM).
 
 Unless you have a reason to want to run on the JVM, I'd recommend using CRuby.
