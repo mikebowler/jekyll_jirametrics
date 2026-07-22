@@ -5,6 +5,9 @@ layout: home
 	{% imagesize /assets/images/site_icon.png:img alt="JiraMetrics Logo" %}
 </div>
 
+{: .important }
+v3.0 has potentially breaking changes. Read the [changelog]({% link changes.md %}) carefully.
+
 # What is it?
 
 In a nutshell, it's a way to pull useful metrics out of Jira&trade;[^jira].

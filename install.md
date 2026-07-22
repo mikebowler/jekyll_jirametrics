@@ -5,9 +5,9 @@ title: Installation / Upgrade instructions
 ---
 
 {: .important }
-Version 2.31 is the last version that will support ruby 3.0. Starting with JiraMetrics 3.0.0, we will require Ruby v3.4 or higher, which is supported today by both CRuby and JRuby. Why are we updating the minimum required version? 3.4 has already been out for a year and a half and even 3.2 is no longer supported by the ruby community. Nobody supports 3.0 anymore. This upgrade is seriously overdue, and allows us to use new newer language features.
+Version 3.0 now requires a newer version of ruby. See the [changelog]({% link changes.md %}) for details.
 
-JiraMetrics should run on any Ruby runtime that supports version 3.0 or higher. Instructions below are for CRuby, which is also known as MRI, and for JRuby, which runs on the Java Virtual Machine (JVM).
+JiraMetrics should run on any Ruby runtime that supports version **3.4** or higher. Instructions below are for CRuby, which is also known as MRI, and for JRuby, which runs on the Java Virtual Machine (JVM).
 
 Unless you have a reason to want to run on the JVM, I'd recommend using CRuby.
 
@@ -16,7 +16,7 @@ Unless you have a reason to want to run on the JVM, I'd recommend using CRuby.
 ### Install
 
 {: .tip }
-If you're on a mac, you may have noticed that Ruby is already installed on your machine. The bad news is that it's likely too old to be useful. Run `ruby -v` and if the version is less than 3.0 then you'll still need to install a newer version.
+If you're on a mac, you may have noticed that Ruby is already installed on your machine. The bad news is that it's likely too old to be useful. Run `ruby -v` and if the version is less than 3.4 then you'll still need to install a newer version.
 
 1. Install CRuby itself with [the instructions here](https://www.ruby-lang.org/en/downloads/). If you're using Windows, there is a one-click installer. If you're on almost any other platform, your local package manager will have a way to do that. In my case, I'm using a mac so it's as simple as `brew install ruby`
 2. Once Ruby is installed, you can install JiraMetrics with this command.
@@ -34,7 +34,7 @@ When it's already installed, you can upgrade to the lastest with `gem install ji
 
 ### Install
 
-1. Install [JRuby](https://www.jruby.org) 9.4 or higher. In my case that's as simple as `brew install jruby`. If you aren't using `brew` then see the [JRuby download instructions](https://www.jruby.org/download).
+1. Install [JRuby](https://www.jruby.org) 10.0.6 or higher. In my case that's as simple as `brew install jruby`. If you aren't using `brew` then see the [JRuby download instructions](https://www.jruby.org/download).
 2. Set the JAVA_OPTS environment variable as shown here. If you don't do that then the tool will hang when it tries to generate the dependency report.
 ```
 export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"

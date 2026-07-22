@@ -3,4 +3,15 @@
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
 
+<!-- Mermaid diagrams: only loaded on pages that opt in with `mermaid: true` in their front matter.
+     Kramdown renders a ```mermaid fenced block as an element with class `language-mermaid`, so we
+     point mermaid.run at that instead of its default `.mermaid` selector. -->
+{% if page.mermaid %}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false });
+  await mermaid.run({ querySelector: '.language-mermaid' });
+</script>
+{% endif %}
+
 <!-- end custom head snippets -->

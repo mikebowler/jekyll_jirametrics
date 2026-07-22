@@ -400,7 +400,7 @@ These charts require GitHub pull request data to be downloaded. Add `github_repo
 pull_request_cycle_time_histogram
 ```
 
-The unit used for the x axis defaults to `:days` but can be changed to `:hours` or `:minutes`.
+The unit used for the x axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up — a PR open for 20 minutes shows as 1 hour, not 0.
 
 ```ruby
 pull_request_cycle_time_histogram do
@@ -439,7 +439,7 @@ These charts require GitHub pull request data to be downloaded. Add `github_repo
 pull_request_cycle_time_scatterplot
 ```
 
-The unit used for the y axis defaults to `:days` but can be changed to `:hours` or `:minutes`.
+The unit used for the y axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up — a PR open for 20 minutes shows as 1 hour, not 0.
 
 ```ruby
 pull_request_cycle_time_scatterplot do

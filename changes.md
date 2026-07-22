@@ -5,6 +5,28 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+
+# v3.0
+
+{: .important }
+v3.0 has potentially breaking changes. Read the updates carefully.
+
+* We now require ruby 3.4
+  * We've had a minimum ruby of 3.0 for years now and that version of ruby itself hasn't been supported for some time. We've finally upgraded what we require to ruby v3.4 or higher. This allows us to use new language features and simplify the code in many ways.
+  * Current versions of both [CRuby](https://www.ruby-lang.org/en/) and [JRuby](https://www.jruby.org) work well with this.
+  * We've also taken this opportunity to clean up the code so there are lots of internal changes. Nothing should have changed in the public interface, but if you were relying on internal behaviour, be aware that things have changed.
+* **Removed methods and config options that have been deprecated for a long time.** As is customary for a major release, we've cleaned out our deprecated APIs. Everything removed here has been printing a deprecation warning since 2024 — **at least a year and a half**. If your config runs today without any deprecation warnings, none of this affects you. Removed:
+  * `daily_wip_by_type` → use [`daily_wip_chart`]({% link config_charts.md %}#daily_wip_chart)
+  * `story_point_accuracy_chart` → renamed to [`estimate_accuracy_chart`]({% link config_charts.md %}#estimate_accuracy_chart)
+  * `discard_changes_before` at the chart/file level → use it at the project level
+  * `expedited_priority_names` → set it in `settings`
+  * `blocked_color` / `stalled_color` settings → set these via CSS
+  * cycletime `start_at`/`stop_at` blocks must now return a `ChangeItem` or nil, not a bare time (e.g. use `time_created` instead of `created`)
+* Bug: The [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart wasn't counting issues that were created directly inside a sprint (as opposed to being added to it later). Jira never records that initial sprint membership as a change in the issue's history, so those issues were invisible to the burndown and the sprint appeared to start with fewer items than it actually had.
+* Bug: [`first_time_added_to_active_sprint`]({% link config_cycletime.md %}) (a proxy for 'ready' on boards with no explicit ready status) could report a cycle time start that fell *after* the issue had already finished — for example when an issue that was already done was later added to a sprint. It now ignores any sprint the issue only joined after it was already done.
+* Bug: The two pull request charts disagreed on how they measured cycle time in days. The [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram) counted elapsed 24-hour periods while the [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot) counted calendar days, so a pull request opened and closed either side of midnight showed as 1 day on one chart and 2 days on the other. Both now count calendar days. The scatterplot also *rounded* partial hours and minutes, which could report a short pull request as taking 0 hours; both charts now round up, so any non-zero cycle time is at least 1 of the chosen unit.
+* The `cycletime_unit` option on the pull request charts gained a `:hours24` unit. Where `:days` counts calendar days (midnight to midnight), `:hours24` counts elapsed 24-hour periods measured from the clock — the two differ for work that crosses midnight.
+
 # v2.31 (June 23)
 
 * We now download work log data, if you're doing time tracking.
