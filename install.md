@@ -32,9 +32,14 @@ When it's already installed, you can upgrade to the lastest with `gem install ji
 
 ## JRuby
 
+How you run the commands in this section depends on how JRuby is installed:
+
+- **As a separate binary** installed alongside another Ruby: prefix each command with `jruby -S` (as shown below) so it runs under JRuby instead of your default Ruby.
+- **As your active Ruby**, for example through a version manager like [rvm](https://rvm.io), [rbenv](https://github.com/rbenv/rbenv), or [asdf](https://asdf-vm.com): `ruby`, `gem`, and `jirametrics` already point at JRuby, so drop the `jruby -S` prefix and run the commands exactly as in the CRuby instructions above.
+
 ### Install
 
-1. Install [JRuby](https://www.jruby.org) 10.0.6 or higher. In my case that's as simple as `brew install jruby`. If you aren't using `brew` then see the [JRuby download instructions](https://www.jruby.org/download).
+1. Install [JRuby](https://www.jruby.org/download) 10 or higher.
 2. Set the JAVA_OPTS environment variable as shown here. If you don't do that then the tool will hang when it tries to generate the dependency report.
 ```
 export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"
@@ -43,7 +48,7 @@ export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.
 ```
 jruby -S gem install jirametrics
 ```
-4. You will now invoke the tool with `jruby -S jirametrics` instead of just `jirametrics` as the rest of the instructions say. Everything else is the same.
+4. You will now invoke the tool as `jruby -S jirametrics` (or just `jirametrics` when JRuby is your active Ruby) instead of the plain `jirametrics` the rest of the instructions use. Everything else is the same.
 5. Optional: If you want to use the dependency report then you'll want to install [graphviz](https://graphviz.org/download/)
 
 ### Upgrade
