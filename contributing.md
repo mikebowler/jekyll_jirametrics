@@ -20,7 +20,7 @@ Then run `npm install` to install the javascript dependencies. Javascript? Yes, 
 
 # How the code is organized
 
-This section is a map, not a manual. It's here to give you a sense of how the pieces fit together and where to start looking — the details you'll pick up faster by reading the code itself.
+This section is a map, not a manual. It's here to give you a sense of how the pieces fit together and where to start looking - the details you'll pick up faster by reading the code itself.
 
 ## What it does, in one sentence
 
@@ -28,7 +28,7 @@ JiraMetrics downloads the history of your Jira issues, builds a model of what ha
 
 ## The pipeline
 
-Everything is a straight line from a config file to an HTML report. There are two halves — **download** and **export** — and they meet at a folder full of cached JSON.
+Everything is a straight line from a config file to an HTML report. There are two halves - **download** and **export** - and they meet at a folder full of cached JSON.
 
 ```mermaid
 flowchart TD
@@ -48,28 +48,28 @@ The two halves are deliberately separate. **Download hits the network and writes
 
 ## The parts, and where to start looking
 
-**CLI — `lib/jirametrics.rb`** (plus `bin/jirametrics`, `bin/jirametrics-mcp`). A [Thor](https://github.com/rails/thor) command class. The commands are `download`, `export`, `go` (both), `info` (dump one issue), and `mcp`. Every command loads the config, then delegates to `Exporter.instance`.
+**CLI - `lib/jirametrics.rb`** (plus `bin/jirametrics`, `bin/jirametrics-mcp`). A [Thor](https://github.com/rails/thor) command class. The commands are `download`, `export`, `go` (both), `info` (dump one issue), and `mcp`. Every command loads the config, then delegates to `Exporter.instance`.
 
-**Config DSL — `exporter.rb`, `project_config.rb`, and the `*_config.rb` family.** The config file is not YAML — it's Ruby, `instance_eval`'d, so a config can contain real logic. `Exporter.configure` builds an `Exporter` holding one or more `ProjectConfig`s; each project has a `DownloadConfig` and one or more output files (`FileConfig`). An HTML output file carries an `HtmlReportConfig`, which is what actually declares the charts (a CSV file declares columns instead). The user-facing side of this DSL is documented under [Configuration]({% link config_top_level.md %}); the classes above are where it lives.
+**Config DSL - `exporter.rb`, `project_config.rb`, and the `*_config.rb` family.** The config file is not YAML - it's Ruby, `instance_eval`'d, so a config can contain real logic. `Exporter.configure` builds an `Exporter` holding one or more `ProjectConfig`s; each project has a `DownloadConfig` and one or more output files (`FileConfig`). An HTML output file carries an `HtmlReportConfig`, which is what actually declares the charts (a CSV file declares columns instead). The user-facing side of this DSL is documented under [Configuration]({% link config_top_level.md %}); the classes above are where it lives.
 
-**Download — `downloader.rb`, `downloader_for_cloud.rb`, `jira_gateway.rb`, `github_gateway.rb`.** `Downloader.create` is a small factory that picks the right downloader for the project; `downloader.run` then pulls boards, issues, changelogs, sprints, and (optionally) linked GitHub pull requests through the gateways, writing one JSON file per issue into the target folder. `downloader_for_data_center.rb` is the **deprecated** Data Centre path — `downloader_for_cloud.rb` is where new work goes.
+**Download - `downloader.rb`, `downloader_for_cloud.rb`, `jira_gateway.rb`, `github_gateway.rb`.** `Downloader.create` is a small factory that picks the right downloader for the project; `downloader.run` then pulls boards, issues, changelogs, sprints, and (optionally) linked GitHub pull requests through the gateways, writing one JSON file per issue into the target folder. `downloader_for_data_center.rb` is the **deprecated** Data Centre path - `downloader_for_cloud.rb` is where new work goes.
 
-**Data model — `issue.rb` is the heart.** On export, each cached JSON file becomes an `Issue`, whose history is a list of `ChangeItem`s (`change_item.rb`). Around it sit `Board` (with `BoardColumn`, `Status`), `Sprint`, `IssueLink`, and `PullRequest`. The single most important collaborator is **`cycle_time_config.rb`** — configured per board with `start_at`/`stop_at` blocks, it decides when each issue *started* and *stopped* and therefore its cycle time. Most charts are ultimately asking that engine a question.
+**Data model - `issue.rb` is the heart.** On export, each cached JSON file becomes an `Issue`, whose history is a list of `ChangeItem`s (`change_item.rb`). Around it sit `Board` (with `BoardColumn`, `Status`), `Sprint`, `IssueLink`, and `PullRequest`. The single most important collaborator is **`cycle_time_config.rb`** - configured per board with `start_at`/`stop_at` blocks, it decides when each issue *started* and *stopped* and therefore its cycle time. Most charts are ultimately asking that engine a question.
 
-**Charts — `chart_base.rb` and its ~30 subclasses.** A chart is two files: a Ruby class (`lib/jirametrics/<chart>.rb`) that assembles the data in `#run`, and a matching ERB template (`lib/jirametrics/html/<chart>.erb`) that draws it. `wrap_and_render(binding, __FILE__)` in `ChartBase` ties the two together. Shared behaviour lives in bases and mixins: `TimeBasedChart` / `TimeBasedScatterplot` / `TimeBasedHistogram`, and the `GroupableIssueChart` mixin with its `grouping_rules`.
+**Charts - `chart_base.rb` and its ~30 subclasses.** A chart is two files: a Ruby class (`lib/jirametrics/<chart>.rb`) that assembles the data in `#run`, and a matching ERB template (`lib/jirametrics/html/<chart>.erb`) that draws it. `wrap_and_render(binding, __FILE__)` in `ChartBase` ties the two together. Shared behaviour lives in bases and mixins: `TimeBasedChart` / `TimeBasedScatterplot` / `TimeBasedHistogram`, and the `GroupableIssueChart` mixin with its `grouping_rules`.
 
-**Report assembly — `html_report_config.rb`, `html_generator.rb`.** The report config collects the rendered charts; `HtmlGenerator#create_html` wraps them in `index.erb` and writes the final, self-contained HTML file. No external assets at view time — CSS and JS are inlined.
+**Report assembly - `html_report_config.rb`, `html_generator.rb`.** The report config collects the rendered charts; `HtmlGenerator#create_html` wraps them in `index.erb` and writes the final, self-contained HTML file. No external assets at view time - CSS and JS are inlined.
 
-**MCP server — `mcp_server.rb`** (`bin/jirametrics-mcp`, or `jirametrics mcp`). Exposes the same data model to an AI assistant over the [Model Context Protocol]({% link mcp.md %}) instead of rendering charts.
+**MCP server - `mcp_server.rb`** (`bin/jirametrics-mcp`, or `jirametrics mcp`). Exposes the same data model to an AI assistant over the [Model Context Protocol]({% link mcp.md %}) instead of rendering charts.
 
-**Anonymizer — `anonymizer.rb`.** Scrubs keys, titles, names, boards, sprints, and the server URL out of a loaded data set so a report or export can be shared without leaking client data.
+**Anonymizer - `anonymizer.rb`.** Scrubs keys, titles, names, boards, sprints, and the server URL out of a loaded data set so a report or export can be shared without leaking client data.
 
 ## Conventions worth knowing
 
 - **All file I/O goes through `FileSystem` (`file_system.rb`), which is injected.** Nothing calls `File.read` directly; tests pass a `MockFileSystem`. If you're adding code that touches disk, take a `file_system` and use it.
-- **Config is executable Ruby.** Powerful, but it means a config can do anything — treat one you didn't write as untrusted.
+- **Config is executable Ruby.** Powerful, but it means a config can do anything - treat one you didn't write as untrusted.
 - **Export is offline.** If a chart needs a piece of data, that data has to have been downloaded and cached. Reaching for the network during export is the wrong layer.
-- **Times are localized once, at parse.** `Issue#parse_time` applies the configured `timezone_offset` when it reads history, so most downstream date math is already in the right zone — you rarely re-apply it.
+- **Times are localized once, at parse.** `Issue#parse_time` applies the configured `timezone_offset` when it reads history, so most downstream date math is already in the right zone - you rarely re-apply it.
 
 ## Where do I look when I want to…
 
@@ -94,9 +94,9 @@ For example, when all the source is downloaded, `rake export` will do the same a
 
 We do expect that all new code will have tests, unless there's a really good reason to skip them. Yes, we're aware that the existing codebase doesn't have 100% coverage. We're making a point of continually improving that coverage number though.
 
-Specs live in `spec/`, one per class. Because `FileSystem` is injected everywhere (nothing reads the disk directly), most tests build their data in memory or from small JSON fixtures under `spec/` rather than hitting Jira or the disk — so they stay fast and deterministic.
+Specs live in `spec/`, one per class. Because `FileSystem` is injected everywhere (nothing reads the disk directly), most tests build their data in memory or from small JSON fixtures under `spec/` rather than hitting Jira or the disk - so they stay fast and deterministic.
 
-To run the tests, `rake spec` runs the Ruby specs, and `rake test` runs those _plus_ the JavaScript tests (for the report's one JS file, mentioned above). The two names also happen to indulge fingers that sometimes want to type _spec_ and sometimes _test_ — but they aren't identical, so reach for `rake test` when you've touched the JavaScript.
+To run the tests, `rake spec` runs the Ruby specs, and `rake test` runs those _plus_ the JavaScript tests (for the report's one JS file, mentioned above). The two names also happen to indulge fingers that sometimes want to type _spec_ and sometimes _test_ - but they aren't identical, so reach for `rake test` when you've touched the JavaScript.
 
 Also the command `rake focus` will run only the tests that have the `:focus` tag on them. It's often convenient to only run one test at a time, if we're trying to debug something.
 

@@ -23,11 +23,11 @@ v3.0 has potentially breaking changes. Read the updates carefully.
   * cycletime `start_at`/`stop_at` blocks must now return a `ChangeItem` or nil, not a bare time (e.g. use `time_created` instead of `created`)
   * the cycletime `started_time` / `stopped_time` methods → use `started_stopped_times`, which returns both at once
 * Bug: The [`sprint_burndown`]({% link config_charts.md %}#sprint_burndown) chart wasn't counting issues that were created directly inside a sprint (as opposed to being added to it later). Jira never records that initial sprint membership as a change in the issue's history, so those issues were invisible to the burndown and the sprint appeared to start with fewer items than it actually had.
-* Bug: [`first_time_added_to_active_sprint`]({% link config_cycletime.md %}) (a proxy for 'ready' on boards with no explicit ready status) could report a cycle time start that fell *after* the issue had already finished — for example when an issue that was already done was later added to a sprint. It now ignores any sprint the issue only joined after it was already done.
+* Bug: [`first_time_added_to_active_sprint`]({% link config_cycletime.md %}) (a proxy for 'ready' on boards with no explicit ready status) could report a cycle time start that fell *after* the issue had already finished - for example when an issue that was already done was later added to a sprint. It now ignores any sprint the issue only joined after it was already done.
 * Bug: The two pull request charts disagreed on how they measured cycle time in days. The [`pull_request_cycle_time_histogram`]({% link config_charts.md %}#pull_request_cycle_time_histogram) counted elapsed 24-hour periods while the [`pull_request_cycle_time_scatterplot`]({% link config_charts.md %}#pull_request_cycle_time_scatterplot) counted calendar days, so a pull request opened and closed either side of midnight showed as 1 day on one chart and 2 days on the other. Both now count calendar days. The scatterplot also *rounded* partial hours and minutes, which could report a short pull request as taking 0 hours; both charts now round up, so any non-zero cycle time is at least 1 of the chosen unit.
-* The `cycletime_unit` option on the pull request charts gained a `:hours24` unit. Where `:days` counts calendar days (midnight to midnight), `:hours24` counts elapsed 24-hour periods measured from the clock — the two differ for work that crosses midnight.
+* The `cycletime_unit` option on the pull request charts gained a `:hours24` unit. Where `:days` counts calendar days (midnight to midnight), `:hours24` counts elapsed 24-hour periods measured from the clock - the two differ for work that crosses midnight.
 
-# v2.31 (June 23)
+# v2.31 (June 23, 2026)
 
 * We now download work log data, if you're doing time tracking.
 * Bug: In some cases, GitHub repos weren't returning any data because the protocol had been stripped out.

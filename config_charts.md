@@ -120,7 +120,7 @@ end
 
 ## `cumulative_flow_diagram`
 
-A Cumulative Flow Diagram (CFD) shows how work accumulates across board columns over time. Each coloured band represents a workflow stage. A widening band means work is piling up in that stage — a bottleneck. Parallel band edges indicate smooth flow.
+A Cumulative Flow Diagram (CFD) shows how work accumulates across board columns over time. Each coloured band represents a workflow stage. A widening band means work is piling up in that stage - a bottleneck. Parallel band edges indicate smooth flow.
 
 Dashed lines and hatched regions indicate periods where an item moved backwards through the workflow.
 
@@ -400,7 +400,7 @@ These charts require GitHub pull request data to be downloaded. Add `github_repo
 pull_request_cycle_time_histogram
 ```
 
-The unit used for the x axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up — a PR open for 20 minutes shows as 1 hour, not 0.
+The unit used for the x axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up - a PR open for 20 minutes shows as 1 hour, not 0.
 
 ```ruby
 pull_request_cycle_time_histogram do
@@ -439,7 +439,7 @@ These charts require GitHub pull request data to be downloaded. Add `github_repo
 pull_request_cycle_time_scatterplot
 ```
 
-The unit used for the y axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up — a PR open for 20 minutes shows as 1 hour, not 0.
+The unit used for the y axis defaults to `:days` but can be changed to `:hours`, `:minutes`, or `:hours24`. `:days` counts calendar days from midnight to midnight, so a PR opened and closed either side of midnight counts as two days. `:hours24` instead counts elapsed 24-hour periods measured from the clock, so that same PR counts as one. For `:hours`, `:minutes`, and `:hours24`, any partial unit rounds up - a PR open for 20 minutes shows as 1 hour, not 0.
 
 ```ruby
 pull_request_cycle_time_scatterplot do
@@ -506,7 +506,7 @@ Rules options
 
 The `last_day_of_period` rule is useful when you want to group throughput by calendar months (which vary in length), sprints, or any other irregular boundaries rather than the default Monday–Sunday weeks. Each unique `last_day_of_period` value becomes one data point on the x-axis.
 
-Example — grouping by calendar month:
+Example - grouping by calendar month:
 
 ```ruby
 throughput_chart do
@@ -520,7 +520,7 @@ throughput_chart do
 end
 ```
 
-Example — grouping by issue type (default weekly buckets):
+Example - grouping by issue type (default weekly buckets):
 
 ```ruby
 throughput_chart do
@@ -547,7 +547,7 @@ end
 
 ## `wip_by_column_chart`
 
-Shows how much time each board column has spent at different WIP (Work in Progress) levels over the reporting period. Each column on the x axis is a board column; each row on the y axis is a WIP level (the number of items in that column at the same time). A horizontal bar at a given intersection shows what percentage of the total time that column spent at that WIP level — a wider bar means more time was spent there.
+Shows how much time each board column has spent at different WIP (Work in Progress) levels over the reporting period. Each column on the x axis is a board column; each row on the y axis is a WIP level (the number of items in that column at the same time). A horizontal bar at a given intersection shows what percentage of the total time that column spent at that WIP level - a wider bar means more time was spent there.
 
 {% imagesize /assets/images/wip_by_column_chart.webp:img alt="WIP by column chart" %}
 
@@ -565,12 +565,12 @@ wip_by_column_chart do
 end
 ```
 
-When `show_recommendations` is enabled, the chart calculates the 85th-percentile WIP level for each column — the WIP at which 85% of the total column time is accounted for — and draws a recommendation line on the chart. Below the chart, a plain-language summary is shown for each column where an adjustment is warranted:
+When `show_recommendations` is enabled, the chart calculates the 85th-percentile WIP level for each column - the WIP at which 85% of the total column time is accounted for - and draws a recommendation line on the chart. Below the chart, a plain-language summary is shown for each column where an adjustment is warranted:
 
-- _"Add a WIP limit to column 'X' — suggested maximum: N"_ — no limit is currently set
-- _"Lower the WIP limit for 'X' from M to N"_ — the current limit is higher than the data suggests is needed
-- _"Raise the WIP limit for 'X' from M to N"_ — the team is regularly working above the current limit
-- _"Almost nothing passes through column 'X'. Do we still need it?"_ — 85% of the time this column has zero items
+- _"Add a WIP limit to column 'X' - suggested maximum: N"_ - no limit is currently set
+- _"Lower the WIP limit for 'X' from M to N"_ - the current limit is higher than the data suggests is needed
+- _"Raise the WIP limit for 'X' from M to N"_ - the team is regularly working above the current limit
+- _"Almost nothing passes through column 'X'. Do we still need it?"_ - 85% of the time this column has zero items
 
 ----
 

@@ -139,11 +139,11 @@ Returns all available projects with their issue count and data end date, plus an
 
 This tool takes no parameters.
 
-Aggregate groups appear at the bottom of the output and can be used as the `project` parameter in any tool — they expand automatically to cover all constituent projects. For example, if your config defines a `forest` aggregate over Pine, Maple, Willow, Birch, and Cedar, you can ask "what's aging in forest?" and it will query all five.
+Aggregate groups appear at the bottom of the output and can be used as the `project` parameter in any tool - they expand automatically to cover all constituent projects. For example, if your config defines a `forest` aggregate over Pine, Maple, Willow, Birch, and Cedar, you can ask "what's aging in forest?" and it will query all five.
 
 ## aging_work
 
-Returns all issues that have been started but not yet completed (work in progress), sorted from oldest to newest. Age is the number of days since the issue was started, calculated relative to the end of the downloaded data range — consistent with how the aging charts in the HTML report calculate age. Flow efficiency (FE) is also returned for each issue: the percentage of elapsed time the issue was actively being worked on.
+Returns all issues that have been started but not yet completed (work in progress), sorted from oldest to newest. Age is the number of days since the issue was started, calculated relative to the end of the downloaded data range - consistent with how the aging charts in the HTML report calculate age. Flow efficiency (FE) is also returned for each issue: the percentage of elapsed time the issue was actively being worked on.
 
 | Parameter | Type | Description |
 |:----------|:-----|:------------|
@@ -160,23 +160,23 @@ Returns all issues that have been started but not yet completed (work in progres
 
 ### Examples
 
-Ask Claude naturally — it will choose the right parameters:
+Ask Claude naturally - it will choose the right parameters:
 
-- "Show me all aging work" — returns everything
-- "Show aging work older than 90 days" — uses `min_age_days: 90`
-- "What's aging in the Mobile project?" — uses `project: "Mobile"`
-- "Show aging work older than 60 days in the Mobile project" — uses both filters
-- "Show aging work that was ever priority Highest" — uses `history_field: "priority"`, `history_value: "Highest"`
-- "What aging work has been blocked?" — uses `ever_blocked: true`
-- "What aging work is currently blocked?" — uses `currently_blocked: true`
-- "Show work in progress that has stalled" — uses `ever_stalled: true`
-- "What's stalled right now?" — uses `currently_stalled: true`
-- "Show me all aging work currently in Review" — uses `current_status: "Review"`
-- "Show me aging work in the In Progress column" — uses `current_column: "In Progress"`
+- "Show me all aging work" - returns everything
+- "Show aging work older than 90 days" - uses `min_age_days: 90`
+- "What's aging in the Mobile project?" - uses `project: "Mobile"`
+- "Show aging work older than 60 days in the Mobile project" - uses both filters
+- "Show aging work that was ever priority Highest" - uses `history_field: "priority"`, `history_value: "Highest"`
+- "What aging work has been blocked?" - uses `ever_blocked: true`
+- "What aging work is currently blocked?" - uses `currently_blocked: true`
+- "Show work in progress that has stalled" - uses `ever_stalled: true`
+- "What's stalled right now?" - uses `currently_stalled: true`
+- "Show me all aging work currently in Review" - uses `current_status: "Review"`
+- "Show me aging work in the In Progress column" - uses `current_column: "In Progress"`
 
 ## completed_work
 
-Returns issues that have been completed, sorted most recently completed first. Includes cycle time (days from start to completion), flow efficiency (FE — the percentage of cycle time spent actively working on the issue), and the status and resolution at the time of completion.
+Returns issues that have been completed, sorted most recently completed first. Includes cycle time (days from start to completion), flow efficiency (FE - the percentage of cycle time spent actively working on the issue), and the status and resolution at the time of completion.
 
 | Parameter | Type | Description |
 |:----------|:-----|:------------|
@@ -193,11 +193,11 @@ Returns issues that have been completed, sorted most recently completed first. I
 
 ### Examples
 
-- "What work was completed in the last 30 days?" — uses `days_back: 30`
-- "How many items were cancelled?" — uses `completed_status: "Cancelled"`
-- "Show completed work that was never started (no cycle time)" — cycle time shown as "unknown"
-- "What completed work was ever flagged as highest priority?" — uses `history_field: "priority"`, `history_value: "Highest"`
-- "Show completed items that were blocked at some point" — uses `ever_blocked: true`
+- "What work was completed in the last 30 days?" - uses `days_back: 30`
+- "How many items were cancelled?" - uses `completed_status: "Cancelled"`
+- "Show completed work that was never started (no cycle time)" - cycle time shown as "unknown"
+- "What completed work was ever flagged as highest priority?" - uses `history_field: "priority"`, `history_value: "Highest"`
+- "Show completed items that were blocked at some point" - uses `ever_blocked: true`
 
 ## not_yet_started
 
@@ -217,11 +217,11 @@ Returns issues that have not yet been started (backlog items), sorted by creatio
 
 ### Examples
 
-- "What's in the backlog?" — returns all unstarted issues
-- "What's been sitting in the backlog the longest?" — oldest items appear first
-- "Show unstarted work in the Mobile project" — uses `project: "Mobile"`
-- "What backlog items have ever been flagged?" — uses `history_field: "Flagged"`, `history_value: "Impediment"`
-- "Show backlog items in the To Do status" — uses `current_status: "To Do"`
+- "What's in the backlog?" - returns all unstarted issues
+- "What's been sitting in the backlog the longest?" - oldest items appear first
+- "Show unstarted work in the Mobile project" - uses `project: "Mobile"`
+- "What backlog items have ever been flagged?" - uses `history_field: "Flagged"`, `history_value: "Impediment"`
+- "Show backlog items in the To Do status" - uses `current_status: "To Do"`
 
 ## status_time_analysis
 
@@ -237,9 +237,9 @@ Because the answer differs significantly depending on which issues are included,
 
 ### Examples
 
-- "In what status do issues spend the most time?" — no parameters needed
-- "In what column do issues spend the most time?" — uses `group_by: "column"`
-- "Where is work getting stuck for completed issues?" — uses `issue_state: "completed"`
-- "What's the bottleneck in the Mobile project?" — uses `project: "Mobile"`
-- "Where does aging work tend to pile up?" — uses `issue_state: "aging"`
-- "Which column is the biggest bottleneck?" — uses `group_by: "column"`, `issue_state: "completed"`
+- "In what status do issues spend the most time?" - no parameters needed
+- "In what column do issues spend the most time?" - uses `group_by: "column"`
+- "Where is work getting stuck for completed issues?" - uses `issue_state: "completed"`
+- "What's the bottleneck in the Mobile project?" - uses `project: "Mobile"`
+- "Where does aging work tend to pile up?" - uses `issue_state: "aging"`
+- "Which column is the biggest bottleneck?" - uses `group_by: "column"`, `issue_state: "completed"`
