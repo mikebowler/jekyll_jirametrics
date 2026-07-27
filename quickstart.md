@@ -75,7 +75,7 @@ Find the one you want and note its id, then look at its columns:
 jirametrics boards 44
 ```
 
-This prints the board's columns, left to right, and the statuses in each (with their To Do / In Progress / Done category). You need two of these column names: the one where work is genuinely **started**, and the one where it's **finished** (usually `Done`).
+This prints the board's columns, left to right, and the statuses in each (with their To Do / In Progress / Done category). You need two of these column names: the one where work is genuinely **started**, and the one where it's **finished** (usually `Done`). It also names the board type (including whether a team-managed board runs on sprints), and for boards that use sprints it suggests `first_time_added_to_active_sprint` as an alternative start point when no column cleanly marks the beginning of work.
 
 ## 5. Set the cycle time and add your board
 
