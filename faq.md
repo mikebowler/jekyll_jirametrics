@@ -15,14 +15,33 @@ For a concise map of the errors you're most likely to hit, with the cause and fi
 {: #q1 }
 ## I'm getting an error about a status not being found and was directed here
 
-`Warning: The history for issue SP-51 references a status ("Walking":10012) that can't be found in ["In Progress":3, "Backlog":10000, "Selected for Development":10001, "Done":10002, "Review":10011, "To Do":10018, "In Progress":10019, "Done":10020].`
+`Warning: The history for issue SP-51 references the status ("Refinement":10012) which can't be found, most likely because it was deleted from Jira after this issue passed through it...`
 
-What this means is that there used to be a status by that name (`Walking` in this example), but it's since been deleted in your Jira instance. Unfortunately, the history still references it and we need to know what category it belongs to. You would think that Jira would version that sort of thing so we could still query that information after it was removed from use but no, it does not. Instead, you will need to specify that status to category mapping in the configuration.
+**What's going on.** Jira's status API only ever returns statuses that still exist. If a status was deleted after some issues had already moved through it, the issue history still references it, but Jira can no longer tell us which category it belonged to. So any status you retire mid-flight goes invisible and has to be sorted out by hand. (You would think Jira would keep that information around. It does not.)
 
-* If you're using the `standard_project` declaration then use the `status_category_mappings` parameter [as defined here](https://jirametrics.org/config/standard_project/). Note the trailing `s`: the `standard_project` parameter is plural, unlike the `status_category_mapping` method below.
-* Otherwise the other `status_category_mapping` is defined [over here](https://jirametrics.org/config/project/#status_category_mapping).
+**Do I have to chase down every deleted status?** No. The warning only fires for the deleted statuses that actually affect this export, so you'll only ever be asked about the ones that matter. Deal with the ones you're warned about and ignore the rest.
 
-If you're using a version of JiraMetrics earlier than 2.6 then the error above will be a fatal error that will stop the app. Starting with 2.6, it will just be a warning message and we will make the assumption that the missing status belongs to the `In Progress` status category. That's not always a valid assumption though so you should still set the `status_category_mapping` anyway.
+**It will usually guess correctly.** For an English-language instance, JiraMetrics guesses the category from the name: anything like "To Do", "New" or "Backlog" is treated as `To Do`; "Done", "Closed" or "Cancelled" as `Done`; everything else as `In Progress`. The warning tells you what it guessed, and if that's right you don't need to do anything. You only need to step in when the guess is wrong, or when the name doesn't make the category obvious.
+
+**Working out the right category.** It has to be one of `To Do`, `In Progress`, or `Done`. If the name doesn't settle it, look at what the status connects to: run `jirametrics info SP-51` (or open the issue's history in Jira) and see what the missing status transitions into. If work flows out of it into your in-progress statuses, it sits before work has started, so it's a `To Do`. If work flows into it and then stops, it's a `Done`. Anything in between is `In Progress`.
+
+**Setting the mapping.** Status names are rarely unique in Jira (plenty of instances have a dozen statuses all called "To Do"), so a mapping is keyed by `"Name":id` and the id is required. The id is right there in the warning (`"Refinement":10012` means id `10012`), and `jirametrics boards <id>` will list every current status on a board with its id.
+
+* With `standard_project`, pass a `status_category_mappings` hash (note the trailing `s`). You can define one hash and share it across several projects:
+
+```ruby
+retired_statuses = {
+  'Refinement:10012' => 'To Do',
+  'Sign Off:10044' => 'Done'
+}
+
+standard_project name: 'Sample', file_prefix: 'sample',
+  boards: { 44 => :default }, status_category_mappings: retired_statuses
+```
+
+* With the full `project` DSL, use the singular `status_category_mapping` method [defined here]({% link config_project.md %}#status_category_mapping).
+
+If you're on a version of JiraMetrics earlier than 2.6, a missing status is a fatal error that stops the app rather than a warning.
 
 {: #rate-limited }
 ## I'm getting an error about being rate limited.
