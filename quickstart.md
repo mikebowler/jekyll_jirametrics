@@ -96,7 +96,10 @@ Exporter.configure do
 end
 ```
 
-Replace `44` with your board id and the two column names with yours. This explicit start/stop is what makes your cycle time correct. There is a shortcut — `boards: { 44 => :default }` — which assumes work starts at the In Progress category and stops at Done, but that only matches about half of the boards we see, so it's worth taking the minute to set it explicitly. `first_time_in_or_right_of_column` is the most common choice; [cycletime]({% link config_cycletime.md %}) lists the other ways to define start and stop points.
+Replace `44` with your board id and the two column names with yours. This explicit start/stop is what makes your cycle time correct. There is a shortcut — `boards: { 44 => :default }` — which assumes work starts at the In Progress category and stops at Done, but that only matches about half of the boards we see, so it's worth taking the minute to set it explicitly.
+
+{: .tip }
+`first_time_in_or_right_of_column` keys off board **columns**, which is what you want when your start and stop points line up with column boundaries. Sometimes they don't — maybe work "starts" the moment a particular status is entered (not a whole column), or when a label is added, or when the item is pulled into a sprint. In those cases use a different cycle time method — for example `first_time_in_status`, `first_time_label_added`, or `first_time_added_to_active_sprint` — or, for anything the built-ins don't cover, an arbitrary block. [cycletime]({% link config_cycletime.md %}) documents the full set.
 
 **Optional:** the dependency chart included in `standard_project` needs [graphviz](https://graphviz.org/download/) (`brew install graphviz` on a mac). Nothing breaks without it — you just won't get that one chart.
 
