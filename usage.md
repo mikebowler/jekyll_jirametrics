@@ -18,6 +18,7 @@ If you're making changes to your configuration then you might want to skip the d
 | download | Download all the data from Jira |
 | export | Generate the respective output files. These could be CSV's or HTML reports, as specified in the configuration |
 | verify | Check that JiraMetrics can authenticate to your configured Jira instance(s) without downloading any data. It prints one line per connection and exits with a non-zero status if any fail, so it's a quick way to confirm your credentials and configuration before a full download. Requires v3.1 |
+| boards | List the boards your account can access, or show one board's columns and statuses to help you choose cycle time start/stop points. Usage: `jirametrics boards` to list them all (sorted by name), or `jirametrics boards <id>` for one board. Requires v3.1 |
 | info | Dump information about a specific issue to the terminal. This is really intended as a debugging tool for the developers but we're making it accessible for everyone. Usage: `jirametrics info ABC-123`. Requires v2.7 |
 
 ## Options
@@ -25,4 +26,4 @@ If you're making changes to your configuration then you might want to skip the d
 | Option | Description |
 |:--------|:-------|
 | config | By default, the tool assumes that you've put your configuration in a file called config.rb. If you want to use different names then you can specify that with the `--config <filename>` option. This is useful if you want to have multiple configuration files and only call one or another. |
-| name | If you have a large configuration file and only want to run a subset of the projects within it, you can use the `--name <name>` option. Example: `jirametrics go --name "a*"` will run all the projects starting with the letter 'a'. The name it compares against is the one specified on the project section. |
+| name | If you have a large configuration file and only want to run a subset of the projects within it, you can use the `--name <name>` option. Example: `jirametrics go --name "a*"` will run all the projects starting with the letter 'a'. The name it compares against is the one specified on the project section. The same option narrows the board list for `jirametrics boards --name "a*"`, where it filters board names case-insensitively. |

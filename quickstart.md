@@ -61,11 +61,13 @@ If it can't authenticate, it tells you why; see [Errors and how to fix them]({% 
 
 ## 4. Find your board and its columns
 
-List the boards your account can see:
+List the boards your account can see (sorted by name):
 
 ```
 jirametrics boards
 ```
+
+If that's a long list, narrow it with a case-insensitive name filter, for example `jirametrics boards --name "mobile*"`.
 
 Find the one you want and note its id, then look at its columns:
 
