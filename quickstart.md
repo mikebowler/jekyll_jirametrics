@@ -61,6 +61,9 @@ On the `sample_project line`, you'll likely also want to change the `name` and `
 
 **Optional:** If you want to use the dependency chart, which is included in `standard_project` by default then you'll want to install [graphviz](https://graphviz.org/download/). In my case, that was as simple was `brew install graphviz`. Note that nothing will blow up if you don't install this - you just won't get the dependency chart in the output.
 
+{: .tip }
+Before the first full download, you can confirm your credentials and configuration are working with `jirametrics verify` (added in v3.1). It authenticates to Jira without downloading anything and prints a line like `Verified https://improvingflow.atlassian.net — authenticated as Mike Bowler`. If it can't authenticate it tells you why. On earlier versions, skip this and go straight to `jirametrics go` below.
+
 Now we're ready to run the tool. From the command line, run:
 
 ```
@@ -86,7 +89,7 @@ Full output from downloader in jirametrics.log
 Sample
 ```
 
-Now if you look at the `target` directory (that name was specified in the config above and can be changed), you'll see a bunch of files that are all data downloaded from Jira, plus one with an `.html` extension. Open that html in a web browser and be amazed ;-)
+Now if you look at the `target` directory (that name was specified in the config above and can be changed), you'll see a bunch of files that are all data downloaded from Jira, plus one with an `.html` extension. That file is named after the `file_prefix` you set, so with the config above it's `target/sample.html`. Open that html in a web browser and be amazed ;-)
 
 For a single board, that's it. It will have pulled the most recent 90 days worth of data and you can get the latest at any time by re-running `jirametrics go`.
 

@@ -53,3 +53,14 @@ You'll need to refresh the cookies periodically (daily?) so it's annoying.
   }
 }
 ```
+
+{: #verifying }
+# Verifying your connection
+
+Once you've created this file and referenced it from your `config.rb` (see the [Quick Start]({% link quickstart.md %})), confirm the credentials work before downloading anything:
+
+```
+jirametrics verify
+```
+
+A successful run prints one line per configured Jira connection, naming the authenticated user. If authentication fails you'll get a message describing why — an expired token, for example. This checks authentication only and downloads no issue data. Added in v3.1.

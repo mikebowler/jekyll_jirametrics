@@ -17,6 +17,7 @@ If you're making changes to your configuration then you might want to skip the d
 | go | Same as calling download, followed by export. It's just a shorter way to do it all at once. |
 | download | Download all the data from Jira |
 | export | Generate the respective output files. These could be CSV's or HTML reports, as specified in the configuration |
+| verify | Check that JiraMetrics can authenticate to your configured Jira instance(s) without downloading any data. It prints one line per connection and exits with a non-zero status if any fail, so it's a quick way to confirm your credentials and configuration before a full download. Requires v3.1 |
 | info | Dump information about a specific issue to the terminal. This is really intended as a debugging tool for the developers but we're making it accessible for everyone. Usage: `jirametrics info ABC-123`. Requires v2.7 |
 
 ## Options

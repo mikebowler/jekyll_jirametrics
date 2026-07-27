@@ -9,6 +9,8 @@ title: standard project
 If you choose to use `standard_project` then it can be inserted at the same place as the project declaration and you can even mix the two styles together if you want to use them both. Under the covers, `standard_project` just creates a full `project` declaration with a predefined configuration.
 
 ```ruby
+require 'jirametrics/examples/standard_project'
+
 Exporter.configure do
   target_path 'target'
   jira_config 'improvingflow.json'
@@ -16,6 +18,9 @@ Exporter.configure do
   standard_project name: 'Maple', file_prefix: 'maple', boards: { 1 => :default }
 end
 ```
+
+The `require` line is mandatory: `standard_project` is a helper that lives outside the core tool, so
+without it you'll get an `undefined method 'standard_project'` error.
 
 This is intended just as a quick way to get started and there is no expectation that this will do everything you want. In fact, we expect that it won't be long before you decide that this isn't good enough and you'll create your own version that does exactly what you need.
 

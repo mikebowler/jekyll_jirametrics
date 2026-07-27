@@ -137,10 +137,31 @@ board id: 1 do
 end
 ```
 
-To find the board id, navigate to the respective board in your web browser and then look at the URL. You'll see a parameter `rapidView` and that's your board ID.
+To find the board id, navigate to the respective board in your web browser and then look at the URL. There are two URL formats depending on your Jira version:
+
+* Newer URLs end in the board id, for example `.../boards/44` means the board id is `44`.
+* Older URLs have a `rapidView` parameter, for example `...rapidView=17...` means the board id is `17`.
 
 {: .tip }
 If there isn't a board ID in your URL then that means that this project isn't classified as a Software project in Jira and you won't have access to any of the Agile features. It's highly unlikely that you'll run into this but it is possible. JiraMetrics cannot do anything useful with projects like this.
+
+{: #discard_changes_before }
+## `discard_changes_before`
+
+If someone moves an issue back to the backlog, we can optionally pretend that it had never been started.
+
+Moving things back to the backlog after they've started is a horrible practice and yet, it's extremely common. Pass one or more status names and if the issue gets moved into any one of them, we discard any history before that point.
+
+```ruby
+project name: 'foo' do
+  discard_changes_before status_becomes: :backlog
+end
+```
+
+If you pass in `:backlog` AND you're using a Kanban board then that expands to the full list of statuses that are configured for your Backlog column. Scrum boards don't have the concept of backlog statuses so if you're using that, you'll need to explicitly name the statuses, for example `discard_changes_before status_becomes: ['To Do', 'Backlog']`.
+
+{: .important }
+This belongs at the project level, as shown above. Prior to v3.0 it could also be placed inside a chart or `html_report` block, but that was removed in v3.0 — see the [changelog]({% link changes.md %}).
 
 ## `file`
 

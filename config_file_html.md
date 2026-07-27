@@ -13,8 +13,6 @@ file do
   file_suffix '.html'
 
   html_report do
-    discard_changes_before status_becomes: :backlog
-
     # List of all the charts we want to include, in the order we want to see them in the report
     cycletime_scatterplot
     cycletime_histogram
@@ -33,15 +31,8 @@ file_suffix '.html'
 
 ## `discard_changes_before`
 
-If someone moves an issue back to the backlog, we can optionally pretend that it had never been started.
-
-Moving things back to the backlog after they've started is a horrible practice and yet, it's extremely common. Pass a list of status names and if the issue gets moved into any one of them, we discard any history before that point. 
-
-If you pass in `:backlog` AND you're using a Kanban board then that expands to the full list of statuses that are configured for your Backlog column. Scrum boards don't have the concept of backlog statuses so if you're using that, you'll need to explictly name the statuses.
-
-```ruby
-discard_changes_before :backlog
-```
+As of v3.0, `discard_changes_before` is configured at the **project** level, not inside the `file` or
+`html_report` block. See [`discard_changes_before`]({% link config_project.md %}#discard_changes_before).
 
 ## `html_report`
 

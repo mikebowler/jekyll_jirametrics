@@ -32,15 +32,51 @@ Create a `.mcp.json` file in the same directory as your `config.rb`:
   "mcpServers": {
     "jirametrics": {
       "type": "stdio",
+      "command": "jirametrics",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+This simplest form works whenever the MCP host can find `jirametrics` on its `PATH`, which is usually the case when you start Claude Code from a terminal where `jirametrics` already runs.
+
+If Claude Code reports that it can't start the server, the host was almost certainly launched without your Ruby version manager's environment, so a bare `jirametrics` isn't on its `PATH`. Run `which jirametrics` in your terminal and use whatever absolute path it prints as the `command` instead:
+
+```json
+{
+  "mcpServers": {
+    "jirametrics": {
+      "type": "stdio",
+      "command": "/Users/you/.rbenv/shims/jirametrics",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+Typical locations that `which jirametrics` reports:
+
+| Ruby setup | Path |
+|:-----------|:-----|
+| rbenv | `~/.rbenv/shims/jirametrics` |
+| asdf | `~/.asdf/shims/jirametrics` |
+| RVM | `~/.rvm/gems/<ruby-version>/bin/jirametrics` |
+| No version manager | `/usr/local/bin/jirametrics` or similar |
+
+For rbenv and asdf the shim re-executes under the correct Ruby on its own, so the absolute path is all you need. RVM is the exception — its gem executables expect RVM's shell environment to be loaded first, so for RVM use a shell that sources it:
+
+```json
+{
+  "mcpServers": {
+    "jirametrics": {
+      "type": "stdio",
       "command": "/bin/bash",
       "args": ["-c", "source ~/.rvm/scripts/rvm && jirametrics mcp"]
     }
   }
 }
 ```
-
-{: .tip }
-If you use rbenv or asdf instead of RVM, replace `source ~/.rvm/scripts/rvm &&` with the equivalent for your version manager, or omit it if `jirametrics` is already on your PATH.
 
 When you start Claude Code from that directory, the MCP server starts automatically and the `jirametrics` tools become available in your conversation.
 

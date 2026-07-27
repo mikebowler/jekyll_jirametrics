@@ -5,3 +5,4 @@ _site
 vendor
 _config_production.yml
 .DS_Store
+llms-full.txt
