@@ -16,7 +16,7 @@ LLMS_FULL_PAGES = %w[
   install.md connecting_to_jira.md quickstart.md usage.md
   config_top_level.md config_standard_project.md config_project.md config_cycletime.md
   config_charts.md config_file_html.md config_file_csv.md config_aggregated_project.md
-  faq.md mcp.md forecasting.md quality_report.md security.md
+  troubleshooting.md faq.md mcp.md forecasting.md quality_report.md security.md
 ].freeze
 
 def parse_front_matter raw

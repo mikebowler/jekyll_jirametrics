@@ -9,6 +9,9 @@ permalink: /faq/
 
 # Errors
 
+{: .tip }
+For a concise message → cause → fix map of the errors you're most likely to hit, see [Errors and how to fix them]({% link troubleshooting.md %}).
+
 {: #q1 }
 ## I'm getting an error about a status not being found and was directed here
 
@@ -63,7 +66,7 @@ Instructions are [over here]({% link config_file_html.md %}#css).
 
 Check out the [stitcher]({% link stitcher.md %})
 
-{: parent_key }
+{: #parent_key }
 ## JiraMetrics isn't correctly finding the parent issue for issues on my board.
 
 Jira has a confusing history of how it has attached parents at different points in the past. For this reason, we try several different ways of identifying the parent. One of the ways that it uses is a specific custom field, which is different in every instance, so we can't automatically determine it.

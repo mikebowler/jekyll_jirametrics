@@ -24,6 +24,7 @@ Setup in brief: install Ruby 3.4+ and the `jirametrics` gem, create two files in
 
 ## Troubleshooting and help
 
+- [Errors and how to fix them](https://jirametrics.org/troubleshooting/): A map of the common error messages to their cause and fix, ordered by where they occur in setup.
 - [FAQ](https://jirametrics.org/faq/): Common errors and their fixes — a missing status, rate limiting, unlinked parents, and tuning blocked/stalled.
 - [Data quality report](https://jirametrics.org/data_quality/): The self-checks shown at the top of every report; read these before trusting the numbers.
 - [Changelog](https://jirametrics.org/changes/): Version history and breaking changes (note v3.0).
