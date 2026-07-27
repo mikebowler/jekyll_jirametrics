@@ -37,14 +37,14 @@ def markdown_for_llms body, links
   # Resolve {% link foo.md %} to absolute URLs so the concatenated text keeps working links.
   body = body.gsub(/\{%\s*link\s+(?<file>\S+)\s*%\}/) { "#{SITE_URL}#{links[Regexp.last_match(:file)]}" }
   # Drop the remaining Liquid tags (includes, image sizing) and kramdown attribute lists like
-  # {: .tip } — they carry no text an LLM can use.
+  # {: .tip } - they carry no text an LLM can use.
   body = body.gsub(/\{%.*?%\}/m, '')
   body.gsub(/^\{:.*\}\s*$/, '').strip
 end
 
 def generate_llms_full
   links = permalink_map
-  out = +"# JiraMetrics — full documentation\n\n"
+  out = +"# JiraMetrics - full documentation\n\n"
   out << "The JiraMetrics documentation pages, concatenated for LLM ingestion. " \
          "See #{SITE_URL}/llms.txt for a shorter index with per-page links.\n"
   LLMS_FULL_PAGES.each do |file|
