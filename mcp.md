@@ -64,7 +64,7 @@ Typical locations that `which jirametrics` reports:
 | RVM | `~/.rvm/gems/<ruby-version>/bin/jirametrics` |
 | No version manager | `/usr/local/bin/jirametrics` or similar |
 
-For rbenv and asdf the shim re-executes under the correct Ruby on its own, so the absolute path is all you need. RVM is the exception — its gem executables expect RVM's shell environment to be loaded first, so for RVM use a shell that sources it:
+For rbenv and asdf the shim re-executes under the correct Ruby on its own, so the absolute path is all you need. RVM is the exception: its gem executables expect RVM's shell environment to be loaded first, so for RVM use a shell that sources it:
 
 ```json
 {

@@ -21,7 +21,7 @@ cd myreports
 
 ## 2. Create the Jira credentials file
 
-Create a file called `jira_config.json` and populate it [as described here]({% link connecting_to_jira.md %}). On Jira Cloud it looks like this — change it to reflect your own instance:
+Create a file called `jira_config.json` and populate it [as described here]({% link connecting_to_jira.md %}). On Jira Cloud it looks like this. Change it to reflect your own instance:
 
 ```json
 {
@@ -31,7 +31,7 @@ Create a file called `jira_config.json` and populate it [as described here]({% l
 }
 ```
 
-Now create a `config.rb` with just the connection details for the moment — we'll add your board once we've looked at it:
+Now create a `config.rb` with just the connection details for the moment. We'll add your board once we've looked at it:
 
 ```ruby
 Exporter.configure do
@@ -54,10 +54,10 @@ jirametrics verify
 A successful run prints a line like:
 
 ```
-Verified https://improvingflow.atlassian.net — authenticated as Mike Bowler
+Verified https://improvingflow.atlassian.net (authenticated as Mike Bowler)
 ```
 
-If it can't authenticate, it tells you why — see [Errors and how to fix them]({% link troubleshooting.md %}) for the fix.
+If it can't authenticate, it tells you why; see [Errors and how to fix them]({% link troubleshooting.md %}) for the fix.
 
 ## 4. Find your board and its columns
 
@@ -77,7 +77,7 @@ This prints the board's columns, left to right, and the statuses in each (with t
 
 ## 5. Set the cycle time and add your board
 
-Add a `standard_project` to `config.rb`, using the two column names you picked. The `require` line at the top is mandatory — `standard_project` is a helper that lives outside the core tool.
+Add a `standard_project` to `config.rb`, using the two column names you picked. The `require` line at the top is mandatory, because `standard_project` is a helper that lives outside the core tool.
 
 ```ruby
 require 'jirametrics/examples/standard_project'
@@ -96,12 +96,12 @@ Exporter.configure do
 end
 ```
 
-Replace `44` with your board id and the two column names with yours. This explicit start/stop is what makes your cycle time correct. There is a shortcut — `boards: { 44 => :default }` — which assumes work starts at the In Progress category and stops at Done, but that only matches about half of the boards we see, so it's worth taking the minute to set it explicitly.
+Replace `44` with your board id and the two column names with yours. This explicit start/stop is what makes your cycle time correct. There is a shortcut, `boards: { 44 => :default }`, which assumes work starts at the In Progress category and stops at Done, but that only matches about half of the boards we see, so it's worth taking the minute to set it explicitly.
 
 {: .tip }
-`first_time_in_or_right_of_column` keys off board **columns**, which is what you want when your start and stop points line up with column boundaries. Sometimes they don't — maybe work "starts" the moment a particular status is entered (not a whole column), or when a label is added, or when the item is pulled into a sprint. In those cases use a different cycle time method — for example `first_time_in_status`, `first_time_label_added`, or `first_time_added_to_active_sprint` — or, for anything the built-ins don't cover, an arbitrary block. [cycletime]({% link config_cycletime.md %}) documents the full set.
+`first_time_in_or_right_of_column` keys off board **columns**, which is what you want when your start and stop points line up with column boundaries. Sometimes they don't: maybe work "starts" the moment a particular status is entered (not a whole column), or when a label is added, or when the item is pulled into a sprint. In those cases use a different cycle time method (for example `first_time_in_status`, `first_time_label_added`, or `first_time_added_to_active_sprint`), or, for anything the built-ins don't cover, an arbitrary block. [cycletime]({% link config_cycletime.md %}) documents the full set.
 
-**Optional:** the dependency chart included in `standard_project` needs [graphviz](https://graphviz.org/download/) (`brew install graphviz` on a mac). Nothing breaks without it — you just won't get that one chart.
+**Optional:** the dependency chart included in `standard_project` needs [graphviz](https://graphviz.org/download/) (`brew install graphviz` on a mac). Nothing breaks without it; you just won't get that one chart.
 
 ## 6. Download and generate the report
 
@@ -110,7 +110,7 @@ jirametrics go
 ```
 
 {: .tip }
-The most common error here is one about a missing status. If you hit it — or anything else — see [Errors and how to fix them]({% link troubleshooting.md %}).
+The most common error here is one about a missing status. If you hit it, or anything else, see [Errors and how to fix them]({% link troubleshooting.md %}).
 
 `go` downloads the data and then generates the report. You should see output something like this (you may have more lines depending on how much data there is):
 
@@ -130,9 +130,9 @@ Sample
 
 ## 7. Open the report
 
-In the `target` directory you'll find the downloaded data plus one file with an `.html` extension, named after your `file_prefix` — so with the config above it's `target/sample.html`. Open that in a web browser and be amazed ;-)
+In the `target` directory you'll find the downloaded data plus one file with an `.html` extension, named after your `file_prefix`, so with the config above it's `target/sample.html`. Open that in a web browser and be amazed ;-)
 
-At the top of the report is a [data quality]({% link quality_report.md %}) section — read it before trusting the charts, as it flags where the data may not mean what you'd assume.
+At the top of the report is a [data quality]({% link quality_report.md %}) section. Read it before trusting the charts, as it flags where the data may not mean what you'd assume.
 
 That's it for a single board. It pulls the most recent 90 days and you can refresh any time by re-running `jirametrics go`.
 

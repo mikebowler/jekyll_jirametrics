@@ -63,4 +63,4 @@ Once you've created this file and referenced it from your `config.rb` (see the [
 jirametrics verify
 ```
 
-A successful run prints one line per configured Jira connection, naming the authenticated user. If authentication fails you'll get a message describing why — an expired token, for example. This checks authentication only and downloads no issue data. Added in v3.1.
+A successful run prints one line per configured Jira connection, naming the authenticated user. If authentication fails you'll get a message describing why, an expired token for example. This checks authentication only and downloads no issue data. Added in v3.1.

@@ -19,7 +19,7 @@ For a concise message → cause → fix map of the errors you're most likely to 
 
 What this means is that there used to be a status by that name (`Walking` in this example), but it's since been deleted in your Jira instance. Unfortunately, the history still references it and we need to know what category it belongs to. You would think that Jira would version that sort of thing so we could still query that information after it was removed from use but no, it does not. Instead, you will need to specify that status to category mapping in the configuration.
 
-* If you're using the `standard_project` declaration then use the `status_category_mappings` parameter [as defined here](https://jirametrics.org/config/standard_project/). Note the trailing `s` — the `standard_project` parameter is plural, unlike the `status_category_mapping` method below.
+* If you're using the `standard_project` declaration then use the `status_category_mappings` parameter [as defined here](https://jirametrics.org/config/standard_project/). Note the trailing `s`: the `standard_project` parameter is plural, unlike the `status_category_mapping` method below.
 * Otherwise the other `status_category_mapping` is defined [over here](https://jirametrics.org/config/project/#status_category_mapping).
 
 If you're using a version of JiraMetrics earlier than 2.6 then the error above will be a fatal error that will stop the app. Starting with 2.6, it will just be a warning message and we will make the assumption that the missing status belongs to the `In Progress` status category. That's not always a valid assumption though so you should still set the `status_category_mapping` anyway.

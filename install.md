@@ -19,7 +19,7 @@ Unless you have a reason to want to run on the JVM, I'd recommend using CRuby.
 If you're on a mac, you may have noticed that Ruby is already installed on your machine. The bad news is that it's likely too old to be useful. Run `ruby -v` and if the version is less than 3.4 then you'll still need to install a newer version.
 
 {: .tip }
-Homebrew installs Ruby but doesn't always put it ahead of the macOS system Ruby on your `PATH`. If `ruby -v` still shows the old version in a new terminal after installing, add Homebrew's Ruby to your `PATH` — for example add `export PATH="$(brew --prefix ruby)/bin:$PATH"` to your shell profile — then open a new terminal. Otherwise `gem install` may install into the wrong Ruby and the `jirametrics` command won't be found.
+Homebrew installs Ruby but doesn't always put it ahead of the macOS system Ruby on your `PATH`. If `ruby -v` still shows the old version in a new terminal after installing, add Homebrew's Ruby to your `PATH` (for example add `export PATH="$(brew --prefix ruby)/bin:$PATH"` to your shell profile), then open a new terminal. Otherwise `gem install` may install into the wrong Ruby and the `jirametrics` command won't be found.
 
 1. Install CRuby itself with [the instructions here](https://www.ruby-lang.org/en/downloads/). If you're using Windows, there is a one-click installer. If you're on almost any other platform, your local package manager will have a way to do that. In my case, I'm using a mac so it's as simple as `brew install ruby`
 2. Once Ruby is installed, you can install JiraMetrics with this command.

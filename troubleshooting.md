@@ -10,14 +10,14 @@ order they show up during setup. If you just want a working setup from scratch, 
 
 Two commands are useful diagnostics throughout (both added in v3.1):
 
-- `jirametrics verify` — checks that your credentials authenticate, without downloading any data.
-- `jirametrics boards` — lists your boards; `jirametrics boards <id>` shows a board's columns and statuses.
+- `jirametrics verify` checks that your credentials authenticate, without downloading any data.
+- `jirametrics boards` lists your boards; `jirametrics boards <id>` shows a board's columns and statuses.
 
 ## Installation
 
 ### `command not found: jirametrics`
 
-**Cause:** the gem installed into a Ruby that isn't first on your `PATH` — common when Ruby was installed with Homebrew or a version manager.
+**Cause:** the gem installed into a Ruby that isn't first on your `PATH`. This is common when Ruby was installed with Homebrew or a version manager.
 
 **Fix:** see the `PATH` note in the [installation instructions]({% link install.md %}), then confirm with `jirametrics --version`.
 
@@ -25,19 +25,19 @@ Two commands are useful diagnostics throughout (both added in v3.1):
 
 ### `The request was not authorized. Verify that your authentication token hasn't expired`
 
-**Cause:** HTTP 401 — the API token (Cloud) or personal access token (Server/Data Center) is wrong, expired, or was deleted on the server.
+**Cause:** HTTP 401. The API token (Cloud) or personal access token (Server/Data Center) is wrong, expired, or was deleted on the server.
 
 **Fix:** recreate the token, update the file referenced by `jira_config`, and run `jirametrics verify` to confirm. See [Connecting to Jira]({% link connecting_to_jira.md %}).
 
 ### `Jira returned 503 (Service Unavailable) ...`
 
-**Cause:** a Jira outage — or, for a free Cloud instance, the instance was deactivated after a period of inactivity.
+**Cause:** a Jira outage, or (for a free Cloud instance) the instance was deactivated after a period of inactivity.
 
 **Fix:** check your Jira status/subscription and retry. If it's a free instance that went dormant, reactivate it.
 
 ### An error about being rate limited
 
-**Cause:** either you really have hit the instance too often, or — misleadingly — your token was deleted on the server and Jira returned a rate-limit message instead of a clear auth error.
+**Cause:** either you really have hit the instance too often, or (misleadingly) your token was deleted on the server and Jira returned a rate-limit message instead of a clear auth error.
 
 **Fix:** wait and retry; if it persists, recreate your token and run `jirametrics verify`. More detail in the [FAQ]({% link faq.md %}#rate-limited).
 
@@ -85,7 +85,7 @@ Two commands are useful diagnostics throughout (both added in v3.1):
 
 ### Cycle times look wrong, or items are missing from a chart
 
-**Cause:** the cycle time start/stop points don't match how your board actually works — most often because the config uses `boards: { N => :default }`, which only fits about half of boards.
+**Cause:** the cycle time start/stop points don't match how your board actually works, most often because the config uses `boards: { N => :default }`, which only fits about half of boards.
 
 **Fix:** run `jirametrics boards <id>` to see your columns, then set explicit start and stop points with `first_time_in_or_right_of_column`. See [cycletime]({% link config_cycletime.md %}). The [data quality]({% link quality_report.md %}) section at the top of every report also flags many of these cases.
 
@@ -93,4 +93,4 @@ Two commands are useful diagnostics throughout (both added in v3.1):
 
 **Cause:** Jira stores the parent in an instance-specific custom field that JiraMetrics can't guess.
 
-**Fix:** set `customfield_parent_links` — see the [FAQ]({% link faq.md %}#parent_key).
+**Fix:** set `customfield_parent_links`. See the [FAQ]({% link faq.md %}#parent_key).

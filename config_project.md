@@ -161,7 +161,7 @@ end
 If you pass in `:backlog` AND you're using a Kanban board then that expands to the full list of statuses that are configured for your Backlog column. Scrum boards don't have the concept of backlog statuses so if you're using that, you'll need to explicitly name the statuses, for example `discard_changes_before status_becomes: ['To Do', 'Backlog']`.
 
 {: .important }
-This belongs at the project level, as shown above. Prior to v3.0 it could also be placed inside a chart or `html_report` block, but that was removed in v3.0 — see the [changelog]({% link changes.md %}).
+This belongs at the project level, as shown above. Prior to v3.0 it could also be placed inside a chart or `html_report` block, but that was removed in v3.0. See the [changelog]({% link changes.md %}).
 
 ## `file`
 

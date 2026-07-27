@@ -1,13 +1,13 @@
 # JiraMetrics
 
-> JiraMetrics is a standalone Ruby command-line tool that pulls flow metrics out of any Jira instance — cycle time, throughput, aging work, WIP, cumulative flow — and generates self-contained HTML reports or CSV files. It runs with your own Jira credentials; it is not a plugin and needs no administrator to install it. If you can reach Jira in a browser, you can point this tool at it.
+> JiraMetrics is a standalone Ruby command-line tool that pulls flow metrics (cycle time, throughput, aging work, WIP, cumulative flow) out of any Jira instance and generates self-contained HTML reports or CSV files. It runs with your own Jira credentials; it is not a plugin and needs no administrator to install it. If you can reach Jira in a browser, you can point this tool at it.
 
 Setup in brief: install Ruby 3.4+ and the `jirametrics` gem, create two files in a working directory (`jira_config.json` for credentials and `config.rb` for what to report), then run `jirametrics go`. The pages below are ordered for a first-time setup.
 
 ## Setup (follow in order)
 
 - [Installation](https://jirametrics.org/install/): Install Ruby 3.4 or newer and the `jirametrics` gem.
-- [Connecting to Jira](https://jirametrics.org/jira/): Create the credentials file — an API token for Jira Cloud, a personal access token for Server/Data Center.
+- [Connecting to Jira](https://jirametrics.org/jira/): Create the credentials file: an API token for Jira Cloud, or a personal access token for Server/Data Center.
 - [Quick Start](https://jirametrics.org/quickstart/): The fastest path from nothing to a first HTML report, with copy-paste configuration and how to find your board id.
 - [Command line usage](https://jirametrics.org/usage/): The `go`, `download`, `export`, and `info` commands (plus `verify`, added in v3.1, to check your Jira connection before downloading).
 
@@ -16,7 +16,7 @@ Setup in brief: install Ruby 3.4+ and the `jirametrics` gem, create two files in
 - [Top-level configuration](https://jirametrics.org/config/): `target_path`, `jira_config`, `timezone_offset`, `holiday_dates`.
 - [standard_project](https://jirametrics.org/config/standard_project/): The quickest way to define a project. Requires `require 'jirametrics/examples/standard_project'` at the top of your config.
 - [project](https://jirametrics.org/config/project/): Full project configuration, including `discard_changes_before` and `status_category_mapping`.
-- [cycletime](https://jirametrics.org/config/cycletime/): Defining when work starts and finishes — the core of every flow metric. `first_time_in_or_right_of_column` is the most common choice.
+- [cycletime](https://jirametrics.org/config/cycletime/): Defining when work starts and finishes, the core of every flow metric. `first_time_in_or_right_of_column` is the most common choice.
 - [Charts](https://jirametrics.org/charts/): Every chart that can be included in an HTML report.
 - [HTML report output](https://jirametrics.org/project/file_html/): Configuring an HTML report file.
 - [CSV output](https://jirametrics.org/project/file_csv/): Exporting the raw data as CSV.
@@ -25,7 +25,7 @@ Setup in brief: install Ruby 3.4+ and the `jirametrics` gem, create two files in
 ## Troubleshooting and help
 
 - [Errors and how to fix them](https://jirametrics.org/troubleshooting/): A map of the common error messages to their cause and fix, ordered by where they occur in setup.
-- [FAQ](https://jirametrics.org/faq/): Common errors and their fixes — a missing status, rate limiting, unlinked parents, and tuning blocked/stalled.
+- [FAQ](https://jirametrics.org/faq/): Common errors and their fixes: a missing status, rate limiting, unlinked parents, and tuning blocked/stalled.
 - [Data quality report](https://jirametrics.org/data_quality/): The self-checks shown at the top of every report; read these before trusting the numbers.
 - [Changelog](https://jirametrics.org/changes/): Version history and breaking changes (note v3.0).
 
