@@ -44,7 +44,7 @@ Create a `.mcp.json` file in the same directory as your `config.rb`:
 
 This simplest form works whenever the MCP host can find `jirametrics` on its `PATH`, which is usually the case when you start Claude Code from a terminal where `jirametrics` already runs.
 
-If Claude Code reports that it can't start the server, the host was almost certainly launched without your Ruby version manager's environment, so a bare `jirametrics` isn't on its `PATH`. Run `which jirametrics` in your terminal and use whatever absolute path it prints as the `command` instead:
+If Claude Code reports that it can't start the server, the host was almost certainly launched without your Ruby version manager's environment, so a bare `jirametrics` isn't on its `PATH`. This is the single most common setup problem, and it is not specific to Claude Code: any MCP host launched outside your normal shell hits it. The fix is always the same, give it the absolute path. Run `which jirametrics` (or `where jirametrics` on Windows) in your terminal and use whatever it prints as the `command` instead:
 
 ```json
 {
@@ -66,6 +66,10 @@ Typical locations that `which jirametrics` reports:
 | asdf | `~/.asdf/shims/jirametrics` |
 | RVM | `~/.rvm/gems/<ruby-version>/bin/jirametrics` |
 | No version manager | `/usr/local/bin/jirametrics` or similar |
+| RubyInstaller (Windows) | `C:/Ruby/bin/jirametrics` |
+
+{: .tip }
+On Windows, use forward slashes in the paths (`C:/Ruby/bin/...`). They work in both JSON and TOML config files and save you from having to escape every backslash as `\\`.
 
 For rbenv and asdf the shim re-executes under the correct Ruby on its own, so the absolute path is all you need. RVM is the exception: its gem executables expect RVM's shell environment to be loaded first, so for RVM use a shell that sources it:
 
@@ -133,6 +137,20 @@ Restart Claude Desktop after making changes to this file.
 
 {: .important }
 If you have multiple JiraMetrics instances with confidentiality requirements between them, Claude Desktop is not recommended as all configured servers run simultaneously in the same session.
+
+## Mistral Vibe CLI
+
+[Vibe](https://docs.mistral.ai/vibe/code/cli/mcp-servers) configures MCP servers in a `config.toml`. It runs the server over stdio, so point `command` at the `jirametrics-mcp` executable and pass your config with `--config`:
+
+```toml
+[[mcp_servers]]
+name = "jirametrics"
+transport = "stdio"
+command = "C:/Ruby/bin/jirametrics-mcp"
+args = ["--config", "C:/development/myreports/config.rb"]
+```
+
+If Vibe reports something like `MCP stdio discovery failed`, it's the PATH problem described under [Claude Code](#claude-code): Vibe launched without your Ruby environment and couldn't find a bare `jirametrics-mcp`, so it never got far enough to log anything useful. Give it the absolute path to the executable (`where jirametrics-mcp`, or `which jirametrics-mcp` on macOS/Linux) as shown above.
 
 # Available tools
 
