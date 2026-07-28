@@ -20,6 +20,9 @@ The JiraMetrics MCP server connects Claude directly to your Jira data. Ask quest
 {: .tip }
 For the latest MCP features, install the prerelease: `gem install jirametrics --pre`
 
+{: .tip }
+The MCP server writes its own log to `jirametrics-mcp.log`, kept separate from the `jirametrics.log` that `download` and `export` use. That way, starting the server (which your AI tool does automatically when you launch it from a project directory) never overwrites a `jirametrics.log` you're in the middle of debugging from.
+
 
 ## Claude Code
 
