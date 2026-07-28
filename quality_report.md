@@ -7,6 +7,8 @@ The charts we look at will only be as good as the data that went into them, even
 
 It's critical that we understand how good the data is, before we use it to make decisions. At the top of every report, we have a "Data Quality" section and in that, we list those things that we think are important to note.
 
+The items highlighted there are not necessarily bad data. Some are genuine contradictions worth fixing in Jira, such as an item finishing before it started. But many are simply places where the way your team actually works bumps up against the simplified start-to-finish model this tool uses to compute flow metrics. Those aren't mistakes; we flag them so you can read the charts with the right context, not because anyone did anything wrong.
+
 What do we check for?
 1. Items that were moved "back to the backlog" after being started. This is a poor practice and yet almost every team does it.
 2. Items for which we know when they completed but can't tell when they started. This usually means items moving directly from ToDo to Done.
