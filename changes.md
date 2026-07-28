@@ -6,7 +6,7 @@ title: Change log
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
 
-# v3.1 (unreleased)
+# v3.1 (July 28, 2026)
 
 * New commands to make it easier for AI agents to quickly set up and configure the tool.
   * `jirametrics verify`: It checks that JiraMetrics can authenticate to each configured Jira instance without downloading any data, and exits with a non-zero status if any connection fails. Handy as a first step to confirm your credentials before the slow download. See [command line usage]({% link usage.md %}).
