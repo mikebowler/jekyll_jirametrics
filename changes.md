@@ -6,6 +6,10 @@ title: Change log
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
 
+# vNext
+
+* The cycle time and pull request cycle time scatterplots can now cap the y axis at a chosen percentile, so a few very long-running outliers no longer squash the rest of the data into an unreadable band at the bottom. Turn it on with `cap_y_axis percentile: 90` in the chart's config block; it is off by default, and defaults to the 98th percentile if you pass no argument. Capped items are not hidden - they move into a separate band above an axis break, drawn as up arrows in their group colour and still showing their real cycle time on hover. The 85th-percentile lines are unaffected, since they are always computed from the full data set. See [chart configuration]({% link config_charts.md %}#capping-the-y-axis-with-cap_y_axis).
+
 # v3.1.1 (August 5, 2026)
 
 * Bug: A fresh install of v3.1 could fail on startup with `cannot load such file -- json-schema`. JiraMetrics uses the `json-schema` and `csv` gems but never declared them as dependencies, relying on other gems to pull them in. Recent versions of those gems stopped doing so, so a clean install no longer had them available. Both are now declared explicitly. If you already hit this on v3.1, `gem update jirametrics` (or `gem install json-schema`) resolves it in the meantime.

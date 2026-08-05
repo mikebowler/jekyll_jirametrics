@@ -116,6 +116,37 @@ cycletime_scatterplot do
 end
 ```
 
+### Capping the y axis with `cap_y_axis`
+
+A handful of very long-running items can stretch the y axis so far that the bulk of
+your work is squashed into a thin band at the bottom and becomes hard to read.
+Making the chart taller does not help, because the problem is the range, not the
+height.
+
+`cap_y_axis` caps the y axis at a percentile of the data so you can zoom in on the
+cases that matter most. Items above the cap are not discarded. They move into a
+distinct band above an axis break (drawn as a double line), shown as up arrows in
+their group colour with a label counting how many there are. Hovering an arrow
+still shows its real cycle time. Everything below the break expands to fill the
+readable area.
+
+```ruby
+cycletime_scatterplot do
+  cap_y_axis percentile: 90
+end
+```
+
+The option is off by default; without it the chart shows every item, auto-scaled as
+before. Called with no argument, `cap_y_axis` defaults to the 98th percentile, which
+keeps all but the genuine long tail on scale. Capping only changes what you see, not
+the numbers: the percentile lines (such as the 85% line) are always calculated from
+the full data set.
+
+The same option is available on
+[`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
+
+{% imagesize /assets/images/cycletime_scatterplot_cap.webp:img alt="Cycletime scatterplot with the y axis capped, showing outliers as up arrows in a band above an axis break" %}
+
 ----
 
 ## `cumulative_flow_diagram`
