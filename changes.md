@@ -6,6 +6,10 @@ title: Change log
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
 
+# v3.1.1 (August 5, 2026)
+
+* Bug: A fresh install of v3.1 could fail on startup with `cannot load such file -- json-schema`. JiraMetrics uses the `json-schema` and `csv` gems but never declared them as dependencies, relying on other gems to pull them in. Recent versions of those gems stopped doing so, so a clean install no longer had them available. Both are now declared explicitly. If you already hit this on v3.1, `gem update jirametrics` (or `gem install json-schema`) resolves it in the meantime.
+
 # v3.1 (July 28, 2026)
 
 * New commands to make it easier for AI agents to quickly set up and configure the tool.
