@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* The aging work bar chart's description text is now valid HTML. It was wrapped in `<p>` elements that contained colour swatches and a numbered list, and since both of those are block level, browsers silently closed the paragraph at the first one. That had no visible effect on the old wording, because nothing followed the list, but any sentence with text after a colour swatch would break apart and reflow below the chart. The markup now matches the other charts.
+
 * The vertical percentile line on the aging work bar chart is no longer fixed at 85%. Set `percentiles [50, 85]` in the chart's config block to draw more than one, or `percentiles []` to draw none, and hover a line to see which percentile it is. The line is also now documented, having previously appeared with no explanation anywhere. See [chart configuration]({% link config_charts.md %}#the-percentile-line).
 
 * The cycle time and pull request cycle time histograms now explain whichever percentiles you asked for, instead of always describing the 50th, 85th and 98th regardless of what the statistics table showed. The `percentiles` setting is also validated now, so a typo is reported when the config is read rather than producing a wrong table, and column headings render as `1st` and `22nd` rather than `1th` and `22th`. Pass an empty list to drop the percentile columns. See [chart configuration]({% link config_charts.md %}#choosing-which-percentiles-the-statistics-show).
