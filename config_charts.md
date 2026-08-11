@@ -23,6 +23,20 @@ There are potentially three bars for each issue, although a bar may be missing i
 2. The middle bar indicates  blocked or  stalled.
 3. The bottom bar indicated  expedited.
 
+### The percentile line
+
+A vertical line marks how long your completed work actually took, drawn that many days back from today. Anything whose bars extend past the line has now been in progress longer than that percentage of everything you finished, which makes it worth a conversation.
+
+By default the line sits at the 85th percentile. Use `percentiles` to change it, or to ask for more than one.
+
+```ruby
+aging_work_bar_chart do
+  percentiles [50, 85]
+end
+```
+
+Several lines share the same colour, since their position is what tells them apart. Hover any of them to see which percentile it represents. Pass an empty list to draw none at all. Percentiles must be whole numbers between 0 and 100. See [why 85% is the default]({% link faq.md %}#why-85) for the reasoning behind that number.
+
 ----
 
 ## `aging_work_in_progress_chart`
