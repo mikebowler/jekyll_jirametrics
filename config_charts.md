@@ -73,6 +73,18 @@ Rules options
 | color |The color used for the group. If no color is specified then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
 
+### Choosing which percentiles the statistics show
+
+Below the chart is a statistics table with a column for each percentile, and a short note explaining what each one is useful for. By default you get the 50th, 85th and 98th: the median, the number most people use for a service level expectation, and a sense of the worst case. Use `percentiles` to ask for something else.
+
+```ruby
+cycletime_histogram do
+  percentiles [50, 90]
+end
+```
+
+The explanations follow whatever you configure, so asking for the 90th tells you what the 90th is good for rather than describing a column that isn't there. Pass an empty list to drop the percentile columns entirely. Percentiles must be whole numbers between 0 and 100, and anything else is rejected when the config is read rather than quietly producing a wrong table. See [why 85% is the default]({% link faq.md %}#why-85) for the reasoning behind that particular number.
+
 {% imagesize /assets/images/cycletime_histogram.webp:img alt="Cycletime Histogram" %}
 
 ----

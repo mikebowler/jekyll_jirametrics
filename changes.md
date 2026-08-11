@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* The cycle time and pull request cycle time histograms now explain whichever percentiles you asked for, instead of always describing the 50th, 85th and 98th regardless of what the statistics table showed. The `percentiles` setting is also validated now, so a typo is reported when the config is read rather than producing a wrong table, and column headings render as `1st` and `22nd` rather than `1th` and `22th`. Pass an empty list to drop the percentile columns. See [chart configuration]({% link config_charts.md %}#choosing-which-percentiles-the-statistics-show).
+
 * The percentile reference lines on the cycle time and pull request cycle time scatterplots are no longer fixed at 85%. Set `percentiles [50, 85, 98]` in the chart's config block to draw several, or `percentiles []` to draw none. A single group can override the chart default by setting `rules.percentiles` inside `grouping_rules`, so you can give bugs an extra line or suppress lines for a group whose numbers are too variable to mean anything. The default is unchanged, so existing configuration draws the same single 85% line it always did. Hovering a line now shows which line it is and what its value is, for example `Story 85% at 12 days`, with the whole-data-set line naming itself `All items`. See [chart configuration]({% link config_charts.md %}#choosing-which-percentile-lines-to-draw-with-percentiles).
 
 # v3.2 (August 9, 2026)
