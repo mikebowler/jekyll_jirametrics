@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* The aging work bar chart now warns when it meets a priority it has no colour for. Priority names come from Jira and an administrator can define any they like, so a priority such as "Immediate Gating" has always been drawn in black. That still happens, and is perfectly fine if you do not mind how it looks, but it is no longer silent: the warning names the priority and gives you the line to paste into your `include_css` file if you want to colour it.
+
 * Fixed a percentile calculation that could be one data point too high. The scatterplot and the aging work charts overshot whenever the rank landed exactly on a boundary, so with 100 completed items the 85th percentile reported the value of the 86th. The histogram was already correct, which meant the two charts could show different numbers for the same percentile of the same data. All of them now agree. Your percentile lines and forecasts may move by one data point, which is the correction.
 
 * Trend lines are no longer drawn for a group with only two data points. Two points always fit a straight line perfectly, so the result looked authoritative while carrying no evidence of a trend at all. Three is now the minimum, on every chart that draws a trend line.
