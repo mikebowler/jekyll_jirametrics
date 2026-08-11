@@ -57,7 +57,7 @@ It might really be that you've hit the Jira instance too often, and you'll have 
 
 "Stalled" indicates that the work cannot proceed because the team has no capacity to work on it. If we had someone available, it would be in progress.
 
-By default, we consider an item to be stalled if there is no activity in Jira for 5 days. Activity could be a status change or a comment or the movement of a subtask. If it's being shown as stalled then it had no activity at all for that long.
+By default, we consider an item to be stalled if there is no activity in Jira for 5 days. Activity means *any* entry in the issue's changelog, plus comments and the movement of subtasks. There is no list of fields that count and no list that doesn't. If Jira recorded it in the history then it resets the clock, including low signal changes like Watchers or Rank, and including anything another tool writes into the history on your behalf. So an item that nobody has genuinely worked on can still look active if something incidental touched it. If you are trying to work out why a particular item isn't showing as stalled, `jirametrics info ISSUE-123` will dump its full history so you can see exactly what reset the clock.
 
 * You can change the number of days in [settings]({% link config_project.md %}#settings) with the key `stalled_threshold_days`
 * You can also designate a particular status so that the work immediately becomes stalled when entering this status. That is also in [settings]({% link config_project.md %}#settings) with the key `stalled_statuses`
@@ -97,6 +97,23 @@ If you then take that custom field and put it in the settings as shown, then par
 ```
 settings['customfield_parent_links'] = ['customfield_10019']
 ```
+
+{: #why-85 }
+## Why is 85% the default percentile?
+
+**The short answer.** It's a reasonable proxy for "most". Most of the work will fall on or below the 85% point
+
+**What you actually want from a percentile.** A number you can plan around, and that you can say out loud to a stakeholder without misleading them. "Most work of this type finishes within X days." That means picking a number high enough that "most" is honest, and low enough that it is still stable and still useful.
+
+**Why not the median?** The 50th percentile is a coin flip. Half your work takes longer than that, by definition. It is genuinely useful for watching whether your typical case is drifting, but as a commitment it fails half the time, which is not a commitment.
+
+**Why not the 95th or 98th?** Out there you are in the long tail, where you have very few data points. The number swings wildly because one unusual item moves it, so it is unstable from one report to the next. It is also so conservative that quoting it tends to produce dates nobody believes. It is worth looking at to understand your worst case, but it is a poor planning number.
+
+85% is high enough that "most" is a fair description, low enough to be reasonably stable, and widely enough used in the flow metrics community that other people know what you mean when you say it. That last part matters more than it sounds: a shared convention is worth something even when a neighbouring number would have done just as well.
+
+**It is a starting point, not a rule.** If your context calls for something else, change it. See [percentiles]({% link config_charts.md %}#choosing-which-percentile-lines-to-draw-with-percentiles) for how, including asking for several at once so you can see the median, the planning number and the worst case side by side.
+
+**One caveat about small data sets.** A percentile is only as trustworthy as the number of items behind it. If you have twenty completed items, the 85th percentile is essentially the 17th one, and a single strange item moves it noticeably. This is not a reason to avoid percentiles; it is a reason to be careful about how confidently you quote them when the chart is sparse.
 
 ----
 
