@@ -208,6 +208,20 @@ Percentiles must be whole numbers between 0 and 100. Anything else is rejected w
 The same option is available on
 [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
 
+### Showing trend lines with `show_trend_lines`
+
+Off by default. When switched on, the chart adds a dashed line for each group, in that group's colour, fitted through that group's dots. The slope tells you whether cycle times have been getting longer or shorter across the period shown.
+
+```ruby
+cycletime_scatterplot do
+  show_trend_lines
+end
+```
+
+It is a straight-line fit, so it describes the window you are looking at rather than predicting beyond it, it cannot show a trend that changed direction partway through, and a handful of unusually long items will tilt it noticeably. The chart says as much underneath itself when the lines are turned on.
+
+The same option is available on [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
+
 ### Capping the y axis with `cap_y_axis`
 
 A handful of very long-running items can stretch the y axis so far that the bulk of your work is squashed into a thin band at the bottom and becomes hard to read. Making the chart taller does not help, because the problem is the range, not the height.

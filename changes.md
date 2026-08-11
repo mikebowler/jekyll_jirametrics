@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* The cycle time and pull request cycle time scatterplots now explain what their trend lines mean, when you have turned trend lines on with `show_trend_lines`. Previously the chart drew them and said nothing about how to read one, or about the fact that a straight-line fit describes the period shown rather than predicting beyond it. The `show_trend_lines` setting is also documented now. See [chart configuration]({% link config_charts.md %}#showing-trend-lines-with-show_trend_lines).
+
 * In dark mode the seventh sprint burndown colour is now a lightened blue rather than a light teal. The teal sat too close to the neighbouring green for anyone with protanopia or deuteranopia to reliably tell the two sprints apart. Blue was the only Okabe-Ito hue the dark palette was missing, since the original is too dark to read on a dark background.
 
 * Colours that jirametrics picks for you, rather than ones you configured, now come from CSS variables (`--palette-color-1` upwards) instead of being written directly into the report. That means you can override them, and you can add more simply by defining the next number. Two consequences worth knowing: these colours now follow a custom stylesheet where previously they ignored it, and because the palette is now shared across the whole report rather than restarting for each chart, a chart may be given different colours than it was before. The colours themselves are unchanged. See [customizing the CSS]({% link config_file_html.md %}#the-fallback-palette).
