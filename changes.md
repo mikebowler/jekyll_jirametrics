@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Two colour pairs on the WIP chart in dark mode were too close together for anyone with red-green colour blindness to separate. "Completed" against "completed but not started" was the worst, which is unfortunate given those are precisely the two you need to tell apart, and the two ends of the duration ramp were nearly as bad. Both pairs have been corrected. The ramp still runs cool to warm as work ages, and light mode is unchanged.
+
 * The aging work bar chart now warns when it meets a priority it has no colour for. Priority names come from Jira and an administrator can define any they like, so a priority such as "Immediate Gating" has always been drawn in black. That still happens, and is perfectly fine if you do not mind how it looks, but it is no longer silent: the warning names the priority and gives you the line to paste into your `include_css` file if you want to colour it.
 
 * Fixed a percentile calculation that could be one data point too high. The scatterplot and the aging work charts overshot whenever the rank landed exactly on a boundary, so with 100 completed items the 85th percentile reported the value of the 86th. The histogram was already correct, which meant the two charts could show different numbers for the same percentile of the same data. All of them now agree. Your percentile lines and forecasts may move by one data point, which is the correction.
