@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* The Forecast column on the aging work table is no longer fixed at the 85th percentile. Set `percentile 90` in the `aging_work_table` config block to forecast from a different point in your historical column movement. It is singular rather than a list, because a forecast has to resolve to a single number of days for the due date risk check. The message shown for items we cannot forecast now names the percentile it used, so it reads "85% of items on this board have left this column in 8 days or less" where it previously said "Most items".
+
 * The vertical percentile line on the aging work bar chart is no longer fixed at 85%. Set `percentiles [50, 85]` in the chart's config block to draw more than one, or `percentiles []` to draw none, and hover a line to see which percentile it is. The line is also now documented, having previously appeared with no explanation anywhere. See [chart configuration]({% link config_charts.md %}#the-percentile-line).
 
 * The cycle time and pull request cycle time histograms now explain whichever percentiles you asked for, instead of always describing the 50th, 85th and 98th regardless of what the statistics table showed. The `percentiles` setting is also validated now, so a typo is reported when the config is read rather than producing a wrong table, and column headings render as `1st` and `22nd` rather than `1th` and `22th`. Pass an empty list to drop the percentile columns. See [chart configuration]({% link config_charts.md %}#choosing-which-percentiles-the-statistics-show).

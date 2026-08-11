@@ -65,6 +65,20 @@ For items that are started but not finished, show a whole variety of information
 
 {% imagesize /assets/images/aging_work_table.webp:img alt="Aging work table" %}
 
+### The Forecast column
+
+The Forecast column predicts how much longer an item has to go, based on how long work has historically taken to move through each remaining column on this board. By default it forecasts from the 85th percentile of that historical movement. Use `percentile` to change it.
+
+```ruby
+aging_work_table do
+  percentile 90
+end
+```
+
+Note this is singular, unlike the `percentiles` setting on the charts. A forecast has to resolve to a single number of days, because that figure is also what decides whether an item with a due date is flagged as at risk, so there is nothing sensible for a list of values to mean here. A higher percentile gives a more conservative forecast. Percentiles must be whole numbers between 0 and 100. See [why 85% is the default]({% link faq.md %}#why-85).
+
+Some items cannot be forecast at all, usually because they have already been in their current column longer than the historical figure would predict. Those show a note explaining why, naming the percentile used.
+
 ----
 
 ## `cycletime_histogram`
