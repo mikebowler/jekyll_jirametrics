@@ -119,13 +119,9 @@ end
 
 ### Choosing which percentile lines to draw with `percentiles`
 
-The chart draws horizontal reference lines at chosen percentiles of the data. If a
-line sits at 12 days then that percentage of the work completed in 12 days or less.
-One line is drawn across the whole data set, in its own colour, and one is drawn for
-each group in that group's colour.
+The chart draws horizontal reference lines at chosen percentiles of the data. If a line sits at 12 days then that percentage of the work completed in 12 days or less. One line is drawn across the whole data set, in its own colour, and one is drawn for each group in that group's colour.
 
-By default the chart draws the 85th percentile, which is a reasonable proxy for
-"most". Use `percentiles` to ask for something else.
+By default the chart draws the 85th percentile, which is a reasonable proxy for "most". Use `percentiles` to ask for something else.
 
 ```ruby
 cycletime_scatterplot do
@@ -133,10 +129,7 @@ cycletime_scatterplot do
 end
 ```
 
-The 50th tells you the typical case, the 85th is the usual choice for setting a
-service level expectation, and the 98th shows you the worst case you should plan
-for. Asking for more lines makes the chart busier, and how busy is too busy is your
-call.
+The 50th tells you the typical case, the 85th is the usual choice for setting a service level expectation, and the 98th shows you the worst case you should plan for. Asking for more lines makes the chart busier, and how busy is too busy is your call.
 
 Pass an empty list to switch the lines off completely.
 
@@ -146,17 +139,11 @@ cycletime_scatterplot do
 end
 ```
 
-Hover over any line to see which line it is and what its value is, for example
-`Story 85% at 12 days`. The line drawn across the whole data set names itself
-`All items`, since it has no legend entry of its own. Values also appear in the legend
-entry for each group, so `Story (85% at 12 days)` tells you the 85th percentile for
-stories is 12 days without having to hover at all.
+Hover over any line to see which line it is and what its value is, for example `Story 85% at 12 days`. The line drawn across the whole data set names itself `All items`, since it has no legend entry of its own. Values also appear in the legend entry for each group, so `Story (85% at 12 days)` tells you the 85th percentile for stories is 12 days without having to hover at all.
 
 #### Different percentiles for different groups
 
-The chart level setting does double duty: it defines the lines drawn across the whole
-data set, and it supplies the default for every group. A group can override that
-default by setting `percentiles` in its `grouping_rules` block.
+The chart level setting does double duty: it defines the lines drawn across the whole data set, and it supplies the default for every group. A group can override that default by setting `percentiles` in its `grouping_rules` block.
 
 ```ruby
 cycletime_scatterplot do
@@ -174,29 +161,18 @@ cycletime_scatterplot do
 end
 ```
 
-A group that never sets `percentiles` inherits the chart default. Setting it to an
-empty list is different from not setting it at all: the empty list means this group
-shows no lines, while leaving it alone means "use whatever the chart says".
+A group that never sets `percentiles` inherits the chart default. Setting it to an empty list is different from not setting it at all: the empty list means this group shows no lines, while leaving it alone means "use whatever the chart says".
 
-Percentiles must be whole numbers between 0 and 100. Anything else is rejected when
-the config is read, rather than quietly producing a misleading chart.
+Percentiles must be whole numbers between 0 and 100. Anything else is rejected when the config is read, rather than quietly producing a misleading chart.
 
 The same option is available on
 [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
 
 ### Capping the y axis with `cap_y_axis`
 
-A handful of very long-running items can stretch the y axis so far that the bulk of
-your work is squashed into a thin band at the bottom and becomes hard to read.
-Making the chart taller does not help, because the problem is the range, not the
-height.
+A handful of very long-running items can stretch the y axis so far that the bulk of your work is squashed into a thin band at the bottom and becomes hard to read. Making the chart taller does not help, because the problem is the range, not the height.
 
-`cap_y_axis` caps the y axis at a percentile of the data so you can zoom in on the
-cases that matter most. Items above the cap are not discarded. They move into a
-distinct band above an axis break (drawn as a double line), shown as up arrows in
-their group colour with a label counting how many there are. Hovering an arrow
-still shows its real cycle time. Everything below the break expands to fill the
-readable area.
+`cap_y_axis` caps the y axis at a percentile of the data so you can zoom in on the cases that matter most. Items above the cap are not discarded. They move into a distinct band above an axis break (drawn as a double line), shown as up arrows in their group colour with a label counting how many there are. Hovering an arrow still shows its real cycle time. Everything below the break expands to fill the readable area.
 
 ```ruby
 cycletime_scatterplot do
@@ -204,11 +180,7 @@ cycletime_scatterplot do
 end
 ```
 
-The option is off by default; without it the chart shows every item, auto-scaled as
-before. Called with no argument, `cap_y_axis` defaults to the 98th percentile, which
-keeps all but the genuine long tail on scale. Capping only changes what you see, not
-the numbers: the [percentile lines](#choosing-which-percentile-lines-to-draw-with-percentiles)
-are always calculated from the full data set.
+The option is off by default; without it the chart shows every item, auto-scaled as before. Called with no argument, `cap_y_axis` defaults to the 98th percentile, which keeps all but the genuine long tail on scale. Capping only changes what you see, not the numbers: the [percentile lines](#choosing-which-percentile-lines-to-draw-with-percentiles) are always calculated from the full data set.
 
 The same option is available on
 [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
