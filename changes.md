@@ -5,8 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
-
 # vNext
+
+* The percentile reference lines on the cycle time and pull request cycle time scatterplots are no longer fixed at 85%. Set `percentiles [50, 85, 98]` in the chart's config block to draw several, or `percentiles []` to draw none. A single group can override the chart default by setting `rules.percentiles` inside `grouping_rules`, so you can give bugs an extra line or suppress lines for a group whose numbers are too variable to mean anything. The default is unchanged, so existing configuration draws the same single 85% line it always did. Hovering a line now shows its value. See [chart configuration]({% link config_charts.md %}#choosing-which-percentile-lines-to-draw-with-percentiles).
+
+# v3.2 (August 9, 2026)
 
 * The cycle time and pull request cycle time scatterplots can now cap the y axis at a chosen percentile, so a few very long-running outliers no longer squash the rest of the data into an unreadable band at the bottom. Turn it on with `cap_y_axis percentile: 90` in the chart's config block; it is off by default, and defaults to the 98th percentile if you pass no argument. Capped items are not hidden - they move into a separate band above an axis break, drawn as up arrows in their group colour and still showing their real cycle time on hover. The 85th-percentile lines are unaffected, since they are always computed from the full data set. See [chart configuration]({% link config_charts.md %}#capping-the-y-axis-with-cap_y_axis).
 

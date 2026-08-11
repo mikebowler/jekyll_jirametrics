@@ -92,6 +92,7 @@ You can customize this report with `grouping_rules` as shown below.
 | label|The name used for the group |
 | color |The color used for the group. If a colour isn't set then it will be randomly chosen. |
 | ignore |Discard this item from the dataset |
+| percentiles |Which percentile lines to draw for this group, overriding the chart default. See [percentile lines](#choosing-which-percentile-lines-to-draw-with-percentiles). |
 
 {% imagesize /assets/images/cycletime_scatterplot.webp:img alt="Cycletime Scatterplot" %}
 
@@ -116,6 +117,71 @@ cycletime_scatterplot do
 end
 ```
 
+### Choosing which percentile lines to draw with `percentiles`
+
+The chart draws horizontal reference lines at chosen percentiles of the data. If a
+line sits at 12 days then that percentage of the work completed in 12 days or less.
+One line is drawn across the whole data set, in its own colour, and one is drawn for
+each group in that group's colour.
+
+By default the chart draws the 85th percentile, which is a reasonable proxy for
+"most". Use `percentiles` to ask for something else.
+
+```ruby
+cycletime_scatterplot do
+  percentiles [50, 85, 98]
+end
+```
+
+The 50th tells you the typical case, the 85th is the usual choice for setting a
+service level expectation, and the 98th shows you the worst case you should plan
+for. Asking for more lines makes the chart busier, and how busy is too busy is your
+call.
+
+Pass an empty list to switch the lines off completely.
+
+```ruby
+cycletime_scatterplot do
+  percentiles []
+end
+```
+
+Hover over any line to see its value. The value also appears in the legend entry for
+that group, so `Story (85% at 12 days)` tells you the 85th percentile for stories is
+12 days.
+
+#### Different percentiles for different groups
+
+The chart level setting does double duty: it defines the lines drawn across the whole
+data set, and it supplies the default for every group. A group can override that
+default by setting `percentiles` in its `grouping_rules` block.
+
+```ruby
+cycletime_scatterplot do
+  percentiles [85]
+
+  grouping_rules do |issue, rules|
+    rules.label = issue.type
+
+    # Bugs get a second line so we can see the typical case as well
+    rules.percentiles = [50, 85] if issue.type == 'Bug'
+
+    # Spikes are too variable for a percentile to mean anything
+    rules.percentiles = [] if issue.type == 'Spike'
+  end
+end
+```
+
+A group that never sets `percentiles` inherits the chart default. Setting it to an
+empty list is different from not setting it at all: the empty list means this group
+shows no lines, while leaving it alone means "use whatever the chart says".
+
+Percentiles must be whole numbers between 0 and 100. Anything else is rejected when
+the config is read, rather than quietly producing a misleading chart.
+
+The same option is available on
+[`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
+
 ### Capping the y axis with `cap_y_axis`
 
 A handful of very long-running items can stretch the y axis so far that the bulk of
@@ -139,8 +205,8 @@ end
 The option is off by default; without it the chart shows every item, auto-scaled as
 before. Called with no argument, `cap_y_axis` defaults to the 98th percentile, which
 keeps all but the genuine long tail on scale. Capping only changes what you see, not
-the numbers: the percentile lines (such as the 85% line) are always calculated from
-the full data set.
+the numbers: the [percentile lines](#choosing-which-percentile-lines-to-draw-with-percentiles)
+are always calculated from the full data set.
 
 The same option is available on
 [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
@@ -456,6 +522,12 @@ end
 | label | The name used for the group |
 | color | The color used for the group. If no color is specified then it will be randomly chosen. |
 | ignore | Discard this item from the dataset |
+| percentiles | Which percentile lines to draw for this group, overriding the chart default. |
+
+This chart also supports
+[`cap_y_axis`](#capping-the-y-axis-with-cap_y_axis) and
+[`percentiles`](#choosing-which-percentile-lines-to-draw-with-percentiles), which behave
+exactly as they do on the cycle time scatterplot.
 
 ----
 
@@ -495,6 +567,12 @@ end
 | label | The name used for the group |
 | color | The color used for the group. If no color is specified then it will be randomly chosen. |
 | ignore | Discard this item from the dataset |
+| percentiles | Which percentile lines to draw for this group, overriding the chart default. |
+
+This chart also supports
+[`cap_y_axis`](#capping-the-y-axis-with-cap_y_axis) and
+[`percentiles`](#choosing-which-percentile-lines-to-draw-with-percentiles), which behave
+exactly as they do on the cycle time scatterplot.
 
 ----
 
