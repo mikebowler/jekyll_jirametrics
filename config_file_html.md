@@ -76,6 +76,21 @@ end
 
 One caveat is that the dependency report is currently not configurable. This is a limitation of the tool we currently use to generate that report.
 
+### The fallback palette
+
+Some things on a chart need to be told apart without any particular colour being called for, such as one series per epic when you have not said which colour each epic should be. Those come from a fallback palette defined as `--palette-color-1` upwards. It is the [Okabe-Ito palette](https://jfly.uni-koeln.de/color/), chosen because its colours stay distinguishable to people with colour vision deficiency, so please keep that in mind if you replace them.
+
+You can override any slot the same way you override any other colour. You can also extend the palette simply by defining the next number, and it will be used; the number of slots is read from the CSS rather than fixed in the code.
+
+```css
+:root {
+  --palette-color-3: #117733;   /* replace a slot */
+  --palette-color-8: #882255;   /* add a new one */
+}
+```
+
+If you need a *specific* colour for a *specific* thing, configure it on the chart rather than relying on which palette slot that thing happens to be given. The slot a series gets depends on how many other series were drawn before it.
+
 ### Reverting to the legacy colour scheme
 
 The default colours were updated to improve accessibility for people with colour vision deficiencies (colour blindness). If you prefer the original colour scheme, you can opt out by using the [legacy_colors.css](https://github.com/mikebowler/jirametrics/blob/main/lib/jirametrics/html/legacy_colors.css) file that ships with jirametrics.

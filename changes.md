@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Colours that jirametrics picks for you, rather than ones you configured, now come from CSS variables (`--palette-color-1` upwards) instead of being written directly into the report. That means you can override them, and you can add more simply by defining the next number. Two consequences worth knowing: these colours now follow a custom stylesheet where previously they ignored it, and because the palette is now shared across the whole report rather than restarting for each chart, a chart may be given different colours than it was before. The colours themselves are unchanged. See [customizing the CSS]({% link config_file_html.md %}#the-fallback-palette).
+
 * The Forecast column on the aging work table is no longer fixed at the 85th percentile. Set `percentile 90` in the `aging_work_table` config block to forecast from a different point in your historical column movement. It is singular rather than a list, because a forecast has to resolve to a single number of days for the due date risk check. The message shown for items we cannot forecast now names the percentile it used, so it reads "85% of items on this board have left this column in 8 days or less" where it previously said "Most items".
 
 * The vertical percentile line on the aging work bar chart is no longer fixed at 85%. Set `percentiles [50, 85]` in the chart's config block to draw more than one, or `percentiles []` to draw none, and hover a line to see which percentile it is. The line is also now documented, having previously appeared with no explanation anywhere. See [chart configuration]({% link config_charts.md %}#the-percentile-line).
