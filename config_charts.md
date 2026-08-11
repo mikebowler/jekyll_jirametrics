@@ -146,9 +146,11 @@ cycletime_scatterplot do
 end
 ```
 
-Hover over any line to see its value. The value also appears in the legend entry for
-that group, so `Story (85% at 12 days)` tells you the 85th percentile for stories is
-12 days.
+Hover over any line to see which line it is and what its value is, for example
+`Story 85% at 12 days`. The line drawn across the whole data set names itself
+`All items`, since it has no legend entry of its own. Values also appear in the legend
+entry for each group, so `Story (85% at 12 days)` tells you the 85th percentile for
+stories is 12 days without having to hover at all.
 
 #### Different percentiles for different groups
 
