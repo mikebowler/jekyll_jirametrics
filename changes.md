@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Fixed a percentile calculation that could be one data point too high. The scatterplot and the aging work charts overshot whenever the rank landed exactly on a boundary, so with 100 completed items the 85th percentile reported the value of the 86th. The histogram was already correct, which meant the two charts could show different numbers for the same percentile of the same data. All of them now agree. Your percentile lines and forecasts may move by one data point, which is the correction.
+
 * Trend lines are no longer drawn for a group with only two data points. Two points always fit a straight line perfectly, so the result looked authoritative while carrying no evidence of a trend at all. Three is now the minimum, on every chart that draws a trend line.
 
 * The cycle time and pull request cycle time scatterplots now explain what their trend lines mean, when you have turned trend lines on with `show_trend_lines`. Previously the chart drew them and said nothing about how to read one, or about the fact that a straight-line fit describes the period shown rather than predicting beyond it. The `show_trend_lines` setting is also documented now. See [chart configuration]({% link config_charts.md %}#showing-trend-lines-with-show_trend_lines).
