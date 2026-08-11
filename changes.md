@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Reports now request the charting libraries by major version rather than always taking the newest release. Bug fixes and new minor releases still arrive automatically, but a new major version can no longer land in your reports unannounced and change how they render. The annotation plugin also moves to the same CDN as the others, so if your network restricts which hosts a page may fetch from, `cdnjs.cloudflare.com` is no longer needed and `cdn.jsdelivr.net` is the only one.
+
 * Two colour pairs on the WIP chart in dark mode were too close together for anyone with red-green colour blindness to separate. "Completed" against "completed but not started" was the worst, which is unfortunate given those are precisely the two you need to tell apart, and the two ends of the duration ramp were nearly as bad. Both pairs have been corrected. The ramp still runs cool to warm as work ages, and light mode is unchanged.
 
 * The aging work bar chart now warns when it meets a priority it has no colour for. Priority names come from Jira and an administrator can define any they like, so a priority such as "Immediate Gating" has always been drawn in black. That still happens, and is perfectly fine if you do not mind how it looks, but it is no longer silent: the warning names the priority and gives you the line to paste into your `include_css` file if you want to colour it.
