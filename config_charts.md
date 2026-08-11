@@ -218,7 +218,7 @@ cycletime_scatterplot do
 end
 ```
 
-It is a straight-line fit, so it describes the window you are looking at rather than predicting beyond it, it cannot show a trend that changed direction partway through, and a handful of unusually long items will tilt it noticeably. The chart says as much underneath itself when the lines are turned on.
+It is a straight-line fit, so it describes the window you are looking at rather than predicting beyond it, it cannot show a trend that changed direction partway through, and a handful of unusually long items will tilt it noticeably. A group needs at least three items before a line is drawn at all, since two will always fit a straight line perfectly and so tell you nothing. Even then, nothing checks how well the line fits, so a scattered cloud with no real trend in it still gets a confident looking line through it. The chart says as much underneath itself when the lines are turned on.
 
 The same option is available on [`pull_request_cycle_time_scatterplot`](#pull_request_cycle_time_scatterplot).
 

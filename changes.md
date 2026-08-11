@@ -7,6 +7,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Trend lines are no longer drawn for a group with only two data points. Two points always fit a straight line perfectly, so the result looked authoritative while carrying no evidence of a trend at all. Three is now the minimum, on every chart that draws a trend line.
+
 * The cycle time and pull request cycle time scatterplots now explain what their trend lines mean, when you have turned trend lines on with `show_trend_lines`. Previously the chart drew them and said nothing about how to read one, or about the fact that a straight-line fit describes the period shown rather than predicting beyond it. The `show_trend_lines` setting is also documented now. See [chart configuration]({% link config_charts.md %}#showing-trend-lines-with-show_trend_lines).
 
 * In dark mode the seventh sprint burndown colour is now a lightened blue rather than a light teal. The teal sat too close to the neighbouring green for anyone with protanopia or deuteranopia to reliably tell the two sprints apart. Blue was the only Okabe-Ito hue the dark palette was missing, since the original is too dark to read on a dark background.
