@@ -4,9 +4,7 @@ permalink: /troubleshooting/
 title: Errors and how to fix them
 ---
 
-This page maps the errors you're most likely to hit to their cause and the fix, roughly in the
-order they show up during setup. If you just want a working setup from scratch, start with the
-[Quick Start]({% link quickstart.md %}) and come back here when something breaks.
+This page maps the errors you're most likely to hit to their cause and the fix, roughly in the order they show up during setup. If you just want a working setup from scratch, start with the [Quick Start]({% link quickstart.md %}) and come back here when something breaks.
 
 Two commands are useful diagnostics throughout (both added in v3.1):
 

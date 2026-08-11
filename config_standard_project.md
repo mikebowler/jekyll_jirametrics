@@ -19,8 +19,7 @@ Exporter.configure do
 end
 ```
 
-The `require` line is mandatory: `standard_project` is a helper that lives outside the core tool, so
-without it you'll get an `undefined method 'standard_project'` error.
+The `require` line is mandatory: `standard_project` is a helper that lives outside the core tool, so without it you'll get an `undefined method 'standard_project'` error.
 
 This is intended just as a quick way to get started and there is no expectation that this will do everything you want. In fact, we expect that it won't be long before you decide that this isn't good enough and you'll create your own version that does exactly what you need.
 
