@@ -57,10 +57,13 @@ It might really be that you've hit the Jira instance too often, and you'll have 
 
 "Stalled" indicates that the work cannot proceed because the team has no capacity to work on it. If we had someone available, it would be in progress.
 
-By default, we consider an item to be stalled if there is no activity in Jira for 5 days. Activity means *any* entry in the issue's changelog, plus comments and the movement of subtasks. There is no list of fields that count and no list that doesn't. If Jira recorded it in the history then it resets the clock, including low signal changes like Watchers or Rank, and including anything another tool writes into the history on your behalf. So an item that nobody has genuinely worked on can still look active if something incidental touched it. If you are trying to work out why a particular item isn't showing as stalled, `jirametrics info ISSUE-123` will dump its full history so you can see exactly what reset the clock.
+By default, we consider an item to be stalled if there is no activity in Jira for 5 days. Activity means almost any entry in the issue's changelog, plus comments and the movement of subtasks. There is no list of fields that count; if Jira recorded it in the history then it resets the clock, including low signal changes like Watchers or Rank. So an item that nobody has genuinely worked on can still look active if something incidental touched it. If you are trying to work out why a particular item isn't showing as stalled, `jirametrics info ISSUE-123` will dump its full history so you can see exactly what reset the clock.
+
+There is one exception. A few kinds of history entry are not somebody working on the item at all, and those are listed in `stalled_ignored_fields`. It starts with `RemoteIssueLink`, which is what Jira writes when someone drops a Jira issue macro into a Confluence page: that is somebody referencing your work, not doing it, so it no longer resets the clock. Add to the list if your instance has other fields that are similarly incidental.
 
 * You can change the number of days in [settings]({% link config_project.md %}#settings) with the key `stalled_threshold_days`
 * You can also designate a particular status so that the work immediately becomes stalled when entering this status. That is also in [settings]({% link config_project.md %}#settings) with the key `stalled_statuses`
+* You can change which history entries are ignored entirely with the key `stalled_ignored_fields`, also in [settings]({% link config_project.md %}#settings)
 
 {: #blocked }
 ## How is "blocked" calculated and how do I change that?

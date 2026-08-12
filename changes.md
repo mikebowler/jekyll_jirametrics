@@ -7,6 +7,10 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 # vNext
 
+* Some history entries no longer reset the "stalled" clock. Adding a Jira issue macro to a Confluence page writes a `RemoteIssueLink` into the issue's history, and that was enough to make an item look active even though nobody had touched the work. Such fields are now listed in the `stalled_ignored_fields` setting, which starts with `RemoteIssueLink` and which you can add to. Some items that previously looked active will now correctly show as stalled.
+
+* `jirametrics info` now records which projects it searched and which directory each one read its issues from. If it cannot find an issue you know was downloaded, the log will show you where it actually looked, which is usually enough to spot that the config switched target directories partway through. Changes to the target directory are logged too. The terminal output is unchanged apart from a pointer to the log.
+
 * Reports now request the charting libraries by major version rather than always taking the newest release. Bug fixes and new minor releases still arrive automatically, but a new major version can no longer land in your reports unannounced and change how they render. The annotation plugin also moves to the same CDN as the others, so if your network restricts which hosts a page may fetch from, `cdnjs.cloudflare.com` is no longer needed and `cdn.jsdelivr.net` is the only one.
 
 * Two colour pairs on the WIP chart in dark mode were too close together for anyone with red-green colour blindness to separate. "Completed" against "completed but not started" was the worst, which is unfortunate given those are precisely the two you need to tell apart, and the two ends of the duration ramp were nearly as bad. Both pairs have been corrected. The ramp still runs cool to warm as work ages, and light mode is unchanged.
