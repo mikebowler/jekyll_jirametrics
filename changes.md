@@ -5,6 +5,11 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# vNext
+
+* Bugs
+  * A cycle time or pull request cycle time histogram no longer takes the whole report down when one of its groups has nothing left to plot. An item that finished before it started has no cycle time to chart, so it is excluded, and if that was true of every item in a group then the statistics table failed with `can't convert nil into Float` instead of rendering. That group now shows a dash in each column, with a footnote pointing at the Data Quality report for the items concerned.
+
 # v3.3 (August 12, 2026)
 
 * Stalled calculations
