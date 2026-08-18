@@ -80,17 +80,17 @@ The dependency chart used to be the exception here, because the tool that draws 
 
 ```css
 :root {
-  --dependency-chart-story-color: #009E73;
+  --dependency-chart-story-color: #20AA7E;
   --dependency-chart-task-color: #56B4E9;
-  --dependency-chart-bug-color: #D55E00;   /* also used for Defect */
+  --dependency-chart-bug-color: #EE721E;   /* also used for Defect */
   --dependency-chart-epic-color: #F0E442;
-  --dependency-chart-spike-color: #CC79A7;
+  --dependency-chart-spike-color: #CF7CAA;
   --dependency-chart-label-color: black;   /* the text inside a node */
   --dependency-chart-link-color: gray;     /* the lines between nodes, and their labels */
 }
 ```
 
-An issue type not in that list gets a colour from [the fallback palette](#the-fallback-palette) below.
+An issue type not in that list reuses one of those same five colours rather than coming from [the fallback palette](#the-fallback-palette), so two uncommon types can end up sharing a colour. Every node names its own type, so you can still tell them apart.
 
 The defaults are chosen to work well for people who are colour blind, so please keep that in mind if you replace them.
 

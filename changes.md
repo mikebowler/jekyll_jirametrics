@@ -9,7 +9,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Colour changes
   * The dependency chart was drawing some nodes as black text on a black background, so they could not be read at all. It affected any issue type the chart has no specific colour for, such as `Sub-task`. Introduced in v3.3.
-  * The dependency chart's colours can now be overridden, and the defaults have changed. It was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were hard to tell apart for anyone who is colour blind. They are now [Okabe-Ito](https://jfly.uni-koeln.de/color/), the same palette the rest of the report uses.
+  * The dependency chart's colours can now be overridden, and the defaults have changed. It was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were hard to tell apart for anyone who is colour blind. They are now based on the [Okabe-Ito](https://jfly.uni-koeln.de/color/) hues the rest of the report uses, adjusted so the label text inside each node is comfortable to read rather than merely legible.
 
     If you preferred the old colours, put these in your `include_css` file:
 
