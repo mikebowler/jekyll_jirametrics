@@ -78,23 +78,31 @@ end
 
 The dependency chart used to be the exception here, because the tool that draws it, [Graphviz](https://graphviz.org), knows nothing about CSS. Its colours are now variables like everything else.
 
+Each type has a colour for the box and a colour for the text written inside it. They come in pairs, because some of the boxes are light and some are dark.
+
 ```css
 :root {
-  --dependency-chart-story-color: #20AA7E;
+  --dependency-chart-story-color: #41C093;
+  --dependency-chart-story-label-color: black;
   --dependency-chart-task-color: #56B4E9;
-  --dependency-chart-bug-color: #EE721E;   /* also used for Defect */
+  --dependency-chart-task-label-color: black;
+  --dependency-chart-bug-color: #783200;    /* also used for Defect */
+  --dependency-chart-bug-label-color: white;
   --dependency-chart-epic-color: #F0E442;
-  --dependency-chart-spike-color: #CF7CAA;
-  --dependency-chart-label-color: black;   /* the text inside a node */
-  --dependency-chart-link-color: gray;     /* the lines between nodes, and their labels */
+  --dependency-chart-epic-label-color: black;
+  --dependency-chart-spike-color: #762A58;
+  --dependency-chart-spike-label-color: white;
+
+  --dependency-chart-label-color: black;    /* text on a box you coloured yourself */
+  --dependency-chart-link-color: gray;      /* the lines between boxes, and their labels */
 }
 ```
 
-An issue type not in that list reuses one of those same five colours rather than coming from [the fallback palette](#the-fallback-palette), so two uncommon types can end up sharing a colour. Every node names its own type, so you can still tell them apart.
+An issue type not in that list reuses one of those same five pairs rather than coming from [the fallback palette](#the-fallback-palette), so two uncommon types can end up sharing a colour. Every node names its own type, so you can still tell them apart.
 
 The defaults are chosen to work well for people who are colour blind, so please keep that in mind if you replace them.
 
-One practical difference from the rest of the report: these colours fill the box that the label is written inside, so if you change one, check that the text on it is still easy to read. For the same reason they need no separate dark mode value. `--dependency-chart-link-color` does have one, since the lines sit on the page rather than inside a box.
+**If you change a box colour, change its label colour to match.** That is the one thing worth being careful about here: these colours sit behind text rather than beside it, so a dark box needs white text and a light box needs black. Nothing checks this for you, and getting it wrong makes the node unreadable. For the same reason they need no separate dark mode value, since the box is its own background. `--dependency-chart-link-color` does have one, because the lines sit on the page rather than inside a box.
 
 ### The fallback palette
 

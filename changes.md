@@ -9,20 +9,27 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Colour changes
   * The dependency chart was drawing some nodes as black text on a black background, so they could not be read at all. It affected any issue type the chart has no specific colour for, such as `Sub-task`. Introduced in v3.3.
-  * The dependency chart's colours can now be overridden, and the defaults have changed. It was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were hard to tell apart for anyone who is colour blind. They are now based on the [Okabe-Ito](https://jfly.uni-koeln.de/color/) hues the rest of the report uses, adjusted so the label text inside each node is comfortable to read rather than merely legible.
+  * The dependency chart's colours can now be overridden, and the defaults have changed. It was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were hard to tell apart for anyone who is colour blind. They are now based on the [Okabe-Ito](https://jfly.uni-koeln.de/color/) hues the rest of the report uses, adjusted so the text inside each box is comfortable to read rather than merely legible. Two of the boxes are now dark with white text, where before every box was pale with black text.
 
     If you preferred the old colours, put these in your `include_css` file:
 
     ```css
     :root {
       --dependency-chart-story-color: #90EE90;
+      --dependency-chart-story-label-color: black;
       --dependency-chart-task-color: #87CEFA;
+      --dependency-chart-task-label-color: black;
       --dependency-chart-bug-color: #ffdab9;   /* also used for Defect */
+      --dependency-chart-bug-label-color: black;
       --dependency-chart-epic-color: #fafad2;
+      --dependency-chart-epic-label-color: black;
       --dependency-chart-spike-color: #DDA0DD;
+      --dependency-chart-spike-label-color: black;
       --dependency-chart-link-color: gray;
     }
     ```
+
+    The label colours are in there because the new defaults are not all light: two of the boxes are now dark with white text, so putting the old pale colours back means putting the black text back with them.
 
     They are also in [legacy_colors.css](https://github.com/mikebowler/jirametrics/blob/main/lib/jirametrics/html/legacy_colors.css), along with everything else needed to get the pre-Okabe-Ito report back. See [reverting to the legacy colour scheme]({% link config_file_html.md %}#reverting-to-the-legacy-colour-scheme), and [the dependency chart]({% link config_file_html.md %}#the-dependency-chart) for the full list of variables.
 * Bugs
