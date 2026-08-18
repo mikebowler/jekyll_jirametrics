@@ -8,8 +8,8 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 # vNext
 
 * Colour changes
-  * The dependency chart was drawing some nodes as black text on a black background. It happened to any issue type the chart had no colour of its own for, such as `Sub-task`, because those fall back to the shared palette and the palette started handing out CSS variables in v3.3. Graphviz, which draws this chart, has no idea what a CSS variable is, so it warned to nobody in particular and used black for both the fill and the label.
-  * The dependency chart's colours are now colour blind safe, and can be overridden. This was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were the one thing our other colour work has been steadily undoing: lightening a colour compresses it toward white, which is exactly what removes the separation between colours, and light green, peach and pale yellow are genuinely hard to tell apart with red-green colour vision deficiency. They are now full strength [Okabe-Ito](https://jfly.uni-koeln.de/color/).
+  * The dependency chart was drawing some nodes as black text on a black background, so they could not be read at all. It affected any issue type the chart has no specific colour for, such as `Sub-task`. Introduced in v3.3.
+  * The dependency chart's colours can now be overridden, and the defaults have changed. It was the last chart still choosing its colours in code rather than in the CSS, and the pale pastels it used were hard to tell apart for anyone who is colour blind. They are now [Okabe-Ito](https://jfly.uni-koeln.de/color/), the same palette the rest of the report uses.
 
     If you preferred the old colours, put these in your `include_css` file:
 
@@ -24,9 +24,7 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
     }
     ```
 
-    They are also in [legacy_colors.css](https://github.com/mikebowler/jirametrics/blob/main/lib/jirametrics/html/legacy_colors.css), along with everything else needed to get the pre-Okabe-Ito report back. See [reverting to the legacy colour scheme]({% link config_file_html.md %}#reverting-to-the-legacy-colour-scheme).
-
-    Two details worth knowing if you replace these yourself. Graphviz puts the label text inside the node rather than beside it, so unlike every other chart these colours are judged against the text sitting on them rather than against the page; each shipped colour clears 4.5:1 against `--dependency-chart-label-color`. That is also why `Task` is sky blue here while it is blue elsewhere: Okabe-Ito blue only reaches 4.05:1 against black. And because the fills are opaque they are their own background, so they need no dark mode variant. The link colour does, since lines and their labels sit on the page.
+    They are also in [legacy_colors.css](https://github.com/mikebowler/jirametrics/blob/main/lib/jirametrics/html/legacy_colors.css), along with everything else needed to get the pre-Okabe-Ito report back. See [reverting to the legacy colour scheme]({% link config_file_html.md %}#reverting-to-the-legacy-colour-scheme), and [the dependency chart]({% link config_file_html.md %}#the-dependency-chart) for the full list of variables.
 * Bugs
   * A cycle time or pull request cycle time histogram no longer takes the whole report down when one of its groups has nothing left to plot. An item that finished before it started has no cycle time to chart, so it is excluded, and if that was true of every item in a group then the statistics table failed with `can't convert nil into Float` instead of rendering. That group now shows a dash in each column, with a footnote pointing at the Data Quality report for the items concerned.
 

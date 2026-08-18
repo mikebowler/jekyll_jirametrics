@@ -92,7 +92,9 @@ The dependency chart used to be the exception here, because the tool that draws 
 
 An issue type not in that list gets a colour from [the fallback palette](#the-fallback-palette) below.
 
-If you replace these, note that they behave differently to the colours on every other chart. Graphviz draws the label *inside* the node, so these are judged against the text sitting on top of them rather than against the page behind them, and each shipped colour clears the 4.5:1 contrast that WCAG asks for against `--dependency-chart-label-color`. That is why `Task` is sky blue here while it is blue everywhere else: Okabe-Ito blue only manages 4.05:1 against black. It also means they need no dark mode variant, because an opaque fill is its own background. `--dependency-chart-link-color` is the exception, since the lines and their labels do sit on the page, and it has a dark mode value.
+The defaults are chosen to work well for people who are colour blind, so please keep that in mind if you replace them.
+
+One practical difference from the rest of the report: these colours fill the box that the label is written inside, so if you change one, check that the text on it is still easy to read. For the same reason they need no separate dark mode value. `--dependency-chart-link-color` does have one, since the lines sit on the page rather than inside a box.
 
 ### The fallback palette
 
