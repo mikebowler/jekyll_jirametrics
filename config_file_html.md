@@ -74,7 +74,25 @@ project name: 'foo' do
 end
 ```
 
-One caveat is that the dependency report is currently not configurable. This is a limitation of the tool we currently use to generate that report.
+### The dependency chart
+
+The dependency chart used to be the exception here, because the tool that draws it, [Graphviz](https://graphviz.org), knows nothing about CSS. Its colours are now variables like everything else.
+
+```css
+:root {
+  --dependency-chart-story-color: #009E73;
+  --dependency-chart-task-color: #56B4E9;
+  --dependency-chart-bug-color: #D55E00;   /* also used for Defect */
+  --dependency-chart-epic-color: #F0E442;
+  --dependency-chart-spike-color: #CC79A7;
+  --dependency-chart-label-color: black;   /* the text inside a node */
+  --dependency-chart-link-color: gray;     /* the lines between nodes, and their labels */
+}
+```
+
+An issue type not in that list gets a colour from [the fallback palette](#the-fallback-palette) below.
+
+If you replace these, note that they behave differently to the colours on every other chart. Graphviz draws the label *inside* the node, so these are judged against the text sitting on top of them rather than against the page behind them, and each shipped colour clears the 4.5:1 contrast that WCAG asks for against `--dependency-chart-label-color`. That is why `Task` is sky blue here while it is blue everywhere else: Okabe-Ito blue only manages 4.05:1 against black. It also means they need no dark mode variant, because an opaque fill is its own background. `--dependency-chart-link-color` is the exception, since the lines and their labels do sit on the page, and it has a dark mode value.
 
 ### The fallback palette
 
