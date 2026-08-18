@@ -78,12 +78,12 @@ end
 
 The dependency chart used to be the exception here, because the tool that draws it, [Graphviz](https://graphviz.org), knows nothing about CSS. Its colours are now variables like everything else.
 
-Each type has a colour for the box and a colour for the text written inside it. They come in pairs, because some of the boxes are light and some are dark.
+Each type has a colour for the box and a colour for the text written inside it. They come in pairs, because most of the boxes are dark with white text and some are light with black.
 
 ```css
 :root {
-  --dependency-chart-story-color: #41C093;
-  --dependency-chart-story-label-color: black;
+  --dependency-chart-story-color: #015C41;
+  --dependency-chart-story-label-color: white;
   --dependency-chart-task-color: #56B4E9;
   --dependency-chart-task-label-color: black;
   --dependency-chart-bug-color: #783200;    /* also used for Defect */
