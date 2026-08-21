@@ -5,6 +5,12 @@ title: Change log
 ---
 Changes that affect behaviour or expected functionality will be listed here. This does not list all commits - refer to git log for that.
 
+# Unreleased
+
+* Bugs
+  * The shaded percentile bands on the Aging Work in Progress chart were drawn far too low, so the chart understated how long work has historically taken to clear each column. Only the 50% band was in the right place. The others were each drawn up from zero instead of sitting on top of the one below, and the 98% and 100% bands were miscalculated on top of that. Every band now sits at the age its label claims, which is the same age its tooltip has been quoting all along. Expect the shading to reach noticeably higher up the chart than it used to.
+  * The Aging Work in Progress chart's y-axis now leaves a little room above the tallest shaded band as well as above the oldest work item. On a board whose completed work has a longer tail than its current work in progress, the top band used to run off the top of the chart.
+
 # v3.3.1 (August 19, 2026)
 
 * Bugs
