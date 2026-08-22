@@ -9,6 +9,20 @@ Changes that affect behaviour or expected functionality will be listed here. Thi
 
 * Bugs
   * The shaded percentile bands on the Aging Work in Progress chart were drawn far too low, so the chart understated how long work has historically taken to clear each column. Only the 50% band was in the right place. The others were each drawn up from zero instead of sitting on top of the one below, and the 98% and 100% bands were miscalculated on top of that. Every band now sits at the age its label claims, which is the same age its tooltip has been quoting all along. Expect the shading to reach noticeably higher up the chart than it used to.
+  * The Estimate Accuracy chart's two series were nearly impossible to tell apart for anyone who is colour blind, and its dots were close to invisible for everyone in light mode. Both fills were pastel versions of [Okabe-Ito](https://jfly.uni-koeln.de/color/) colours, and lightening those colours is exactly what destroys them: measured under protanopia the two sat 4.45 apart where the palette's own floor is 11.08, and against a white page they measured 1.6 where WCAG asks 3.0 for a shape you need to see. Both fills are now the full strength colours, 18.45 apart under protanopia and clear of the contrast floor. The border around each dot is now the page background colour, so it separates overlapping dots instead of competing with the fill. Dark mode no longer overrides any of this, which also fixes a bug where the aging series was drawn as an orange ring around a pale vermilion fill, one series in two different hues.
+
+    Aging items are now drawn as right pointing arrows rather than dots. They have not finished yet, so the cycletime shown for them is a lower bound that will keep growing, and the arrow says so. It also means the two series can be told apart by shape alone, without depending on colour at all.
+
+    If you preferred the old colours, put these in your `include_css` file. Note this restores the colours only; the aging items stay arrows.
+
+    ```css
+    :root {
+      --estimate-accuracy-chart-completed-fill-color: #92D9C0;
+      --estimate-accuracy-chart-completed-border-color: #009E73;
+      --estimate-accuracy-chart-active-fill-color: #F4C6AD;
+      --estimate-accuracy-chart-active-border-color: #D55E00;
+    }
+    ```
   * The Estimate Accuracy chart sized each bubble by setting its radius to the number of issues at that point, so the area it drew grew as the square of the count. A bubble holding eight issues looked sixty four times the size of one holding a single issue rather than eight times, and every crowded spot on the chart looked far heavier than it really was. At the small end, a single issue was drawn as a dot four pixels across that was easy to miss altogether, and those lone dots are often the outliers most worth looking at. Bubble area is now proportional to the issue count. Expect the crowded clusters to shrink and the isolated single issues to become visible.
   * The Aging Work in Progress chart's y-axis now leaves a little room above the tallest shaded band as well as above the oldest work item. On a board whose completed work has a longer tail than its current work in progress, the top band used to run off the top of the chart.
 
